@@ -24,11 +24,10 @@ class Cube:
             [['xyz', 'g', 'xyz'], ['g', 'B', 'g'], ['xyz', 'g', 'xyz']],
         ])
 
-        # Define positions for edges and corners
         self.piece_current_positions = copy.deepcopy(self.piece_initial_positions)
         self.piece_current_orientations = copy.deepcopy(self.piece_initial_orientations)
 
-        # Call the piece-categorizing methods and store them           
+        # Call the piece-categorizing methods and store the results          
         self.edge_positions, self.corner_positions = self.categorize_positions_over_piece_types()
         self.edge_ids, self.corner_ids = self.categorize_ids_over_piece_types()
 
