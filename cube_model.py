@@ -1,14 +1,10 @@
 import numpy as np
 import networkx as nx
-from collections import deque
 import json
 import copy
-import ast
-from enum import Enum
 
 class Cube:
     def __init__(self):
-
         # The PIECES are counted from Left-to-Right(axis=2), Top-to-Bottom (axis=1), and Front-to-Back (axis=0), in that order. The fourteenth piece is the invisible and irrelevant center-most piece of the cube
         self.piece_initial_positions = np.array([
             [[1 , 2 , 3 ], [4 , 5 , 6 ], [7 , 8 , 9 ]],
@@ -21,19 +17,20 @@ class Cube:
         # Here x stands for the x-axis, y for y-axis and z for z-axis. The string means that the piece's axes are aligned with x, y and z axes of the cube in that order
         # g stands for "good", which is one of the two possible orientations of an edge piece at any given position, and other one is b, which stands for "bad"
         # The center pieces are not marked, as they always remain the same
-        # Define positions for edges and corners
+
         self.piece_initial_orientations = np.array([
             [['xyz', 'g', 'xyz'], ['g', 'F', 'g'], ['xyz', 'g', 'xyz']],
             [['g', 'U', 'g'], ['L', 'C', 'R'], ['g', 'D', 'g']],
             [['xyz', 'g', 'xyz'], ['g', 'B', 'g'], ['xyz', 'g', 'xyz']],
         ])
 
+        # Define positions for edges and corners
         self.piece_current_positions = copy.deepcopy(self.piece_initial_positions)
         self.piece_current_orientations = copy.deepcopy(self.piece_initial_orientations)
 
-        # Call the piece-sorting methods and store them           
-        self.edge_positions, self.corner_positions = self.sort_positions_over_piece_types()
-        self.edge_ids, self.corner_ids = self.sort_ids_over_piece_types()
+        # Call the piece-categorizing methods and store them           
+        self.edge_positions, self.corner_positions = self.categorize_positions_over_piece_types()
+        self.edge_ids, self.corner_ids = self.categorize_ids_over_piece_types()
 
         # Sort positions and ids for consistent ordering
         self.edge_positions.sort()
@@ -71,7 +68,7 @@ class Cube:
         self.corner_distances = self.tables["corner_distances"]
         self.movements = self.tables["movements"]
 
-    def sort_ids_over_piece_types(self):
+    def categorize_ids_over_piece_types(self):
         """Identifies edge and corner pieces based on orientation markers."""
         edge_ids = []
         corner_ids = []
@@ -86,7 +83,7 @@ class Cube:
                         corner_ids.append(piece_id)
         return edge_ids, corner_ids
     
-    def sort_positions_over_piece_types(self):
+    def categorize_positions_over_piece_types(self):
         """ Iterate through all positions in the cube and sort their positions into edges and corners """
         edge_positions = []
         corner_positions = []
@@ -102,8 +99,7 @@ class Cube:
                             edge_positions.append((i, j, k))
         return edge_positions, corner_positions
 
-    @staticmethod
-    def _load_tables_from_json(filenames: list):
+    def _load_tables_from_json(self, filenames: list):
         """
         Loads precomputed tables from JSON files and returns them in a dictionary.
 
@@ -189,7 +185,7 @@ class Cube:
                     next_orientation = ['g', 'b']
                     next_orientation.remove(self.piece_current_orientations[edge])
                     self.piece_current_orientations[edge] = next_orientation[0]
-
+    
     def _update_corner_orientations(self, move):
         """ Update the orientations of corners based on the move made """
         for corner in self.corner_positions:
@@ -249,8 +245,8 @@ class Cube:
 
         for index, move in enumerate(move_sequence): # More idiomatic and readable way to get index in loop
             if move in self.move_map:
-                self._update_edge_orientations(move)
                 self._update_corner_orientations(move)
+                self._update_edge_orientations(move)
                 self.move_map[move]()
             else:
                 raise ValueError(f"Invalid move: '{move}' at index {index}") # More readable error message
