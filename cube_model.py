@@ -3,102 +3,76 @@ import networkx as nx
 import json
 import copy
 
-class Cube:
-    def __init__(self):
-        # The PIECES are counted from Left-to-Right(axis=2), Top-to-Bottom (axis=1), and Front-to-Back (axis=0), in that order. The fourteenth piece is the invisible and irrelevant center-most piece of the cube
-        self.piece_initial_positions = np.array([
-            [[1 , 2 , 3 ], [4 , 5 , 6 ], [7 , 8 , 9 ]],
-            [[10, 11, 12], [13, 14, 15], [16, 17, 18]],
-            [[19, 20, 21], [22, 23, 24], [25, 26, 27]]
-        ])
+class CubeBase:
+    tables = None
+    piece_initial_positions = np.array([
+                    [[1 , 2 , 3 ], [4 , 5 , 6 ], [7 , 8 , 9 ]],
+                    [[10, 11, 12], [13, 14, 15], [16, 17, 18]],
+                    [[19, 20, 21], [22, 23, 24], [25, 26, 27]]
+    ])
+    piece_initial_orientations = np.array([
+                    [['xyz', 'g', 'xyz'], ['g', 'F', 'g'], ['xyz', 'g', 'xyz']],
+                    [['g', 'U', 'g'], ['L', 'C', 'R'], ['g', 'D', 'g']],
+                    [['xyz', 'g', 'xyz'], ['g', 'B', 'g'], ['xyz', 'g', 'xyz']],
+    ])
+    @classmethod
+    def initialize(cls):
+        if cls.tables is None:
+            cls.edge_positions, cls.corner_positions = cls.categorize_positions_over_piece_types()
+            cls.edge_ids, cls.corner_ids = cls.categorize_ids_over_piece_types()
 
-        # This is the intial state of the cube, which is the solved state
-        # Notice that only the corners are marked by 'xyz', and only the edges are marked by 'g' ('g' for good, other possible value is 'b' for bad)
-        # Here x stands for the x-axis, y for y-axis and z for z-axis. The string means that the piece's axes are aligned with x, y and z axes of the cube in that order
-        # g stands for "good", which is one of the two possible orientations of an edge piece at any given position, and other one is b, which stands for "bad"
-        # The center pieces are not marked, as they always remain the same
+            cls.edge_positions.sort()
+            cls.corner_positions.sort()
+            cls.edge_ids.sort()
+            cls.corner_ids.sort()
 
-        self.piece_initial_orientations = np.array([
-            [['xyz', 'g', 'xyz'], ['g', 'F', 'g'], ['xyz', 'g', 'xyz']],
-            [['g', 'U', 'g'], ['L', 'C', 'R'], ['g', 'D', 'g']],
-            [['xyz', 'g', 'xyz'], ['g', 'B', 'g'], ['xyz', 'g', 'xyz']],
-        ])
+            cls.tables = cls._load_tables_from_json([
+                    'corner_position_distance_table.json',
+                    'edge_position_distance_table.json',
+                    'position_movement_table.json'
+            ])
+            cls.edge_distances = cls.tables["edge_distances"]
+            cls.corner_distances = cls.tables["corner_distances"]
+            cls.movements = cls.tables["movements"]
 
-        self.piece_current_positions = copy.deepcopy(self.piece_initial_positions)
-        self.piece_current_orientations = copy.deepcopy(self.piece_initial_orientations)
-
-        # Call the piece-categorizing methods and store the results          
-        self.edge_positions, self.corner_positions = self.categorize_positions_over_piece_types()
-        self.edge_ids, self.corner_ids = self.categorize_ids_over_piece_types()
-
-        # Sort positions and ids for consistent ordering
-        self.edge_positions.sort()
-        self.corner_positions.sort()
-        self.edge_ids.sort()
-        self.corner_ids.sort()
-
-        self.move_map = {
-            'U': self._U, 'F': self._F, 'B': self._B, 'D': self._D, 'L': self._L, 'R': self._R,
-            'u': self._u, 'f': self._f, 'b': self._b, 'd': self._d, 'l': self._l, 'r': self._r,
-            'M': self._M, 'E': self._E, 'S': self._S, 'm': self._m, 'e': self._e, 's': self._s,
-        }
-        # The uppercase letters are the clockwise moves, and the lowercase letters are the counter-clockwise moves
-
-        self.corner_piece_move_vs_orientation_map = {
-            'U': lambda s: s[1] + s[0] + s[2],
-            'u': lambda s: s[1] + s[0] + s[2],
-            'D': lambda s: s[1] + s[0] + s[2],
-            'd': lambda s: s[1] + s[0] + s[2],
-            'L': lambda s: s[0] + s[2] + s[1],
-            'l': lambda s: s[0] + s[2] + s[1],
-            'R': lambda s: s[0] + s[2] + s[1],
-            'r': lambda s: s[0] + s[2] + s[1],
-            'F': lambda s: s[2] + s[1] + s[0],
-            'f': lambda s: s[2] + s[1] + s[0],
-            'B': lambda s: s[2] + s[1] + s[0],
-            'b': lambda s: s[2] + s[1] + s[0],
-        }
-        self.tables = self._load_tables_from_json([
-            'corner_position_distance_table.json',
-            'edge_position_distance_table.json',
-            'position_movement_table.json'
-        ])
-        self.edge_distances = self.tables["edge_distances"]
-        self.corner_distances = self.tables["corner_distances"]
-        self.movements = self.tables["movements"]
-
-    def categorize_ids_over_piece_types(self):
+    @classmethod
+    def categorize_ids_over_piece_types(cls):
         """Identifies edge and corner pieces based on orientation markers."""
         edge_ids = []
         corner_ids = []
         for i in range(3):
             for j in range(3):
                 for k in range(3):
-                    piece_id = self.piece_initial_positions[i, j, k]
-                    orientation = self.piece_initial_orientations[i, j, k]
-                    if orientation == 'g':  # corner
+                    piece_id = cls.piece_initial_positions[i, j, k]
+                    if piece_id in [5, 11, 13, 14, 15, 17, 23]:
+                        continue  # Skip center pieces and non-cubies
+                    orientation = cls.piece_initial_orientations[i, j, k]
+                    if orientation == 'g':
                         edge_ids.append(piece_id)
-                    else:
+                    elif orientation == 'xyz':
                         corner_ids.append(piece_id)
         return edge_ids, corner_ids
     
-    def categorize_positions_over_piece_types(self):
+    @classmethod
+    def categorize_positions_over_piece_types(cls):
         """ Iterate through all positions in the cube and sort their positions into edges and corners """
         edge_positions = []
         corner_positions = []
         for i in range(3):
             for j in range(3):
                 for k in range(3):
-                    if self.piece_current_positions[i, j, k] in [5, 11, 13, 14, 15, 17, 23]:
+                    piece_id = cls.piece_initial_positions[i, j, k]
+                    if piece_id in [5, 11, 13, 14, 15, 17, 23]:
                         continue
-                    else:
-                        if self.piece_current_orientations[i, j, k] != 'g':
-                            corner_positions.append((i, j, k))
-                        else:
-                            edge_positions.append((i, j, k))
+                    orientation = cls.piece_initial_orientations[i, j, k]
+                    if orientation == 'g':
+                        edge_positions.append((i, j, k))
+                    elif orientation == 'xyz':
+                        corner_positions.append((i, j, k))
         return edge_positions, corner_positions
 
-    def _load_tables_from_json(self, filenames: list):
+    @staticmethod
+    def _load_tables_from_json(filenames: list):
         """
         Loads precomputed tables from JSON files and returns them in a dictionary.
 
@@ -115,7 +89,7 @@ class Cube:
             "corner_distances": None,
             "movements": None
         }
-        
+
         for filename in filenames:
             try:
                 with open(filename, 'r') as f:
@@ -160,6 +134,34 @@ class Cube:
             
         return tables
     
+class CubeTracker(CubeBase):
+    def __init__(self):
+        CubeBase.initialize()
+        self.piece_current_positions = copy.deepcopy(CubeBase.piece_initial_positions)
+        self.piece_current_orientations = copy.deepcopy(CubeBase.piece_initial_orientations)
+    
+        self.move_map = {
+                'U': self._U, 'F': self._F, 'B': self._B, 'D': self._D, 'L': self._L, 'R': self._R,
+                'u': self._u, 'f': self._f, 'b': self._b, 'd': self._d, 'l': self._l, 'r': self._r,
+                'M': self._M, 'E': self._E, 'S': self._S, 'm': self._m, 'e': self._e, 's': self._s,
+        }
+        # The uppercase letters are the clockwise moves, and the lowercase letters are the counter-clockwise moves
+
+        self.corner_piece_move_vs_orientation_map = {
+            'U': lambda s: s[1] + s[0] + s[2],
+            'u': lambda s: s[1] + s[0] + s[2],
+            'D': lambda s: s[1] + s[0] + s[2],
+            'd': lambda s: s[1] + s[0] + s[2],
+            'L': lambda s: s[0] + s[2] + s[1],
+            'l': lambda s: s[0] + s[2] + s[1],
+            'R': lambda s: s[0] + s[2] + s[1],
+            'r': lambda s: s[0] + s[2] + s[1],
+            'F': lambda s: s[2] + s[1] + s[0],
+            'f': lambda s: s[2] + s[1] + s[0],
+            'B': lambda s: s[2] + s[1] + s[0],
+            'b': lambda s: s[2] + s[1] + s[0],
+        }
+
     def _rotate_slice(self, perspective, slice_idx, direction):
         """ Rotate a face (0=front, 1=middle, 2=back) seen from the given perspective (0=front, 1=top, 2=left) in the given direction """
         def change_perspective(cube, perspective, direction):
@@ -179,11 +181,10 @@ class Cube:
         for edge in self.edge_positions:
             if edge in self.movements[move].keys():
                 piece_id = self.piece_current_positions[edge]
-                piece_initial_position = list(zip(*np.where(self.piece_initial_positions == piece_id)))[0]
+                piece_initial_position = tuple(np.argwhere(self.piece_initial_positions == piece_id)[0])
                 if self.edge_distances[(piece_initial_position, edge)] == self.edge_distances[(piece_initial_position, self.movements[move][edge])]:
-                    next_orientation = ['g', 'b']
-                    next_orientation.remove(self.piece_current_orientations[edge])
-                    self.piece_current_orientations[edge] = next_orientation[0]
+                    current_orientation = self.piece_current_orientations[edge]
+                    self.piece_current_orientations[edge] = 'g' if current_orientation=='b' else 'b'
     
     def _update_corner_orientations(self, move):
         """ Update the orientations of corners based on the move made """
