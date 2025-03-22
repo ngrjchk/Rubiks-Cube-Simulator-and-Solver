@@ -1,0 +1,112 @@
+{
+  "1": {
+    "(0, 0, 0)": {
+      "(0, 0, 2)": "F, u",
+      "(0, 2, 0)": "L, f",
+      "(2, 0, 0)": "U, l"
+    },
+    "(0, 0, 2)": {
+      "(0, 0, 0)": "U, f",
+      "(0, 2, 2)": "F, r",
+      "(2, 0, 2)": "R, u"
+    },
+    "(0, 2, 0)": {
+      "(0, 0, 0)": "F, l",
+      "(0, 2, 2)": "D, f",
+      "(2, 2, 0)": "L, d"
+    },
+    "(0, 2, 2)": {
+      "(0, 0, 2)": "R, f",
+      "(0, 2, 0)": "F, d",
+      "(2, 2, 2)": "D, r"
+    },
+    "(2, 0, 0)": {
+      "(0, 0, 0)": "L, u",
+      "(2, 0, 2)": "U, b",
+      "(2, 2, 0)": "B, l"
+    },
+    "(2, 0, 2)": {
+      "(0, 0, 2)": "U, r",
+      "(2, 0, 0)": "B, u",
+      "(2, 2, 2)": "R, b"
+    },
+    "(2, 2, 0)": {
+      "(0, 2, 0)": "D, l",
+      "(2, 0, 0)": "L, b",
+      "(2, 2, 2)": "B, d"
+    },
+    "(2, 2, 2)": {
+      "(0, 2, 2)": "R, d",
+      "(2, 0, 2)": "B, r",
+      "(2, 2, 0)": "D, b"
+    }
+  },
+  "2": {
+    "(0, 0, 0)": {
+      "(0, 2, 2)": "Fr, uF, ur, LD, Lf, fD",
+      "(2, 0, 2)": "FR, Fu, uR, Ub, lU, lb",
+      "(2, 2, 0)": "Ld, fL, fd, UB, Ul, lB"
+    },
+    "(0, 0, 2)": {
+      "(0, 2, 0)": "UL, Uf, fL, Fd, rF, rd",
+      "(2, 0, 0)": "Ul, fU, fl, RB, Ru, uB",
+      "(2, 2, 2)": "FD, Fr, rD, Rb, uR, ub"
+    },
+    "(0, 2, 0)": {
+      "(0, 0, 2)": "Fu, lF, lu, DR, Df, fR",
+      "(2, 0, 0)": "FU, Fl, lU, Lb, dL, db",
+      "(2, 2, 2)": "Dr, fD, fr, LB, Ld, dB"
+    },
+    "(0, 2, 2)": {
+      "(0, 0, 0)": "RU, Rf, fU, Fl, dF, dl",
+      "(2, 0, 2)": "Ru, fR, fu, DB, Dr, rB",
+      "(2, 2, 0)": "FL, Fd, dL, Db, rD, rb"
+    },
+    "(2, 0, 0)": {
+      "(0, 0, 2)": "LF, Lu, uF, Ur, bU, br",
+      "(0, 2, 0)": "Lf, uL, uf, BD, Bl, lD",
+      "(2, 2, 2)": "UR, Ub, bR, Bd, lB, ld"
+    },
+    "(2, 0, 2)": {
+      "(0, 0, 0)": "Uf, rU, rf, BL, Bu, uL",
+      "(0, 2, 2)": "UF, Ur, rF, Rd, bR, bd",
+      "(2, 2, 0)": "Bl, uB, ul, RD, Rb, bD"
+    },
+    "(2, 2, 0)": {
+      "(0, 0, 0)": "DF, Dl, lF, Lu, bL, bu",
+      "(0, 2, 2)": "Df, lD, lf, BR, Bd, dR",
+      "(2, 0, 2)": "LU, Lb, bU, Br, dB, dr"
+    },
+    "(2, 2, 2)": {
+      "(0, 0, 2)": "Rf, dR, df, BU, Br, rU",
+      "(0, 2, 0)": "RF, Rd, dF, Dl, bD, bl",
+      "(2, 0, 0)": "Bu, rB, ru, DL, Db, bL"
+    }
+  },
+  "3": {
+    "(0, 0, 0)": {
+      "(2, 2, 2)": "FrD, uFD, uFr, urD, LDr, LfD, Lfr, fDr, FRb, FuR, Fub, uRb, UbR, lUR, lUb, lbR, LdB, fLB, fLd, fdB, UBd, UlB, Uld, lBd"
+    },
+    "(0, 0, 2)": {
+      "(2, 2, 0)": "ULd, UfL, Ufd, fLd, FdL, rFL, rFd, rdL, UlB, fUB, fUl, flB, RBl, RuB, Rul, uBl, FDb, FrD, Frb, rDb, RbD, uRD, uRb, ubD"
+    },
+    "(0, 2, 0)": {
+      "(2, 0, 2)": "FuR, lFR, lFu, luR, DRu, DfR, Dfu, fRu, FUb, FlU, Flb, lUb, LbU, dLU, dLb, dbU, DrB, fDB, fDr, frB, LBr, LdB, Ldr, dBr"
+    },
+    "(0, 2, 2)": {
+      "(2, 0, 0)": "RUl, RfU, Rfl, fUl, FlU, dFU, dFl, dlU, RuB, fRB, fRu, fuB, DBu, DrB, Dru, rBu, FLb, FdL, Fdb, dLb, DbL, rDL, rDb, rbL"
+    },
+    "(2, 0, 0)": {
+      "(0, 2, 2)": "LFr, LuF, Lur, uFr, UrF, bUF, bUr, brF, LfD, uLD, uLf, ufD, BDf, BlD, Blf, lDf, URd, UbR, Ubd, bRd, BdR, lBR, lBd, ldR"
+    },
+    "(2, 0, 2)": {
+      "(0, 2, 0)": "UfL, rUL, rUf, rfL, BLf, BuL, Buf, uLf, UFd, UrF, Urd, rFd, RdF, bRF, bRd, bdF, BlD, uBD, uBl, ulD, RDl, RbD, Rbl, bDl"
+    },
+    "(2, 2, 0)": {
+      "(0, 0, 2)": "DFu, DlF, Dlu, lFu, LuF, bLF, bLu, buF, DfR, lDR, lDf, lfR, BRf, BdR, Bdf, dRf, LUr, LbU, Lbr, bUr, BrU, dBU, dBr, drU"
+    },
+    "(2, 2, 2)": {
+      "(0, 0, 0)": "RfU, dRU, dRf, dfU, BUf, BrU, Brf, rUf, RFl, RdF, Rdl, dFl, DlF, bDF, bDl, blF, BuL, rBL, rBu, ruL, DLu, DbL, Dbu, bLu"
+    }
+  }
+}
