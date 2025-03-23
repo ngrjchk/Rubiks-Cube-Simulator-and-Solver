@@ -11,9 +11,9 @@ class CubeBase:
                     [[19, 20, 21], [22, 23, 24], [25, 26, 27]]
     ])
     piece_initial_orientations = np.array([
-                    [['xyz', 'g', 'xyz'], ['g', 'F', 'g'], ['xyz', 'g', 'xyz']],
-                    [['g'  , 'U', 'g'  ], ['L', 'C', 'R'], ['g'  , 'D', 'g'  ]],
-                    [['xyz', 'g', 'xyz'], ['g', 'B', 'g'], ['xyz', 'g', 'xyz']],
+                    [['xyz', 'g', 'xyz'], ['g', 'y', 'g'], ['xyz', 'g', 'xyz']],
+                    [['g'  , 'Z', 'g'  ], ['x', 'C', 'X'], ['g'  , 'z', 'g'  ]],
+                    [['xyz', 'g', 'xyz'], ['g', 'Y', 'g'], ['xyz', 'g', 'xyz']],
     ])
     @classmethod
     def initialize(cls):
@@ -146,7 +146,7 @@ class CubeTracker(CubeBase):
                 'M': self._M, 'E': self._E, 'S': self._S, 'm': self._m, 'e': self._e, 's': self._s,
                 'N': self._N
         }
-        # The uppercase letters are the clockwise moves, and the lowercase letters are the counter-clockwise moves, N is no move
+        # The uppercase letters are the clockwise moves, and the lowercase letters are the counter-clockwise moves
 
         self.corner_piece_move_vs_orientation_map = {
             'U': lambda orientation: orientation[1] + orientation[0] + orientation[2],
@@ -178,25 +178,6 @@ class CubeTracker(CubeBase):
         self.piece_current_orientations[slice_idx] = np.rot90(self.piece_current_orientations[slice_idx], k=direction, axes=(0, 1))
         self.piece_current_orientations = change_perspective(self.piece_current_orientations, perspective, 1)
 
-    def _update_edge_orientations(self, move):
-        """ Update the orientations of edges based on the move made """
-        for edge in self.edge_positions:
-            if move in self.movements.keys():
-                if edge in self.movements[move].keys():
-                    piece_id = self.piece_current_positions[edge]
-                    piece_initial_position = tuple(np.argwhere(self.piece_initial_positions == piece_id)[0])
-                    if self.edge_distances[(piece_initial_position, edge)] == self.edge_distances[(piece_initial_position, self.movements[move][edge])]:
-                        current_orientation = self.piece_current_orientations[edge]
-                        self.piece_current_orientations[edge] = 'g' if current_orientation=='b' else 'b'
-    
-    def _update_corner_orientations(self, move):
-        """ Update the orientations of corners based on the move made """
-        for corner in self.corner_positions:
-            if move in self.movements.keys():
-                if corner in self.movements[move].keys():
-                    current_orientation = self.piece_current_orientations[corner]
-                    self.piece_current_orientations[corner] = self.corner_piece_move_vs_orientation_map[move](current_orientation)
-
     def _F(self): self._rotate_slice(perspective=0, slice_idx=0, direction=-1)
     def _f(self): self._rotate_slice(perspective=0, slice_idx=0, direction=1)
     def _M(self): self._rotate_slice(perspective=0, slice_idx=1, direction=-1)
@@ -220,6 +201,21 @@ class CubeTracker(CubeBase):
 
     def _N(self): pass
 
+    def map_moves_to_inverse_moves(self):
+        all_moves = self.move_map.keys()
+        moves = []
+        inverse_moves = []
+        for move in all_moves:
+            if move.isupper():
+                moves.append(move)
+            else:
+                inverse_moves.append(move)
+        moves.remove('N')
+        moves.sort()
+        inverse_moves.sort()
+        return list(zip(moves, inverse_moves))
+        
+
     def _get_position_of_piece(self, piece_id):
         """Returns the 3D position vector (tuple) given the piece_id"""
         for i in range(3):
@@ -227,7 +223,6 @@ class CubeTracker(CubeBase):
                 for k in range(3):
                     if self.piece_current_positions[i, j, k] == piece_id:
                         return (i, j, k)
-        return None # Piece ID not found (should not happen in a valid cube state)
 
     def _get_piece_at_position(self, position):
         """Returns the piece ID at a given position (i, j, k)."""
@@ -241,7 +236,25 @@ class CubeTracker(CubeBase):
                 for k in range(3):
                     if self.piece_current_positions[i, j, k] == piece_id:
                         return self.piece_current_orientations[i, j, k]
-        return None
+    
+    def _update_edge_orientations(self, move):
+        """ Update the orientations of edges based on the move made """
+        for edge in self.edge_positions:
+            if move in self.movements.keys():
+                if edge in self.movements[move].keys():
+                    piece_id = self.piece_current_positions[edge]
+                    piece_initial_position = tuple(np.argwhere(self.piece_initial_positions == piece_id)[0])
+                    if self.edge_distances[(piece_initial_position, edge)] == self.edge_distances[(piece_initial_position, self.movements[move][edge])]:
+                        current_orientation = self.piece_current_orientations[edge]
+                        self.piece_current_orientations[edge] = 'g' if current_orientation=='b' else 'b'
+    
+    def _update_corner_orientations(self, move):
+        """ Update the orientations of corners based on the move made """
+        for corner in self.corner_positions:
+            if move in self.movements.keys():
+                if corner in self.movements[move].keys():
+                    current_orientation = self.piece_current_orientations[corner]
+                    self.piece_current_orientations[corner] = self.corner_piece_move_vs_orientation_map[move](current_orientation)
 
     def apply_moves(self, move_sequence):
         """Applies the moves to the cube state (piece_current_positions and piece_current_orientations)
@@ -254,7 +267,7 @@ class CubeTracker(CubeBase):
         if isinstance(move_sequence, str):
             move_sequence = list(move_sequence) # Convert string to list for consistent iteration
 
-        for index, move in enumerate(move_sequence): # More idiomatic and readable way to get index in loop
+        for index, move in enumerate(move_sequence):
             if move in self.move_map:
                 self._update_corner_orientations(move)
                 self._update_edge_orientations(move)
