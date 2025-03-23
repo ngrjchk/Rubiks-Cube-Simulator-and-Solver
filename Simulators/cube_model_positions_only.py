@@ -10,16 +10,10 @@ class Cube:
             [[19, 20, 21], [22, 23, 24], [25, 26, 27]]
         ])
 
-        # This is the intial state of the cube, which is the solved state
-        # Notice that only the corners are marked by 'xyz', and only the edges are marked by 'g' ('g' for good, other possible value is 'b' for bad)
-        # Here x stands for the x-axis, y for y-axis and z for z-axis. The string means that the piece's axes are aligned with x, y and z axes of the cube in that order
-        # g stands for "good", which is one of the two possible orientations of an edge piece at any given position, and other one is b, which stands for "bad"
-        # The center pieces are not marked, as they always remain the same
-
         self.piece_initial_orientations = np.array([
-            [['xyz', 'g', 'xyz'], ['g', 'F', 'g'], ['xyz', 'g', 'xyz']],
-            [['g'  , 'U', 'g'  ], ['L', 'C', 'R'], ['g'  , 'D', 'g'  ]],
-            [['xyz', 'g', 'xyz'], ['g', 'B', 'g'], ['xyz', 'g', 'xyz']],
+            [['xyz', 'g', 'xyz'], ['g', 'y', 'g'], ['xyz', 'g', 'xyz']],
+            [['g'  , 'Z', 'g'  ], ['x', 'C', 'X'], ['g'  , 'z', 'g'  ]],
+            [['xyz', 'g', 'xyz'], ['g', 'Y', 'g'], ['xyz', 'g', 'xyz']],
         ])
 
         # Define positions for edges and corners
@@ -39,7 +33,6 @@ class Cube:
         self.move_map = {
             'U': self._U, 'F': self._F, 'B': self._B, 'D': self._D, 'L': self._L, 'R': self._R,
             'u': self._u, 'f': self._f, 'b': self._b, 'd': self._d, 'l': self._l, 'r': self._r,
-            'M': self._M, 'E': self._E, 'S': self._S, 'm': self._m, 'e': self._e, 's': self._s,
             'N': self._N
         }
         # The uppercase letters are the clockwise moves, and the lowercase letters are the counter-clockwise moves
@@ -52,8 +45,10 @@ class Cube:
             for j in range(3):
                 for k in range(3):
                     piece_id = self.piece_initial_positions[i, j, k]
+                    if piece_id in [5, 11, 13, 14, 15, 17, 23]:
+                        continue
                     orientation = self.piece_initial_orientations[i, j, k]
-                    if orientation == 'g':  # corner
+                    if orientation == 'g':  # edge
                         edge_ids.append(piece_id)
                     else:
                         corner_ids.append(piece_id)
@@ -69,10 +64,10 @@ class Cube:
                     if self.piece_current_positions[i, j, k] in [5, 11, 13, 14, 15, 17, 23]:
                         continue
                     else:
-                        if self.piece_current_orientations[i, j, k] != 'g':
-                            corner_positions.append((i, j, k))
-                        else:
+                        if self.piece_current_orientations[i, j, k] == 'g':
                             edge_positions.append((i, j, k))
+                        else:
+                            corner_positions.append((i, j, k))
         return edge_positions, corner_positions
     
     def _rotate_slice(self, perspective, slice_idx, direction):
@@ -87,25 +82,16 @@ class Cube:
 
     def _F(self): self._rotate_slice(perspective=0, slice_idx=0, direction=-1)
     def _f(self): self._rotate_slice(perspective=0, slice_idx=0, direction=1)
-    def _M(self): self._rotate_slice(perspective=0, slice_idx=1, direction=-1)
-    def _m(self): self._rotate_slice(perspective=0, slice_idx=1, direction=1)
     def _B(self): self._rotate_slice(perspective=0, slice_idx=2, direction=1)
     def _b(self): self._rotate_slice(perspective=0, slice_idx=2, direction=-1)
-
     def _U(self): self._rotate_slice(perspective=1, slice_idx=0, direction=-1)
     def _u(self): self._rotate_slice(perspective=1, slice_idx=0, direction=1)
-    def _E(self): self._rotate_slice(perspective=1, slice_idx=1, direction=-1)
-    def _e(self): self._rotate_slice(perspective=1, slice_idx=1, direction=1)
     def _D(self): self._rotate_slice(perspective=1, slice_idx=2, direction=1)
     def _d(self): self._rotate_slice(perspective=1, slice_idx=2, direction=-1)
-
     def _L(self): self._rotate_slice(perspective=2, slice_idx=0, direction=-1)
     def _l(self): self._rotate_slice(perspective=2, slice_idx=0, direction=1)
-    def _S(self): self._rotate_slice(perspective=2, slice_idx=1, direction=-1)
-    def _s(self): self._rotate_slice(perspective=2, slice_idx=1, direction=1)
     def _R(self): self._rotate_slice(perspective=2, slice_idx=2, direction=1)
     def _r(self): self._rotate_slice(perspective=2, slice_idx=2, direction=-1)
-
     def _N(self): pass
 
     def _get_position_of_piece(self, piece_id):
