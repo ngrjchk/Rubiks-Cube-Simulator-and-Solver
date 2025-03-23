@@ -12,7 +12,7 @@ class CubeBase:
     ])
     piece_initial_orientations = np.array([
                     [['xyz', 'g', 'xyz'], ['g', 'F', 'g'], ['xyz', 'g', 'xyz']],
-                    [['g', 'U', 'g'], ['L', 'C', 'R'], ['g', 'D', 'g']],
+                    [['g'  , 'U', 'g'  ], ['L', 'C', 'R'], ['g'  , 'D', 'g'  ]],
                     [['xyz', 'g', 'xyz'], ['g', 'B', 'g'], ['xyz', 'g', 'xyz']],
     ])
     @classmethod
@@ -27,9 +27,9 @@ class CubeBase:
             cls.corner_ids.sort()
 
             cls.tables = cls._load_tables_from_json([
-                    'corner_position_distance_table.json',
-                    'edge_position_distance_table.json',
-                    'position_movement_table.json'
+                    '../Precomputed_Tables/corner_position_distance_table.json',
+                    '../Precomputed_Tables/edge_position_distance_table.json',
+                    '../Precomputed_Tables/position_movement_table.json'
             ])
             cls.edge_distances = cls.tables["edge_distances"]
             cls.corner_distances = cls.tables["corner_distances"]
@@ -144,22 +144,24 @@ class CubeTracker(CubeBase):
                 'U': self._U, 'F': self._F, 'B': self._B, 'D': self._D, 'L': self._L, 'R': self._R,
                 'u': self._u, 'f': self._f, 'b': self._b, 'd': self._d, 'l': self._l, 'r': self._r,
                 'M': self._M, 'E': self._E, 'S': self._S, 'm': self._m, 'e': self._e, 's': self._s,
+                'N': self._N
         }
-        # The uppercase letters are the clockwise moves, and the lowercase letters are the counter-clockwise moves
+        # The uppercase letters are the clockwise moves, and the lowercase letters are the counter-clockwise moves, N is no move
 
         self.corner_piece_move_vs_orientation_map = {
-            'U': lambda s: s[1] + s[0] + s[2],
-            'u': lambda s: s[1] + s[0] + s[2],
-            'D': lambda s: s[1] + s[0] + s[2],
-            'd': lambda s: s[1] + s[0] + s[2],
-            'L': lambda s: s[0] + s[2] + s[1],
-            'l': lambda s: s[0] + s[2] + s[1],
-            'R': lambda s: s[0] + s[2] + s[1],
-            'r': lambda s: s[0] + s[2] + s[1],
-            'F': lambda s: s[2] + s[1] + s[0],
-            'f': lambda s: s[2] + s[1] + s[0],
-            'B': lambda s: s[2] + s[1] + s[0],
-            'b': lambda s: s[2] + s[1] + s[0],
+            'U': lambda orientation: orientation[1] + orientation[0] + orientation[2],
+            'u': lambda orientation: orientation[1] + orientation[0] + orientation[2],
+            'D': lambda orientation: orientation[1] + orientation[0] + orientation[2],
+            'd': lambda orientation: orientation[1] + orientation[0] + orientation[2],
+            'L': lambda orientation: orientation[0] + orientation[2] + orientation[1],
+            'l': lambda orientation: orientation[0] + orientation[2] + orientation[1],
+            'R': lambda orientation: orientation[0] + orientation[2] + orientation[1],
+            'r': lambda orientation: orientation[0] + orientation[2] + orientation[1],
+            'F': lambda orientation: orientation[2] + orientation[1] + orientation[0],
+            'f': lambda orientation: orientation[2] + orientation[1] + orientation[0],
+            'B': lambda orientation: orientation[2] + orientation[1] + orientation[0],
+            'b': lambda orientation: orientation[2] + orientation[1] + orientation[0],
+            'N': lambda orientation: orientation
         }
 
     def _rotate_slice(self, perspective, slice_idx, direction):
@@ -179,19 +181,21 @@ class CubeTracker(CubeBase):
     def _update_edge_orientations(self, move):
         """ Update the orientations of edges based on the move made """
         for edge in self.edge_positions:
-            if edge in self.movements[move].keys():
-                piece_id = self.piece_current_positions[edge]
-                piece_initial_position = tuple(np.argwhere(self.piece_initial_positions == piece_id)[0])
-                if self.edge_distances[(piece_initial_position, edge)] == self.edge_distances[(piece_initial_position, self.movements[move][edge])]:
-                    current_orientation = self.piece_current_orientations[edge]
-                    self.piece_current_orientations[edge] = 'g' if current_orientation=='b' else 'b'
+            if move in self.movements.keys():
+                if edge in self.movements[move].keys():
+                    piece_id = self.piece_current_positions[edge]
+                    piece_initial_position = tuple(np.argwhere(self.piece_initial_positions == piece_id)[0])
+                    if self.edge_distances[(piece_initial_position, edge)] == self.edge_distances[(piece_initial_position, self.movements[move][edge])]:
+                        current_orientation = self.piece_current_orientations[edge]
+                        self.piece_current_orientations[edge] = 'g' if current_orientation=='b' else 'b'
     
     def _update_corner_orientations(self, move):
         """ Update the orientations of corners based on the move made """
         for corner in self.corner_positions:
-            if corner in self.movements[move].keys():
-                current_orientation = self.piece_current_orientations[corner]
-                self.piece_current_orientations[corner] = self.corner_piece_move_vs_orientation_map[move](current_orientation)
+            if move in self.movements.keys():
+                if corner in self.movements[move].keys():
+                    current_orientation = self.piece_current_orientations[corner]
+                    self.piece_current_orientations[corner] = self.corner_piece_move_vs_orientation_map[move](current_orientation)
 
     def _F(self): self._rotate_slice(perspective=0, slice_idx=0, direction=-1)
     def _f(self): self._rotate_slice(perspective=0, slice_idx=0, direction=1)
@@ -214,7 +218,10 @@ class CubeTracker(CubeBase):
     def _R(self): self._rotate_slice(perspective=2, slice_idx=2, direction=1)
     def _r(self): self._rotate_slice(perspective=2, slice_idx=2, direction=-1)
 
+    def _N(self): pass
+
     def _get_position_of_piece(self, piece_id):
+        """Returns the 3D position vector (tuple) given the piece_id"""
         for i in range(3):
             for j in range(3):
                 for k in range(3):
@@ -237,6 +244,10 @@ class CubeTracker(CubeBase):
         return None
 
     def apply_moves(self, move_sequence):
+        """Applies the moves to the cube state (piece_current_positions and piece_current_orientations)
+        Args:
+            move_sequence(list/str): a list or string of valid moves to be made, in order
+        """
         if not isinstance(move_sequence, (list, str)):
             raise ValueError("argument to apply_moves must be a list or a string of valid moves")
 

@@ -18,7 +18,7 @@ class Cube:
 
         self.piece_initial_orientations = np.array([
             [['xyz', 'g', 'xyz'], ['g', 'F', 'g'], ['xyz', 'g', 'xyz']],
-            [['g', 'U', 'g'], ['L', 'C', 'R'], ['g', 'D', 'g']],
+            [['g'  , 'U', 'g'  ], ['L', 'C', 'R'], ['g'  , 'D', 'g'  ]],
             [['xyz', 'g', 'xyz'], ['g', 'B', 'g'], ['xyz', 'g', 'xyz']],
         ])
 
@@ -40,6 +40,7 @@ class Cube:
             'U': self._U, 'F': self._F, 'B': self._B, 'D': self._D, 'L': self._L, 'R': self._R,
             'u': self._u, 'f': self._f, 'b': self._b, 'd': self._d, 'l': self._l, 'r': self._r,
             'M': self._M, 'E': self._E, 'S': self._S, 'm': self._m, 'e': self._e, 's': self._s,
+            'N': self._N
         }
         # The uppercase letters are the clockwise moves, and the lowercase letters are the counter-clockwise moves
 
@@ -104,6 +105,8 @@ class Cube:
     def _s(self): self._rotate_slice(perspective=2, slice_idx=1, direction=1)
     def _R(self): self._rotate_slice(perspective=2, slice_idx=2, direction=1)
     def _r(self): self._rotate_slice(perspective=2, slice_idx=2, direction=-1)
+
+    def _N(self): pass
 
     def _get_position_of_piece(self, piece_id):
         for i in range(3):
