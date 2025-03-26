@@ -4,20 +4,36 @@ import copy
 class Cube:
     def __init__(self):
         # The PIECES are counted from Left-to-Right(axis=2), Top-to-Bottom (axis=1), and Front-to-Back (axis=0), in that order. The fourteenth piece is the invisible and irrelevant center-most piece of the cube
-        self.piece_initial_positions = np.array([
-            [[1 , 2 , 3 ], [4 , 5 , 6 ], [7 , 8 , 9 ]],
-            [[10, 11, 12], [13, 14, 15], [16, 17, 18]],
-            [[19, 20, 21], [22, 23, 24], [25, 26, 27]]
+        self.piece_initial_ids_at_positions = np.array([
+            [[0 , 1 , 2 ],
+             [3 , 4 , 5 ],
+             [6 , 7 , 8 ]], # Front face
+
+            [[9 , 10, 11],
+             [12, 13, 14],
+             [15, 16, 17]], # Middle slice
+
+            [[18, 19, 20],
+             [21, 22, 23],
+             [24, 25, 26]], # Back face
         ])
 
         self.piece_initial_orientations = np.array([
-            [['xyz', 'g', 'xyz'], ['g', 'y', 'g'], ['xyz', 'g', 'xyz']],
-            [['g'  , 'Z', 'g'  ], ['x', 'C', 'X'], ['g'  , 'z', 'g'  ]],
-            [['xyz', 'g', 'xyz'], ['g', 'Y', 'g'], ['xyz', 'g', 'xyz']],
+            [['xyZ', 'g', 'XyZ'],
+             ['g'  , 'y', 'g'  ],
+             ['xyz', 'g', 'Xyz']],
+
+            [['g'  , 'Z', 'g'  ],
+             ['x'  , 'C', 'X'  ],
+             ['g'  , 'z', 'g'  ]],
+
+            [['xYZ', 'g', 'XYZ'],
+             ['g'  , 'Y', 'g'  ],
+             ['xYz', 'g', 'XYz']],
         ])
 
         # Define positions for edges and corners
-        self.piece_current_positions = copy.deepcopy(self.piece_initial_positions)
+        self.piece_current_ids_at_positions = copy.deepcopy(self.piece_initial_ids_at_positions)
         self.piece_current_orientations = copy.deepcopy(self.piece_initial_orientations)
 
         # Call the piece-categorizing methods and store them           
@@ -44,8 +60,8 @@ class Cube:
         for i in range(3):
             for j in range(3):
                 for k in range(3):
-                    piece_id = self.piece_initial_positions[i, j, k]
-                    if piece_id in [5, 11, 13, 14, 15, 17, 23]:
+                    piece_id = self.piece_initial_ids_at_positions[i, j, k]
+                    if piece_id in [4, 10, 12, 13, 14, 16, 22]:
                         continue
                     orientation = self.piece_initial_orientations[i, j, k]
                     if orientation == 'g':  # edge
@@ -61,7 +77,7 @@ class Cube:
         for i in range(3):
             for j in range(3):
                 for k in range(3):
-                    if self.piece_current_positions[i, j, k] in [5, 11, 13, 14, 15, 17, 23]:
+                    if self.piece_current_ids_at_positions[i, j, k] in [4, 10, 12, 13, 14, 16, 22]:
                         continue
                     else:
                         if self.piece_current_orientations[i, j, k] == 'g':
@@ -76,9 +92,9 @@ class Cube:
             if perspective == 0: return cube
             else: return np.rot90(cube, k=direction, axes=(0, perspective))
         # Convert to the desired perspective, rotate the slice, then convert back
-        self.piece_current_positions = change_perspective(self.piece_current_positions, perspective, -1)
-        self.piece_current_positions[slice_idx] = np.rot90(self.piece_current_positions[slice_idx], k=direction, axes=(0, 1))
-        self.piece_current_positions = change_perspective(self.piece_current_positions, perspective, 1)
+        self.piece_current_ids_at_positions = change_perspective(self.piece_current_ids_at_positions, perspective, -1)
+        self.piece_current_ids_at_positions[slice_idx] = np.rot90(self.piece_current_ids_at_positions[slice_idx], k=direction, axes=(0, 1))
+        self.piece_current_ids_at_positions = change_perspective(self.piece_current_ids_at_positions, perspective, 1)
 
     def _F(self): self._rotate_slice(perspective=0, slice_idx=0, direction=-1)
     def _f(self): self._rotate_slice(perspective=0, slice_idx=0, direction=1)
@@ -98,14 +114,14 @@ class Cube:
         for i in range(3):
             for j in range(3):
                 for k in range(3):
-                    if self.piece_current_positions[i, j, k] == piece_id:
+                    if self.piece_current_ids_at_positions[i, j, k] == piece_id:
                         return (i, j, k)
         return None # Piece ID not found (should not happen in a valid cube state)
 
     def _get_piece_at_position(self, position):
         """Returns the piece ID at a given position (i, j, k)."""
         i, j, k = position
-        return self.piece_current_positions[i, j, k]
+        return self.piece_current_ids_at_positions[i, j, k]
 
     def apply_moves(self, move_sequence):
         if not isinstance(move_sequence, (list, str)):

@@ -2,6 +2,4 @@ jupyter
 numpy
 psutil
 networkX
-ipywidgets
-matplotlib
-pythreejs
+bpy
