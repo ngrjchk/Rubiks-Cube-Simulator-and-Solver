@@ -1,5 +1,4 @@
 import numpy as np
-from collections import deque
 import json
 import copy
 import sys
@@ -47,11 +46,6 @@ class CubeBase:
         if cls.tables is None:
             cls.edge_positions, cls.corner_positions = cls.categorize_positions_over_piece_types()
             cls.edge_ids, cls.corner_ids = cls.categorize_ids_over_piece_types()
-
-            cls.edge_positions.sort()
-            cls.corner_positions.sort()
-            cls.edge_ids.sort()
-            cls.corner_ids.sort()
 
             cls.tables = cls._load_tables_from_json([
                     '../Precomputed_Tables/corner_position_distance_table.json',
@@ -309,10 +303,8 @@ class CubeTracker(CubeBase):
         """
         if not isinstance(move_sequence, (list, str)):
             raise ValueError("argument to apply_moves must be a list or a string of valid moves")
-
         if isinstance(move_sequence, str):
-            move_sequence = list(move_sequence) # Convert string to list for consistent iteration
-
+            move_sequence = list(move_sequence)
         for index, move in enumerate(move_sequence):
             if move in self.move_map:
                 self.move_history.append(move)
@@ -385,10 +377,10 @@ class CubeVisualizer:
         for idx, move in enumerate(list(self.cube_tracker.move_history)[self.total_move_count:]):
             affected_piece_positions = self.cube_tracker.affected_piece_positions_per_move[self.total_move_count+idx]
             affected_piece_ids = self.cube_tracker.affected_piece_ids_per_move[self.total_move_count+idx]
-            for piece_id, position in list(zip(affected_piece_ids, affected_piece_positions)): 
-                if move != 'N':
+            if move != 'N':
+                for piece_id, position in list(zip(affected_piece_ids, affected_piece_positions)): 
                     self.update_piece_material(piece_id, position, move)
-        self.total_move_count += (len(self.cube_tracker.move_history)-self.total_move_count)
+        self.total_move_count = len(self.cube_tracker.move_history)
         return self.current_materials
         
     def update_piece_material(self, piece_id, position, move):
@@ -396,8 +388,7 @@ class CubeVisualizer:
         corner_ids = [int(x) for x in self.cube_tracker.corner_ids]
         if piece_id in corner_ids:
             position_after_move = self.cube_tracker.movements[move][position]
-            current_orientations = self.cube_tracker.piece_current_orientations
-            corner_current_orientation = list(current_orientations[position_after_move])
+            corner_current_orientation = list(self.cube_tracker.piece_current_orientations[position_after_move])
             corner_initial_orientation = list(self.cube_tracker.piece_initial_orientations[tuple([int(x) for x in np.argwhere(self.cube_tracker.piece_initial_ids_at_positions==piece_id).flatten()])])
             final_material = copy.deepcopy(self.null_material)
             for i in range(3):

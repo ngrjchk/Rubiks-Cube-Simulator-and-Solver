@@ -2,4 +2,4 @@ jupyter
 numpy
 psutil
 networkX
-bpy
+panda3d
