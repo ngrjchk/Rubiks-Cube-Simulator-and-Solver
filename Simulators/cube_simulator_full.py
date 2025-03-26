@@ -1,4 +1,5 @@
 import numpy as np
+from collections import deque
 import json
 import copy
 import sys
@@ -166,6 +167,9 @@ class CubeTracker(CubeBase):
         CubeBase.initialize()
         self.piece_current_ids_at_positions = copy.deepcopy(CubeBase.piece_initial_ids_at_positions)
         self.piece_current_orientations = copy.deepcopy(CubeBase.piece_initial_orientations)
+        self.move_history = []
+        self.affected_piece_ids_per_move = []
+        self.affected_piece_positions_per_move = []
     
         self.move_map = {
                 'L': self._L, 'l': self._l, 'R': self._R, 'r': self._r,
@@ -223,6 +227,11 @@ class CubeTracker(CubeBase):
         moves.sort()
         inverse_moves.sort()
         return list(zip(moves, inverse_moves))
+
+    def _get_affected_positions(self, move):
+        """Determine which positions are affected by a given move"""
+        affected_positions = list(self.movements[move].keys())
+        return affected_positions
         
     def _get_position_of_piece(self, piece_id):
         """Returns the 3D position vector (tuple) of a piece given the piece_id"""
@@ -306,6 +315,10 @@ class CubeTracker(CubeBase):
 
         for index, move in enumerate(move_sequence):
             if move in self.move_map:
+                self.move_history.append(move)
+                affected_piece_positions_item = self._get_affected_positions(move)
+                self.affected_piece_positions_per_move.append(affected_piece_positions_item)
+                self.affected_piece_ids_per_move.append([int(id) for id in [self.piece_current_ids_at_positions[position] for position in affected_piece_positions_item]])
                 self._update_corner_orientations(move)
                 self._update_edge_orientations(move)
                 self.move_map[move]()
@@ -315,6 +328,7 @@ class CubeTracker(CubeBase):
 class CubeVisualizer:
     def __init__(self, cube_tracker):
         self.cube_tracker = cube_tracker
+        self.total_move_count = 0
         self.direction_to_initial_color_map = {
             'X': "Red", 
             'x': "Orange",
@@ -356,9 +370,9 @@ class CubeVisualizer:
         self.initial_materials = []
         self.null_material = ["Black" for _ in range(6)]
     
-    def update_visualization(self, move_idx, move):
+    def update_materials(self):
         """Update the visualization based on current cube state"""
-        if move_idx == 0:
+        if self.total_move_count == 0:
             for piece_id in range(0, 27):
                 material = copy.deepcopy(self.null_material)
                 piece_initial_orientation = list(self.cube_tracker.piece_initial_orientations[tuple([int(x) for x in np.argwhere(self.cube_tracker.piece_initial_ids_at_positions==piece_id).flatten()])])
@@ -367,15 +381,17 @@ class CubeVisualizer:
                         material[material_idx] = self.direction_to_initial_color_map[self.material_idx_to_direction_map[material_idx]]
                 self.initial_materials.append((piece_id, material))
             self.current_materials = copy.deepcopy(self.initial_materials)
-        if move != 'N':
-            affected_piece_positions = self.get_affected_positions(move)
-            affected_piece_ids = [int(x) for x in [self.cube_tracker.piece_current_ids_at_positions[position] for position in affected_piece_positions]]
-            self.cube_tracker.apply_moves(move)
+
+        for idx, move in enumerate(list(self.cube_tracker.move_history)[self.total_move_count:]):
+            affected_piece_positions = self.cube_tracker.affected_piece_positions_per_move[self.total_move_count+idx]
+            affected_piece_ids = self.cube_tracker.affected_piece_ids_per_move[self.total_move_count+idx]
             for piece_id, position in list(zip(affected_piece_ids, affected_piece_positions)): 
-                self.update_piece_colors(piece_id, position, move)
+                if move != 'N':
+                    self.update_piece_material(piece_id, position, move)
+        self.total_move_count += (len(self.cube_tracker.move_history)-self.total_move_count)
         return self.current_materials
         
-    def update_piece_colors(self, piece_id, position, move):
+    def update_piece_material(self, piece_id, position, move):
         """Update the colors of a piece based on its orientation and position"""
         corner_ids = [int(x) for x in self.cube_tracker.corner_ids]
         if piece_id in corner_ids:
@@ -390,32 +406,17 @@ class CubeVisualizer:
                 final_material[self.direction_to_material_idx_map[current_facelet_id]] = initial_color
             self.current_materials[piece_id] = (piece_id, final_material)
 
-    def get_affected_positions(self, move):
-        """Determine which pieces are affected by a given move"""
-        # Based on the move, determine which pieces will be rotated
-        print("move:", move)
-        move_vs_center_map = {
-            'F' : (0,1,1),
-            'f' : (0,1,1),
-            'B' : (2,1,1),
-            'b' : (2,1,1),
-            'L' : (1,1,0),
-            'l' : (1,1,0),
-            'R' : (1,1,2),
-            'r' : (1,1,2),
-            'U' : (1,0,1),
-            'u' : (1,0,1),
-            'D' : (1,2,1),
-            'd' : (1,2,1),
-        }
-        affected_positions = list(self.cube_tracker.movements[move].keys())
-        affected_positions.append(move_vs_center_map[move])
-        return affected_positions
-
 if __name__ == "__main__":
     cube_tracker = CubeTracker()
-    visualizer = CubeVisualizer(cube_tracker)
-    moves = 'FRU'
-    for idx, move in enumerate(moves):
-        current_materials = visualizer.update_visualization(idx, move)
-        print(current_materials)
+    while True:
+        next_moves = input("Enter a move (or 'xx' to quit): ")
+        if next_moves == 'xx':
+            break
+        for move in next_moves:
+            if move not in cube_tracker.move_map:
+                print(f"Invalid move: {move}. Please try again.")
+                continue
+        cube_tracker.apply_moves(next_moves)
+        visualizer = CubeVisualizer(cube_tracker)
+        print(visualizer.update_materials())
+    print("Exiting...")
