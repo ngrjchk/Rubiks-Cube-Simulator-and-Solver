@@ -351,16 +351,7 @@ class CubeVisualizer:
             4:'Z', 
             5:'z'
         }
-        self.reference_id_to_facelet_map = {
-            'x' : 0,
-            'y' : 1,
-            'z' : 2
-        }
-        self.facelet_to_reference_id_map = {
-            0 : 'x',
-            1 : 'y',
-            2 : 'z'
-        }
+        
         self.current_materials = []
         self.initial_materials = []
         self.null_material = ["Black" for _ in range(6)]
@@ -376,12 +367,13 @@ class CubeVisualizer:
                         material[material_idx] = self.direction_to_initial_color_map[self.material_idx_to_direction_map[material_idx]]
                 self.initial_materials.append((piece_id, material))
             self.current_materials = copy.deepcopy(self.initial_materials)
-        affected_piece_positions = self.get_affected_positions(move)
-        affected_piece_ids = [int(x) for x in [self.cube_tracker.piece_current_ids_at_positions[position] for position in affected_piece_positions]]
-        self.cube_tracker.apply_moves(move)
-        for piece_id, position in list(zip(affected_piece_ids, affected_piece_positions)): 
-            self.update_piece_colors(piece_id, position, move)
-        print(self.current_materials)
+        if move != 'N':
+            affected_piece_positions = self.get_affected_positions(move)
+            affected_piece_ids = [int(x) for x in [self.cube_tracker.piece_current_ids_at_positions[position] for position in affected_piece_positions]]
+            self.cube_tracker.apply_moves(move)
+            for piece_id, position in list(zip(affected_piece_ids, affected_piece_positions)): 
+                self.update_piece_colors(piece_id, position, move)
+        return self.current_materials
         
     def update_piece_colors(self, piece_id, position, move):
         """Update the colors of a piece based on its orientation and position"""
@@ -402,7 +394,6 @@ class CubeVisualizer:
         """Determine which pieces are affected by a given move"""
         # Based on the move, determine which pieces will be rotated
         print("move:", move)
-        affected_positions = list(self.cube_tracker.movements[move].keys())
         move_vs_center_map = {
             'F' : (0,1,1),
             'f' : (0,1,1),
@@ -415,8 +406,9 @@ class CubeVisualizer:
             'U' : (1,0,1),
             'u' : (1,0,1),
             'D' : (1,2,1),
-            'd' : (1,2,1)
+            'd' : (1,2,1),
         }
+        affected_positions = list(self.cube_tracker.movements[move].keys())
         affected_positions.append(move_vs_center_map[move])
         return affected_positions
 
@@ -425,4 +417,5 @@ if __name__ == "__main__":
     visualizer = CubeVisualizer(cube_tracker)
     moves = 'FRU'
     for idx, move in enumerate(moves):
-        visualizer.update_visualization(idx, move)
+        current_materials = visualizer.update_visualization(idx, move)
+        print(current_materials)
