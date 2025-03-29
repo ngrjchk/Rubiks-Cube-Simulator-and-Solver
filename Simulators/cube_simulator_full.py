@@ -156,20 +156,20 @@ class CubeTracker(CubeBase):
         self.affected_piece_ids_per_move = []
         self.affected_piece_positions_per_move = []
         self.cube_current_faces_with_orientations = {
-            'F': self.piece_initial_orientations[0, :, :],
-            'B': np.flip(self.piece_initial_orientations[2, :, :], axis=1),
-            'R': self.piece_initial_orientations[:, :, 2],
-            'L': np.flip(np.transpose(self.piece_initial_orientations[:, :, 0]), axis=1),
-            'U': np.flip(self.piece_initial_orientations[:, 0, :], axis=0),
-            'D': self.piece_initial_orientations[:, 2, :]
+            'y': self.piece_initial_orientations[0, :, :],
+            'Y': np.flip(self.piece_initial_orientations[2, :, :], axis=1),
+            'X': np.transpose(self.piece_initial_orientations[:, :, 2]),
+            'x': np.flip(np.transpose(self.piece_initial_orientations[:, :, 0]), axis=1),
+            'Z': np.flip(self.piece_initial_orientations[:, 0, :], axis=0),
+            'z': self.piece_initial_orientations[:, 2, :]
         }
         self.cube_current_faces_with_ids = {
-            'F': self.piece_initial_ids_at_positions[0, :, :],
-            'B': np.flip(self.piece_initial_ids_at_positions[2, :, :], axis=1),
-            'R': self.piece_initial_ids_at_positions[:, :, 2],
-            'L': np.flip(np.transpose(self.piece_initial_ids_at_positions[:, :, 0]), axis=1),
-            'U': np.flip(self.piece_initial_ids_at_positions[:, 0, :], axis=0),
-            'D': self.piece_initial_ids_at_positions[:, 2, :]
+            'y': self.piece_initial_ids_at_positions[0, :, :],
+            'Y': np.flip(self.piece_initial_ids_at_positions[2, :, :], axis=1),
+            'X': np.transpose(self.piece_initial_ids_at_positions[:, :, 2]),
+            'x': np.flip(np.transpose(self.piece_initial_ids_at_positions[:, :, 0]), axis=1),
+            'Z': np.flip(self.piece_initial_ids_at_positions[:, 0, :], axis=0),
+            'z': self.piece_initial_ids_at_positions[:, 2, :]
         }
     
         self.move_map = {
@@ -200,21 +200,21 @@ class CubeTracker(CubeBase):
         self.piece_current_orientations = change_perspective(self.piece_current_orientations, perspective, 1)
         
         self.cube_current_faces_with_ids = {
-            'F': self.piece_current_ids_at_positions[0, :, :],
-            'B': np.flip(self.piece_current_ids_at_positions[2, :, :], axis=1),
-            'R': self.piece_current_ids_at_positions[:, :, 2],
-            'L': np.flip(np.transpose(self.piece_current_ids_at_positions[:, :, 0]), axis=1),
-            'U': np.flip(self.piece_current_ids_at_positions[:, 0, :], axis=0),
-            'D': self.piece_current_ids_at_positions[:, 2, :]
+            'y': self.piece_current_ids_at_positions[0, :, :],
+            'Y': np.flip(self.piece_current_ids_at_positions[2, :, :], axis=1),
+            'X': np.transpose(self.piece_current_ids_at_positions[:, :, 2]),
+            'x': np.flip(np.transpose(self.piece_current_ids_at_positions[:, :, 0]), axis=1),
+            'Z': np.flip(self.piece_current_ids_at_positions[:, 0, :], axis=0),
+            'z': self.piece_current_ids_at_positions[:, 2, :]
         }
 
         self.cube_current_faces_with_orientations = {
-            'F': self.piece_current_orientations[0, :, :],
-            'B': np.flip(self.piece_current_orientations[2, :, :], axis=1),
-            'R': self.piece_current_orientations[:, :, 2],
-            'L': np.flip(np.transpose(self.piece_current_orientations[:, :, 0]), axis=1),
-            'U': np.flip(self.piece_current_orientations[:, 0, :], axis=0),
-            'D': self.piece_current_orientations[:, 2, :]
+            'y': self.piece_current_orientations[0, :, :],
+            'Y': np.flip(self.piece_current_orientations[2, :, :], axis=1),
+            'X': np.transpose(self.piece_current_orientations[:, :, 2]),
+            'x': np.flip(np.transpose(self.piece_current_orientations[:, :, 0]), axis=1),
+            'Z': np.flip(self.piece_current_orientations[:, 0, :], axis=0),
+            'z': self.piece_current_orientations[:, 2, :]
         }
 
     def _F(self): self._rotate_face(0, 0, -1)
@@ -319,49 +319,41 @@ class CubeTracker(CubeBase):
             else:
                 raise ValueError(f"Invalid move: '{move}' at index {index}") # More readable error message
 
-class CubeVisualizer:
-    def __init__(self, cube_tracker):
-        self.cube_tracker = cube_tracker
+class CubeColorizer:
+    def __init__(self):
+        self.cube_tracker = CubeTracker()
         self.total_move_count = 0
-        self.direction_to_initial_color_map = {
-            'X': "Red",   'x': "Orange",
-            'Y': "Blue",  'y': "Green",
-            'Z': "White", 'z': "Yellow",
-            'N': "Black"
+        self.direction__initial_color_map = {
+            'X'     : "Red"  , 'x'     : "Orange",
+            'Y'     : "Blue" , 'y'     : "Green",
+            'Z'     : "White", 'z'     : "Yellow",
+            "Red"   : 'X'    , "Orange": 'x',
+            "Blue"  : 'Y'    , "Green" : 'y',
+            "White" : 'Z'    , "Yellow": 'z',
         }
-        self.color_to_initial_direction_map = {
-            "Red"   : 'X', "Orange": 'x',
-            "Blue"  : 'Y', "Green" : 'y',
-            "White" : 'Z', "Yellow": 'z',
-            "Black" : 'N'
+        self.direction__color_idx_map = {
+            'X':  0 , 'x':  1 , 
+            'Y':  2 , 'y':  3 , 
+            'Z':  4 , 'z':  5 ,
+            0  : 'X', 1  : 'x', 
+            2  : 'Y', 3  : 'y', 
+            4  : 'Z', 5  : 'z',
         }
-
-        self.direction_to_material_idx_map = {
-            'X': 0, 'x': 1, 
-            'Y': 2, 'y': 3, 
-            'Z': 4, 'z': 5
-        }
-        self.material_idx_to_direction_map = {
-            0: 'X', 1: 'x', 
-            2: 'Y', 3: 'y', 
-            4: 'Z', 5: 'z'
-        }
-        
-        self.current_materials = []
-        self.initial_materials = []
-        self.null_material = ["Black" for _ in range(6)]
+        self.current_colors = []
+        self.initial_colors = []
+        self.null_color = ["Black" for _ in range(6)]
     
     def update_colors(self):
         """Update the visualization based on current cube state"""
         if self.total_move_count == 0:
             for piece_id in range(0, 27):
-                material = copy.deepcopy(self.null_material)
+                color = copy.deepcopy(self.null_color)
                 piece_initial_orientation = list(self.cube_tracker.piece_initial_orientations[tuple([int(x) for x in np.argwhere(self.cube_tracker.piece_initial_ids_at_positions==piece_id).flatten()])])
-                for material_idx in range(6):
-                    if self.material_idx_to_direction_map[material_idx] in piece_initial_orientation:
-                        material[material_idx] = self.direction_to_initial_color_map[self.material_idx_to_direction_map[material_idx]]
-                self.initial_materials.append((piece_id, material))
-            self.current_materials = copy.deepcopy(self.initial_materials)
+                for color_idx in range(6):
+                    if self.direction__color_idx_map[color_idx] in piece_initial_orientation:
+                        color[color_idx] = self.direction__initial_color_map[self.direction__color_idx_map[color_idx]]
+                self.initial_colors.append((piece_id, color))
+            self.current_colors = copy.deepcopy(self.initial_colors)
 
         for idx, move in enumerate(list(self.cube_tracker.move_history)[self.total_move_count:]):
             if move != 'N':
@@ -370,7 +362,7 @@ class CubeVisualizer:
                 for piece_id, position in list(zip(affected_piece_ids, affected_piece_positions)): 
                     self.update_piece_colors(piece_id, position, move)
         self.total_move_count = len(self.cube_tracker.move_history)
-        return self.current_materials
+        return self.current_colors
         
     def update_piece_colors(self, piece_id, position, move):
         """Update the colors of a piece based on its orientation and position"""
@@ -379,28 +371,27 @@ class CubeVisualizer:
             position_after_move = self.cube_tracker.movements[move][position]
             corner_current_orientation = list(self.cube_tracker.piece_current_orientations[position_after_move])
             corner_initial_orientation = list(self.cube_tracker.piece_initial_orientations[tuple([int(x) for x in np.argwhere(self.cube_tracker.piece_initial_ids_at_positions==piece_id).flatten()])])
-            final_material = copy.deepcopy(self.null_material)
+            final_color = copy.deepcopy(self.null_color)
             for i in range(3):
-                initial_color = self.direction_to_initial_color_map[corner_initial_orientation[i]]
+                initial_color = self.direction__initial_color_map[corner_initial_orientation[i]]
                 current_facelet_id = corner_current_orientation[i]
-                final_material[self.direction_to_material_idx_map[current_facelet_id]] = initial_color
-            self.current_materials[piece_id] = (piece_id, final_material)
+                final_color[self.direction__color_idx_map[current_facelet_id]] = initial_color
+            self.current_colors[piece_id] = (piece_id, final_color)
 
 if __name__ == "__main__":
-    cube_tracker = CubeTracker()
+    visualizer = CubeColorizer()
     while True:
         next_moves = input("Enter a move (or 'xx' to quit): ")
         if next_moves == 'xx':
             break
         next_prompt_flag = False
         for idx, move in enumerate(next_moves):
-            if move not in cube_tracker.move_map:
+            if move not in visualizer.cube_tracker.move_map:
                 print(f"Invalid move: {move} at {idx}. Please try again.")
                 next_prompt_flag = True
                 break
         if next_prompt_flag:
             continue
-        cube_tracker.apply_moves(next_moves)
-        visualizer = CubeVisualizer(cube_tracker)
+        visualizer.cube_tracker.apply_moves(next_moves)
         print(visualizer.update_colors())
     print("Exiting...")
