@@ -2,7 +2,6 @@ import numpy as np
 import json
 import copy
 import os
-import sys
 import ast
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
@@ -40,9 +39,9 @@ class CubeBase:
             ]) 
             # for corners, capital letters refer to positive axes and lower letters refer to negative axes.
             # so, for the first corner piece (0,0,0), whose orientation is xyZ, the piece's local coordiantes' x-axis's facelet is aligned with the cube's negative x-axis (given by x at the start), y-axis's facelet with the cube's negative y-axis (y), and z-axis's facelet with the cube's positive z-axis (Z).
-            # for edges, 'g' (good) means that the minimum-length path from the current position to the initial position (solved state) also solves the edge in isolation, when taken
+            # for edges, 'g', which stands for 'good', means that the minimum-length path from the current position to the initial position (solved state) also solves the edge in isolation, when taken
             # and 'b' (bad) means that the minimum-length path from the current position to the initial position (solved state) does not solve the edge in isolation, when taken. The solution in isolation is what is called the secondary path: path that is immediately of the next length to the minimum-length path to the solved state (called the primary path).
-            # the fourteenth piece (the cube center), marked by 'C', is irrelevant to the program.
+            # the fourteenth piece (the cube's absolute center), marked by 'C', is irrelevant to the program.
             # the centers of the faces are marked by the respective axes that align with their respective normals.
 
             cls.edge_positions, cls.corner_positions = cls.categorize_positions_over_piece_types()
@@ -156,8 +155,8 @@ class CubeTracker(CubeBase):
         self.piece_current_ids_at_positions = copy.deepcopy(CubeBase.piece_initial_ids_at_positions)
         self.piece_current_orientations = copy.deepcopy(CubeBase.piece_initial_orientations)
         self.move_history = []
-        self.affected_piece_ids_per_move = []
-        self.affected_piece_positions_per_move = []
+        self.affected_piece_ids_for_move = []
+        self.affected_piece_positions_for_move = []
         self.cube_current_faces_with_orientations = {
             'y': self.piece_initial_orientations[0, :, :],
             'Y': np.flip(self.piece_initial_orientations[2, :, :], axis=1),
@@ -183,7 +182,7 @@ class CubeTracker(CubeBase):
         }
         # The uppercase letters are the clockwise moves, and the lowercase letters are the counter-clockwise moves
 
-    def _rotate_face(self, perspective, face_idx, direction):
+    def __rotate_face(self, perspective, face_idx, direction):
         """ Rotate a face (0=front, 1=middle, 2=back) seen from the given perspective (0=front, 1=top, 2=left) in the given direction """
         
         def change_perspective(cube, perspective, direction):
@@ -220,26 +219,26 @@ class CubeTracker(CubeBase):
             'z': self.piece_current_orientations[:, 2, :]
         }
 
-    def _F(self): self._rotate_face(0, 0, -1)
-    def _f(self): self._rotate_face(0, 0,  1)
-    def _B(self): self._rotate_face(0, 2,  1)
-    def _b(self): self._rotate_face(0, 2, -1)
-    def _U(self): self._rotate_face(1, 0, -1)
-    def _u(self): self._rotate_face(1, 0,  1)
-    def _D(self): self._rotate_face(1, 2,  1)
-    def _d(self): self._rotate_face(1, 2, -1)
-    def _L(self): self._rotate_face(2, 0, -1)
-    def _l(self): self._rotate_face(2, 0,  1)
-    def _R(self): self._rotate_face(2, 2,  1)
-    def _r(self): self._rotate_face(2, 2, -1)
+    def _F(self): self.__rotate_face(0, 0, -1)
+    def _f(self): self.__rotate_face(0, 0,  1)
+    def _B(self): self.__rotate_face(0, 2,  1)
+    def _b(self): self.__rotate_face(0, 2, -1)
+    def _U(self): self.__rotate_face(1, 0, -1)
+    def _u(self): self.__rotate_face(1, 0,  1)
+    def _D(self): self.__rotate_face(1, 2,  1)
+    def _d(self): self.__rotate_face(1, 2, -1)
+    def _L(self): self.__rotate_face(2, 0, -1)
+    def _l(self): self.__rotate_face(2, 0,  1)
+    def _R(self): self.__rotate_face(2, 2,  1)
+    def _r(self): self.__rotate_face(2, 2, -1)
     def _N(self): pass
 
-    def _get_affected_positions(self, move):
+    def get_affected_positions(self, move):
         """Determine which positions are affected by a given move"""
         affected_positions = [key for key in self.movements[move].keys() if key != self.movements[move][key]]
         return affected_positions
         
-    def _get_position_of_piece(self, piece_id):
+    def get_position_of_piece(self, piece_id):
         """Returns the 3D position vector (tuple) of a piece given the piece_id"""
         for i in range(3):
             for j in range(3):
@@ -247,12 +246,12 @@ class CubeTracker(CubeBase):
                     if self.piece_current_ids_at_positions[i, j, k] == piece_id:
                         return (i, j, k)
 
-    def _get_piece_at_position(self, position):
+    def get_piece_at_position(self, position):
         """Returns the piece ID at a given position (i, j, k)."""
         i, j, k = position
         return self.piece_current_ids_at_positions[i, j, k]
     
-    def _get_orientation_of_piece(self, piece_id):
+    def get_orientation_of_piece(self, piece_id):
         """Returns the orientation of a piece given its ID."""
         for i in range(3):
             for j in range(3):
@@ -260,7 +259,7 @@ class CubeTracker(CubeBase):
                     if self.piece_current_ids_at_positions[i, j, k] == piece_id:
                         return self.piece_current_orientations[i, j, k]
     
-    def _update_edge_orientations(self, move):
+    def __update_edge_orientations(self, move):
         """Updates the orientations of edges based on the move made """
         if move in self.move_map.keys():
             for edge in self.edge_positions:
@@ -271,7 +270,7 @@ class CubeTracker(CubeBase):
                         current_orientation = self.piece_current_orientations[edge]
                         self.piece_current_orientations[edge] = 'g' if current_orientation=='b' else 'b'
     
-    def _update_corner_orientations(self, move):
+    def __update_corner_orientations(self, move):
         """Updates the orientations of corners based on the move made """
 
         corner_move_vs_facelet_swap_map = {
@@ -314,11 +313,11 @@ class CubeTracker(CubeBase):
         for index, move in enumerate(move_sequence):
             if move in self.move_map:
                 self.move_history.append(move)
-                affected_piece_positions_item = self._get_affected_positions(move)
-                self.affected_piece_positions_per_move.append(affected_piece_positions_item)
-                self.affected_piece_ids_per_move.append([int(id) for id in [self.piece_current_ids_at_positions[position] for position in affected_piece_positions_item]])
-                self._update_corner_orientations(move)
-                self._update_edge_orientations(move)
+                affected_piece_positions_item = self.get_affected_positions(move)
+                self.affected_piece_positions_for_move.append(affected_piece_positions_item)
+                self.affected_piece_ids_for_move.append([int(id) for id in [self.piece_current_ids_at_positions[position] for position in affected_piece_positions_item]])
+                self.__update_corner_orientations(move)
+                self.__update_edge_orientations(move)
                 self.move_map[move]()
             else:
                 raise ValueError(f"Invalid move: '{move}' at index {index}") # More readable error message
@@ -361,14 +360,14 @@ class CubeColorizer:
 
         for idx, move in enumerate(list(self.cube_tracker.move_history)[self.total_move_count:]):
             if move != 'N':
-                affected_piece_positions = self.cube_tracker.affected_piece_positions_per_move[self.total_move_count+idx]
-                affected_piece_ids = self.cube_tracker.affected_piece_ids_per_move[self.total_move_count+idx]
+                affected_piece_positions = self.cube_tracker.affected_piece_positions_for_move[self.total_move_count+idx]
+                affected_piece_ids = self.cube_tracker.affected_piece_ids_for_move[self.total_move_count+idx]
                 for piece_id, position in list(zip(affected_piece_ids, affected_piece_positions)): 
-                    self.update_piece_colors(piece_id, position, move)
+                    self.__update_piece_colors(piece_id, position, move)
         self.total_move_count = len(self.cube_tracker.move_history)
         return self.current_colors
         
-    def update_piece_colors(self, piece_id, position, move):
+    def __update_piece_colors(self, piece_id, position, move):
         """Update the colors of a piece based on its orientation and position"""
         corner_ids = [int(x) for x in self.cube_tracker.corner_ids]
         if piece_id in corner_ids:
@@ -443,7 +442,7 @@ class CubeVisualizer2D:
 
 if __name__ == "__main__":
     visualizer = CubeVisualizer2D() # Creates the figure and shows initial state
-    print("Enter a scrambling move sequence.\nValid moves: N, F, f, B, b, R, r, U, u, D, d, L, l\n(Enter 'x' to skip)\n:", end='')
+    print("Enter a scrambling move sequence.\nValid moves: N, F, f, B, b, R, r, U, u, D, d, L, l\n(Enter 'x' to quit)\n:", end='')
     while True:
         next_moves = input()
         if not plt.isinteractive():
@@ -464,6 +463,7 @@ if __name__ == "__main__":
                 print("\nPlot window is active. Close the plot window to exit the script.")
                 plt.ioff()
                 plt.show()
+                print("Move history:",''.join(visualizer.colorizer.cube_tracker.move_history))
                 break
         else:
             plt.ioff()

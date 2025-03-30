@@ -86,7 +86,7 @@ class Cube:
                             corner_positions.append((i, j, k))
         return edge_positions, corner_positions
     
-    def _rotate_slice(self, perspective, slice_idx, direction):
+    def __rotate_face(self, perspective, slice_idx, direction):
         """ Rotate a face (0=front, 1=middle, 2=back) seen from the given perspective (0=front, 1=top, 2=left) in the given direction """
         def change_perspective(cube, perspective, direction):
             if perspective == 0: return cube
@@ -96,29 +96,29 @@ class Cube:
         self.piece_current_ids_at_positions[slice_idx] = np.rot90(self.piece_current_ids_at_positions[slice_idx], k=direction, axes=(0, 1))
         self.piece_current_ids_at_positions = change_perspective(self.piece_current_ids_at_positions, perspective, 1)
 
-    def _F(self): self._rotate_slice(perspective=0, slice_idx=0, direction=-1)
-    def _f(self): self._rotate_slice(perspective=0, slice_idx=0, direction=1)
-    def _B(self): self._rotate_slice(perspective=0, slice_idx=2, direction=1)
-    def _b(self): self._rotate_slice(perspective=0, slice_idx=2, direction=-1)
-    def _U(self): self._rotate_slice(perspective=1, slice_idx=0, direction=-1)
-    def _u(self): self._rotate_slice(perspective=1, slice_idx=0, direction=1)
-    def _D(self): self._rotate_slice(perspective=1, slice_idx=2, direction=1)
-    def _d(self): self._rotate_slice(perspective=1, slice_idx=2, direction=-1)
-    def _L(self): self._rotate_slice(perspective=2, slice_idx=0, direction=-1)
-    def _l(self): self._rotate_slice(perspective=2, slice_idx=0, direction=1)
-    def _R(self): self._rotate_slice(perspective=2, slice_idx=2, direction=1)
-    def _r(self): self._rotate_slice(perspective=2, slice_idx=2, direction=-1)
+    def _F(self): self.__rotate_face(perspective=0, slice_idx=0, direction=-1)
+    def _f(self): self.__rotate_face(perspective=0, slice_idx=0, direction=1)
+    def _B(self): self.__rotate_face(perspective=0, slice_idx=2, direction=1)
+    def _b(self): self.__rotate_face(perspective=0, slice_idx=2, direction=-1)
+    def _U(self): self.__rotate_face(perspective=1, slice_idx=0, direction=-1)
+    def _u(self): self.__rotate_face(perspective=1, slice_idx=0, direction=1)
+    def _D(self): self.__rotate_face(perspective=1, slice_idx=2, direction=1)
+    def _d(self): self.__rotate_face(perspective=1, slice_idx=2, direction=-1)
+    def _L(self): self.__rotate_face(perspective=2, slice_idx=0, direction=-1)
+    def _l(self): self.__rotate_face(perspective=2, slice_idx=0, direction=1)
+    def _R(self): self.__rotate_face(perspective=2, slice_idx=2, direction=1)
+    def _r(self): self.__rotate_face(perspective=2, slice_idx=2, direction=-1)
     def _N(self): pass
 
-    def _get_position_of_piece(self, piece_id):
+    def get_position_of_piece(self, piece_id):
         for i in range(3):
             for j in range(3):
                 for k in range(3):
                     if self.piece_current_ids_at_positions[i, j, k] == piece_id:
                         return (i, j, k)
-        return None # Piece ID not found (should not happen in a valid cube state)
+        return None
 
-    def _get_piece_at_position(self, position):
+    def get_piece_at_position(self, position):
         """Returns the piece ID at a given position (i, j, k)."""
         i, j, k = position
         return self.piece_current_ids_at_positions[i, j, k]
