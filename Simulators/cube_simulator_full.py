@@ -44,9 +44,9 @@ class CubeBase:
             cls.edge_positions, cls.corner_positions = cls.categorize_positions_over_piece_types()
             cls.edge_ids, cls.corner_ids = cls.categorize_ids_over_piece_types()
             cls.tables = cls._load_tables_from_json([
-                    '../Precomputed_Tables/corner_position_distance_table.json',
-                    '../Precomputed_Tables/edge_position_distance_table.json',
-                    '../Precomputed_Tables/position_movement_table.json'
+                    r'..\Precomputed_Tables\corner_position_distance_table.json',
+                    r'..\Precomputed_Tables\edge_position_distance_table.json',
+                    r'..\Precomputed_Tables\position_movement_table.json'
             ])
             cls.edge_distances = cls.tables["edge_distances"]
             cls.corner_distances = cls.tables["corner_distances"]
@@ -64,14 +64,13 @@ class CubeBase:
             dict: A dictionary containing loaded tables, with keys: "edge_distances", "corner_distances", "movements".
             Values are the loaded tables, or None if loading failed for a table type.
         """
-        base_dir = os.path.dirname(__file__)
         tables = {
             "edge_distances": None,
             "corner_distances": None,
             "movements": None
         }
         for filename in filenames:
-            file_path = os.path.join(base_dir, filename)  # or incorporate '..', 'Precomputed_Tables'
+            file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), filename))
             try:
                 with open(file_path, 'r') as f:
                     serializable_table = json.load(f)
@@ -233,7 +232,7 @@ class CubeTracker(CubeBase):
 
     def _get_affected_positions(self, move):
         """Determine which positions are affected by a given move"""
-        affected_positions = list(self.movements[move].keys())
+        affected_positions = [key for key in self.movements[move].keys() if key != self.movements[move][key]]
         return affected_positions
         
     def _get_position_of_piece(self, piece_id):
@@ -259,9 +258,9 @@ class CubeTracker(CubeBase):
     
     def _update_edge_orientations(self, move):
         """Updates the orientations of edges based on the move made """
-        if move in self.movements.keys():
+        if move in self.move_map.keys():
             for edge in self.edge_positions:
-                if edge in self.movements[move].keys():
+                if edge != self.movements[move][edge]:
                     piece_id = self.piece_current_ids_at_positions[edge]
                     piece_initial_position = tuple(np.argwhere(self.piece_initial_ids_at_positions == piece_id)[0])
                     if self.edge_distances[(piece_initial_position, edge)] == self.edge_distances[(piece_initial_position, self.movements[move][edge])]:
@@ -280,9 +279,10 @@ class CubeTracker(CubeBase):
 
         def remove(lst, item):
             return [x for x in lst if x != item]
-        if move in self.movements.keys():
+        
+        if move in self.move_map.keys():
             for corner in self.corner_positions:
-                if corner in self.movements[move].keys():
+                if corner != self.movements[move][corner]:
                     current_orientation = list(self.piece_current_orientations[corner])
                     corner_initial_orientation_at_destination = list(self.piece_initial_orientations[self.movements[move][corner]])
                     reference_constant_facelet_id = corner_move_vs_facelet_swap_map[move][1]
@@ -381,8 +381,8 @@ class CubeColorizer:
 if __name__ == "__main__":
     visualizer = CubeColorizer()
     while True:
-        next_moves = input("Enter a move (or 'xx' to quit): ")
-        if next_moves == 'xx':
+        next_moves = input("Enter a move (or 'x' to quit): ")
+        if next_moves == 'x':
             break
         next_prompt_flag = False
         for idx, move in enumerate(next_moves):
@@ -394,5 +394,4 @@ if __name__ == "__main__":
             continue
         visualizer.cube_tracker.apply_moves(next_moves)
         print(visualizer.update_colors())
-        print(visualizer.cube_tracker.move_history)
     print("Exiting...")
