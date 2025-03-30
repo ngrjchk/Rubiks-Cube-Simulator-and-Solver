@@ -339,8 +339,8 @@ class CubeColorizer:
             2  : 'Y', 3  : 'y', 
             4  : 'Z', 5  : 'z',
         }
-        self.current_colors = []
-        self.initial_colors = []
+        self.current_colors = {}
+        self.initial_colors = {}
         self.null_color = ["Black" for _ in range(6)]
     
     def update_colors(self):
@@ -352,7 +352,7 @@ class CubeColorizer:
                 for color_idx in range(6):
                     if self.direction__color_idx_map[color_idx] in piece_initial_orientation:
                         color[color_idx] = self.direction__initial_color_map[self.direction__color_idx_map[color_idx]]
-                self.initial_colors.append((piece_id, color))
+                self.initial_colors[piece_id] = color
             self.current_colors = copy.deepcopy(self.initial_colors)
 
         for idx, move in enumerate(list(self.cube_tracker.move_history)[self.total_move_count:]):
@@ -376,7 +376,7 @@ class CubeColorizer:
                 initial_color = self.direction__initial_color_map[corner_initial_orientation[i]]
                 current_facelet_id = corner_current_orientation[i]
                 final_color[self.direction__color_idx_map[current_facelet_id]] = initial_color
-            self.current_colors[piece_id] = (piece_id, final_color)
+            self.current_colors[piece_id] = final_color
 
 if __name__ == "__main__":
     visualizer = CubeColorizer()
@@ -394,4 +394,5 @@ if __name__ == "__main__":
             continue
         visualizer.cube_tracker.apply_moves(next_moves)
         print(visualizer.update_colors())
+        print(visualizer.cube_tracker.move_history)
     print("Exiting...")
