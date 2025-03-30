@@ -2,7 +2,10 @@ import numpy as np
 import json
 import copy
 import os
+import sys
 import ast
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
 
 class CubeBase:
     tables = None
@@ -41,7 +44,7 @@ class CubeBase:
             # and 'b' (bad) means that the minimum-length path from the current position to the initial position (solved state) does not solve the edge in isolation, when taken. The solution in isolation is what is called the secondary path: path that is immediately of the next length to the minimum-length path to the solved state (called the primary path).
             # the fourteenth piece (the cube center), marked by 'C', is irrelevant to the program.
             # the centers of the faces are marked by the respective axes that align with their respective normals.
-            
+
             cls.edge_positions, cls.corner_positions = cls.categorize_positions_over_piece_types()
             cls.edge_ids, cls.corner_ids = cls.categorize_ids_over_piece_types()
             cls.tables = cls._load_tables_from_json([
@@ -379,20 +382,91 @@ class CubeColorizer:
                 final_color[self.direction__color_idx_map[current_facelet_id]] = initial_color
             self.current_colors[piece_id] = final_color
 
+class CubeVisualizer2D:
+    def __init__(self):
+        self.colorizer = CubeColorizer()
+        self.fig, self.ax = plt.subplots(figsize=(6, 3))
+        self.fig.canvas.manager.set_window_title('Rubik\'s Cube 2D')
+        self.colors_rgb = {
+            "White":  '#FFFFFF', "Yellow": '#FBFB45',
+            "Blue" :  '#4095FE', "Green" : '#00EF2A',
+            "Red"  :  '#FF0000', "Orange": '#FF8800',
+            "Black":  '#333333',
+        }
+        self.grid_positions = {
+            'Z': (3, 6),  # White face (Up)
+            'x': (0, 3),  # Orange face (Left)
+            'y': (3, 3),  # Green face (Front)
+            'X': (6, 3),  # Red face (Right)
+            'Y': (9, 3),  # Blue face (Back) - Unfolded to the far right
+            'z': (3, 0),  # Yellow face (Down)
+        }
+        self.colorizer.cube_tracker.apply_moves('N')
+        self.update_display()
+    
+    def apply_moves(self, moves):
+        self.colorizer.cube_tracker.apply_moves(moves)
+
+    def update_display(self):
+        self.ax.clear()
+        min_x = min(pos[0] for pos in self.grid_positions.values())
+        max_x = max(pos[0] + 3 for pos in self.grid_positions.values()) # Add 3 for width
+        min_y = min(pos[1] for pos in self.grid_positions.values())
+        max_y = max(pos[1] + 3 for pos in self.grid_positions.values()) # Add 3 for height
+
+        # Apply limits with some padding
+        self.ax.set_xlim(min_x - 0.5, max_x + 0.5)
+        self.ax.set_ylim(min_y - 0.5, max_y + 0.5)
+
+        # Ensure squares are square
+        self.ax.set_aspect('equal', adjustable='box')
+
+        face_to_colors_map = {}
+        new_colors = self.colorizer.update_colors()
+        for direction in ['X', 'x', 'Y', 'y', 'Z', 'z']:
+            face_colors = np.full((3, 3), '#000000')
+            for piece_id in self.colorizer.cube_tracker.cube_current_faces_with_ids[direction].flatten():
+                face_colors[tuple(np.argwhere(self.colorizer.cube_tracker.cube_current_faces_with_ids[direction]==piece_id)[0])] = new_colors[piece_id][self.colorizer.direction__color_idx_map[direction]]
+            face_to_colors_map[direction] = face_colors
+        
+        for direction in ['X', 'x', 'Y', 'y', 'Z', 'z']:
+            for i in range(3):
+                for j in range(3):
+                    color_patch = patches.Rectangle(
+                        (self.grid_positions[direction][0]+j, self.grid_positions[direction][1]+2-i),
+                        1,1,
+                        facecolor=self.colors_rgb[face_to_colors_map[direction][i,j]],
+                        edgecolor='black',
+                        linewidth=1,
+                    )
+                    self.ax.add_patch(color_patch)
+
 if __name__ == "__main__":
-    visualizer = CubeColorizer()
+    visualizer = CubeVisualizer2D() # Creates the figure and shows initial state
+    print("Enter a scrambling move sequence.\nValid moves: N, F, f, B, b, R, r, U, u, D, d, L, l\n(Enter 'x' to skip)\n:", end='')
     while True:
-        next_moves = input("Enter a move (or 'x' to quit): ")
-        if next_moves == 'x':
-            break
-        next_prompt_flag = False
-        for idx, move in enumerate(next_moves):
-            if move not in visualizer.cube_tracker.move_map:
-                print(f"Invalid move: {move} at {idx}. Please try again.")
-                next_prompt_flag = True
+        next_moves = input()
+        if not plt.isinteractive():
+            plt.ion()
+        plt.pause(0.1)
+        if next_moves.lower() != 'x':
+            valid_moves = True
+            for idx, move in enumerate(next_moves):
+                if move not in visualizer.colorizer.cube_tracker.move_map.keys():
+                    print(f"Error: Invalid move '{move}' at index {idx}. Try again:")
+                    valid_moves = False
+                    break
+            if not valid_moves:
+                continue
+            else:
+                visualizer.apply_moves(next_moves)
+                visualizer.update_display()
+                print("\nPlot window is active. Close the plot window to exit the script.")
+                plt.ioff()
+                plt.show()
                 break
-        if next_prompt_flag:
-            continue
-        visualizer.cube_tracker.apply_moves(next_moves)
-        print(visualizer.update_colors())
-    print("Exiting...")
+        else:
+            plt.ioff()
+            plt.close(visualizer.fig)
+            print("Move history:",''.join(visualizer.colorizer.cube_tracker.move_history))
+            break
