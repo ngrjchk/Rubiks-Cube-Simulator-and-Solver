@@ -41,6 +41,7 @@ class CubeBase:
             # and 'b' (bad) means that the minimum-length path from the current position to the initial position (solved state) does not solve the edge in isolation, when taken. The solution in isolation is what is called the secondary path: path that is immediately of the next length to the minimum-length path to the solved state (called the primary path).
             # the fourteenth piece (the cube center), marked by 'C', is irrelevant to the program.
             # the centers of the faces are marked by the respective axes that align with their respective normals.
+            
             cls.edge_positions, cls.corner_positions = cls.categorize_positions_over_piece_types()
             cls.edge_ids, cls.corner_ids = cls.categorize_ids_over_piece_types()
             cls.tables = cls._load_tables_from_json([
