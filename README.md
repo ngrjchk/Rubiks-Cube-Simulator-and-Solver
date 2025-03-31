@@ -64,7 +64,7 @@ My algorithm uses a graph-based recursive approach to achieve this "interpolatio
 
 **2.4. Side Effect Minimization:**
 
-*   The core of my "interpolation" strategy is the **side effect count**. This is a heuristic (?) to guide the search towards combinations of moves that minimize disruption to other cross edge pieces while solving the current piece.
+*   The core of my "interpolation" strategy is the **side effect count**. This is a heuristic to guide the search towards combinations of moves that minimize disruption to other cross edge pieces while solving the current piece.
 *   **Side Effect Calculation:** For a candidate move `m` (from column `C1` for piece `P1`):
     *   I consider all *other* cross edge pieces (and their columns).
     *   For each other piece `P2` (column `C2`), I find its "freely available move" `n`.
