@@ -22,7 +22,7 @@ The Rubik-s-Cube-Simulator-and-Solver project showcases a custom Rubik's cube si
 
 ### Usage
 - Use `./Simulators/cube_simulator_full.ipynb` to test the simulator.
-- Use `.Notebooks/solver.ipynb` to test the solver (currently in progress)
+- Use `./Notebooks/solver.ipynb` to test the solver (currently in progress)
 - Use `./Notebooks/table_generators.ipynb` for generating and exploring useful pre-computed tables.
 
 ### License
