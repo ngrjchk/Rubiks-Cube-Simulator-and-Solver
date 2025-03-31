@@ -36,7 +36,7 @@ My core idea is to solve the Rubik's Cube not as a single, monolithic problem, b
 
 The "interpolation" aspect comes into play when I attempt to **combine** these isolated sequences into a single, coherent sequence that solves the entire cube. This combination is not a simple concatenation of sequences; instead, I am selecting moves from these isolated sequences at each step, aiming to find a path through a graph of moves that minimizes unwanted "side effects" on other pieces.
 
-**2. Detailed Explanation of the Interpolation Algorithm (for a White cross):**
+**2. Detailed Explanation of the Interpolation Algorithm (Explained for a White cross):**
 
 My algorithm uses a graph-based recursive approach to achieve this "interpolation" of isolated move sequences. Here's a breakdown of the key elements:
 
@@ -73,6 +73,6 @@ My algorithm uses a graph-based recursive approach to achieve this "interpolatio
 
 *   **Guiding the Search:** The side effect count is used to guide my recursive search. I would ideally prefer to explore branches with moves that have lower side effect counts, hoping to find a combination of moves that solves the entire cross with minimal disruption.
 
-**2.5. Cross Solved Condition:**
+**2.5. Solved Condition:**
 
 *   My Rubik's Cube simulator is used at each recursion depth to check if the cross is solved after applying the sequence of moves in the current branch. This determines if a branch has found a valid solution.
