@@ -1,16 +1,14 @@
 # Rubik-s-Cube-Simulator-and-Solver
 My own, from-scratch implementation of the Rubik's cube simulation model and most importantly, my own, new algorithm for solving the cube (in progress)
 
-## Documentation
-
-### Overview
+## Overview
 The Rubik-s-Cube-Simulator-and-Solver project showcases a custom Rubik's cube simulation and a novel algorithm for solving the puzzle, developed entirely from scratch.
 
-### Features
+## Features
 - Rubik's cube simulation model
 - Custom solving algorithm (currently in progress)
 
-### Getting Started
+## Getting Started
 1. Clone the repository:
    ```
    git clone https://github.com/ngrjchk/Rubik-s-Cube-Simulator-and-Solver.git
@@ -20,15 +18,15 @@ The Rubik-s-Cube-Simulator-and-Solver project showcases a custom Rubik's cube si
 4. Install the required packages by running `pip install -r requirements.txt`
 1. Open the provided notebooks to explore simulation and solving techniques.
 
-### Usage
+## Usage
 - Use `./Simulators/cube_simulator_full.ipynb` to test the simulator.
 - Use `./Notebooks/solver.ipynb` to test the solver (currently in progress)
 - Use `./Notebooks/table_generators.ipynb` for generating and exploring useful pre-computed tables.
 
-### License
+## License
 This project is licensed under the Apache License, Version 2.0. See the LICENSE file for details.
 
-### Appendix
+## Appendix
 
 ### Detailed Report on my "Interpolation" idea for the Rubik's Cube Solver
 
