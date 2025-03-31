@@ -1,5 +1,4 @@
 jupyter
 numpy
 psutil
-networkX
-panda3d
+matplotlib
