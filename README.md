@@ -32,7 +32,7 @@ This project is licensed under the Apache License, Version 2.0. See the LICENSE 
 
 ### Detailed Report on my "Interpolation" idea for the Rubik's Cube Solver
 
-This report provides a detailed analysis of my "interpolation" idea for solving the Rubik's Cube using graphs and isolated move sequences. I think that the term "interpolation" aptly captures the essence of my approach: **interweaving and combining individually optimized move sequences to achieve a global solution for the Rubik's Cube.**
+Firstly, I think that the term "interpolation" aptly captures the essence of my approach: **interweaving and combining individually optimized move sequences to achieve a global solution for the Rubik's Cube.**
 
 **1. Introduction:**
 
