@@ -158,18 +158,18 @@ class CubeTracker(CubeBase):
         self.affected_piece_ids_for_move = []
         self.affected_piece_positions_for_move = []
         self.cube_current_faces_with_orientations = {
-            'y': self.piece_initial_orientations[0, :, :],
-            'Y': np.flip(self.piece_initial_orientations[2, :, :], axis=1),
             'X': np.transpose(self.piece_initial_orientations[:, :, 2]),
             'x': np.flip(np.transpose(self.piece_initial_orientations[:, :, 0]), axis=1),
+            'y': self.piece_initial_orientations[0, :, :],
+            'Y': np.flip(self.piece_initial_orientations[2, :, :], axis=1),
             'Z': np.flip(self.piece_initial_orientations[:, 0, :], axis=0),
             'z': self.piece_initial_orientations[:, 2, :]
         }
         self.cube_current_faces_with_ids = {
-            'y': self.piece_initial_ids_at_positions[0, :, :],
-            'Y': np.flip(self.piece_initial_ids_at_positions[2, :, :], axis=1),
             'X': np.transpose(self.piece_initial_ids_at_positions[:, :, 2]),
             'x': np.flip(np.transpose(self.piece_initial_ids_at_positions[:, :, 0]), axis=1),
+            'y': self.piece_initial_ids_at_positions[0, :, :],
+            'Y': np.flip(self.piece_initial_ids_at_positions[2, :, :], axis=1),
             'Z': np.flip(self.piece_initial_ids_at_positions[:, 0, :], axis=0),
             'z': self.piece_initial_ids_at_positions[:, 2, :]
         }
@@ -202,19 +202,19 @@ class CubeTracker(CubeBase):
         self.piece_current_orientations = change_perspective(self.piece_current_orientations, perspective, 1)
         
         self.cube_current_faces_with_ids = {
-            'y': self.piece_current_ids_at_positions[0, :, :],
-            'Y': np.flip(self.piece_current_ids_at_positions[2, :, :], axis=1),
             'X': np.transpose(self.piece_current_ids_at_positions[:, :, 2]),
             'x': np.flip(np.transpose(self.piece_current_ids_at_positions[:, :, 0]), axis=1),
+            'y': self.piece_current_ids_at_positions[0, :, :],
+            'Y': np.flip(self.piece_current_ids_at_positions[2, :, :], axis=1),
             'Z': np.flip(self.piece_current_ids_at_positions[:, 0, :], axis=0),
             'z': self.piece_current_ids_at_positions[:, 2, :]
         }
 
         self.cube_current_faces_with_orientations = {
-            'y': self.piece_current_orientations[0, :, :],
-            'Y': np.flip(self.piece_current_orientations[2, :, :], axis=1),
             'X': np.transpose(self.piece_current_orientations[:, :, 2]),
             'x': np.flip(np.transpose(self.piece_current_orientations[:, :, 0]), axis=1),
+            'y': self.piece_current_orientations[0, :, :],
+            'Y': np.flip(self.piece_current_orientations[2, :, :], axis=1),
             'Z': np.flip(self.piece_current_orientations[:, 0, :], axis=0),
             'z': self.piece_current_orientations[:, 2, :]
         }
