@@ -155,8 +155,8 @@ class CubeTracker(CubeBase):
         self.piece_current_ids_at_positions = copy.deepcopy(CubeBase.piece_initial_ids_at_positions)
         self.piece_current_orientations = copy.deepcopy(CubeBase.piece_initial_orientations)
         self.move_history = []
-        self.affected_piece_ids_for_move = []
-        self.affected_piece_positions_for_move = []
+        self.affected_piece_ids_for_move_history = []
+        self.affected_piece_positions_for_move_history = []
         self.cube_current_faces_with_orientations = {
             'X': np.transpose(self.piece_initial_orientations[:, :, 2]),
             'x': np.flip(np.transpose(self.piece_initial_orientations[:, :, 0]), axis=1),
@@ -313,9 +313,9 @@ class CubeTracker(CubeBase):
         for index, move in enumerate(move_sequence):
             if move in self.move_map:
                 self.move_history.append(move)
-                affected_piece_positions_item = self.get_affected_positions(move)
-                self.affected_piece_positions_for_move.append(affected_piece_positions_item)
-                self.affected_piece_ids_for_move.append([int(id) for id in [self.piece_current_ids_at_positions[position] for position in affected_piece_positions_item]])
+                affected_piece_positions_for_move = self.get_affected_positions(move)
+                self.affected_piece_positions_for_move_history.append(affected_piece_positions_for_move)
+                self.affected_piece_ids_for_move_history.append([int(id) for id in [self.piece_current_ids_at_positions[position] for position in affected_piece_positions_for_move]])
                 self.__update_corner_orientations(move)
                 self.__update_edge_orientations(move)
                 self.move_map[move]()
@@ -360,8 +360,8 @@ class CubeColorizer:
 
         for idx, move in enumerate(list(self.cube_tracker.move_history)[self.total_move_count:]):
             if move != 'N':
-                affected_piece_positions = self.cube_tracker.affected_piece_positions_for_move[self.total_move_count+idx]
-                affected_piece_ids = self.cube_tracker.affected_piece_ids_for_move[self.total_move_count+idx]
+                affected_piece_positions = self.cube_tracker.affected_piece_positions_for_move_history[self.total_move_count+idx]
+                affected_piece_ids = self.cube_tracker.affected_piece_ids_for_move_history[self.total_move_count+idx]
                 for piece_id, position in list(zip(affected_piece_ids, affected_piece_positions)): 
                     self.__update_piece_colors(piece_id, position, move)
         self.total_move_count = len(self.cube_tracker.move_history)
