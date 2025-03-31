@@ -2,3 +2,4 @@ jupyter
 numpy
 psutil
 matplotlib
+pythreejs
