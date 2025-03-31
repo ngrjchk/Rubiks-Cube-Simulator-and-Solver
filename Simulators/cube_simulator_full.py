@@ -39,10 +39,10 @@ class CubeBase:
             ]) 
             # for corners, capital letters refer to positive axes and lower letters refer to negative axes.
             # so, for the first corner piece (0,0,0), whose orientation is xyZ, the piece's local coordiantes' x-axis's facelet is aligned with the cube's negative x-axis (given by x at the start), y-axis's facelet with the cube's negative y-axis (y), and z-axis's facelet with the cube's positive z-axis (Z).
-            # for edges, 'g', which stands for 'good', means that the minimum-length path from the current position to the initial position (solved state) also solves the edge in isolation, when taken
-            # and 'b' (bad) means that the minimum-length path from the current position to the initial position (solved state) does not solve the edge in isolation, when taken. The solution in isolation is what is called the secondary path: path that is immediately of the next length to the minimum-length path to the solved state (called the primary path).
-            # the fourteenth piece (the cube's absolute center), marked by 'C', is irrelevant to the program.
-            # the centers of the faces are marked by the respective axes that align with their respective normals.
+            # for edges, 'g', which stands for 'good', means that the minimum-length path from the current position to the initial position (solved state), which ignores orientation, also solves the edge in isolation when taken. This minimum-length, orientation-ignoring path is called primary path.
+            # and 'b' (bad) means that the primary path from the current position to the initial position (solved state) does not solve the edge in isolation, when taken. The solution in isolation is what is called the secondary path: path that is immediately of the next length to the primary path to the solved state of the piece.
+            # the fourteenth piece (the cube's absolute center), marked with 'C', is irrelevant to the program.
+            # the centers of the faces are marked by the respective axes that align with centers' outward normals.
 
             cls.edge_positions, cls.corner_positions = cls.categorize_positions_over_piece_types()
             cls.edge_ids, cls.corner_ids = cls.categorize_ids_over_piece_types()
@@ -175,10 +175,10 @@ class CubeTracker(CubeBase):
         }
     
         self.move_map = {
-                'L': self._L, 'l': self._l, 'R': self._R, 'r': self._r,
-                'F': self._F, 'f': self._f, 'B': self._B, 'b': self._b,
-                'U': self._U, 'u': self._u, 'D': self._D, 'd': self._d,
-                'N': self._N
+                'L': self.__L, 'l': self.__l, 'R': self.__R, 'r': self.__r,
+                'F': self.__F, 'f': self.__f, 'B': self.__B, 'b': self.__b,
+                'U': self.__U, 'u': self.__u, 'D': self.__D, 'd': self.__d,
+                'N': self.__N
         }
         # The uppercase letters are the clockwise moves, and the lowercase letters are the counter-clockwise moves
 
@@ -219,19 +219,19 @@ class CubeTracker(CubeBase):
             'z': self.piece_current_orientations[:, 2, :]
         }
 
-    def _F(self): self.__rotate_face(0, 0, -1)
-    def _f(self): self.__rotate_face(0, 0,  1)
-    def _B(self): self.__rotate_face(0, 2,  1)
-    def _b(self): self.__rotate_face(0, 2, -1)
-    def _U(self): self.__rotate_face(1, 0, -1)
-    def _u(self): self.__rotate_face(1, 0,  1)
-    def _D(self): self.__rotate_face(1, 2,  1)
-    def _d(self): self.__rotate_face(1, 2, -1)
-    def _L(self): self.__rotate_face(2, 0, -1)
-    def _l(self): self.__rotate_face(2, 0,  1)
-    def _R(self): self.__rotate_face(2, 2,  1)
-    def _r(self): self.__rotate_face(2, 2, -1)
-    def _N(self): pass
+    def __F(self): self.__rotate_face(0, 0, -1)
+    def __f(self): self.__rotate_face(0, 0,  1)
+    def __B(self): self.__rotate_face(0, 2,  1)
+    def __b(self): self.__rotate_face(0, 2, -1)
+    def __U(self): self.__rotate_face(1, 0, -1)
+    def __u(self): self.__rotate_face(1, 0,  1)
+    def __D(self): self.__rotate_face(1, 2,  1)
+    def __d(self): self.__rotate_face(1, 2, -1)
+    def __L(self): self.__rotate_face(2, 0, -1)
+    def __l(self): self.__rotate_face(2, 0,  1)
+    def __R(self): self.__rotate_face(2, 2,  1)
+    def __r(self): self.__rotate_face(2, 2, -1)
+    def __N(self): pass
 
     def get_affected_positions(self, move):
         """Determine which positions are affected by a given move"""
@@ -441,7 +441,7 @@ class CubeVisualizer2D:
                     self.ax.add_patch(color_patch)
 
 if __name__ == "__main__":
-    visualizer = CubeVisualizer2D() # Creates the figure and shows initial state
+    visualizer = CubeVisualizer2D()
     print("Enter a scrambling move sequence.\nValid moves: N, F, f, B, b, R, r, U, u, D, d, L, l\n(Enter 'x' to quit)\n:", end='')
     while True:
         next_moves = input()
