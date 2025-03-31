@@ -21,8 +21,9 @@ The Rubik-s-Cube-Simulator-and-Solver project showcases a custom Rubik's cube si
 1. Open the provided notebooks to explore simulation and solving techniques.
 
 ### Usage
-- Use `my_cube_solver.ipynb` to test the simulator and solver (currently in progress)
-- Use `table_generators.ipynb` for generating and exploring useful computation tables.
+- Use `cube_simulator_full.ipynb` to test the simulator.
+- Use `solver.ipynb` to test the solver (currently in progress)
+- Use `table_generators.ipynb` for generating and exploring useful pre-computed tables.
 
 ### License
 This project is licensed under the Apache License, Version 2.0. See the LICENSE file for details.
