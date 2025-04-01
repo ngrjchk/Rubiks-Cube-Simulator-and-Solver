@@ -11,6 +11,11 @@ class CubeBase:
     @classmethod
     def initialize(cls):
         if cls.tables is None:
+            cls.move_vs_direction_map = {
+                'R': 'X', 'r': 'X', 'L': 'x', 'l': 'x',
+                'B': 'Y', 'b': 'Y', 'F': 'y', 'f': 'y', 
+                'U': 'Z', 'u': 'Z', 'D': 'z', 'd': 'z',
+            }
             cls.piece_initial_ids_at_positions = np.array([
                 [[0 , 1 , 2 ],
                  [3 , 4 , 5 ],
@@ -44,6 +49,27 @@ class CubeBase:
             # the fourteenth piece (the cube's absolute center), marked with 'C', is irrelevant to the program.
             # the centers of the faces are marked by the respective axes that align with centers' outward normals.
 
+            cls.piece_initial_orientations_for_visualizer = np.array([
+                [['xyZ', 'yZ', 'XyZ'],
+                 ['xy' , 'y' , 'Xy' ],
+                 ['xyz', 'yz', 'Xyz']],
+
+                [['xZ' , 'Z' , 'XZ' ],
+                 ['x'  , 'C' , 'X'  ],
+                 ['xz' , 'z' , 'Xz' ]],
+
+                [['xYZ', 'YZ', 'XYZ'],
+                 ['xY' , 'Y' , 'XY' ],
+                 ['xYz', 'Yz', 'XYz']],
+            ])
+
+            cls.corner_move_vs_facelet_swap_map = {
+                'L': ((1,2),'x'), 'l': ((1,2),'x'), 'R': ((1,2),'x'), 'r': ((1,2),'x'),
+                'F': ((0,2),'y'), 'f': ((0,2),'y'), 'B': ((0,2),'y'), 'b': ((0,2),'y'),
+                'U': ((0,1),'z'), 'u': ((0,1),'z'), 'D': ((0,1),'z'), 'd': ((0,1),'z'),
+                'N': ((0,0),'x')
+            }
+    
             cls.edge_positions, cls.corner_positions = cls.categorize_positions_over_piece_types()
             cls.edge_ids, cls.corner_ids = cls.categorize_ids_over_piece_types()
             cls.tables = cls._load_tables_from_json([
@@ -152,11 +178,10 @@ class CubeBase:
 class CubeTracker(CubeBase):
     def __init__(self):
         CubeBase.initialize()
-        self.piece_current_ids_at_positions = copy.deepcopy(CubeBase.piece_initial_ids_at_positions)
-        self.piece_current_orientations = copy.deepcopy(CubeBase.piece_initial_orientations)
+        self.piece_current_ids_at_positions = copy.deepcopy(self.piece_initial_ids_at_positions)
+        self.piece_current_orientations = copy.deepcopy(self.piece_initial_orientations)
+        self.piece_current_orientations_for_visualizer = copy.deepcopy(self.piece_initial_orientations_for_visualizer)
         self.move_history = []
-        self.affected_piece_ids_for_move_history = []
-        self.affected_piece_positions_for_move_history = []
         self.cube_current_faces_with_orientations = {
             'X': np.transpose(self.piece_initial_orientations[:, :, 2]),
             'x': np.flip(np.transpose(self.piece_initial_orientations[:, :, 0]), axis=1),
@@ -194,12 +219,16 @@ class CubeTracker(CubeBase):
         # Convert to the desired perspective, rotate the face, then convert back
         self.piece_current_ids_at_positions = change_perspective(self.piece_current_ids_at_positions, perspective, -1)
         self.piece_current_orientations = change_perspective(self.piece_current_orientations, perspective, -1)
+        self.piece_current_orientations_for_visualizer = change_perspective(self.piece_current_orientations_for_visualizer, perspective, -1)
 
         self.piece_current_ids_at_positions[face_idx] = np.rot90(self.piece_current_ids_at_positions[face_idx], k=direction, axes=(0, 1))
         self.piece_current_orientations[face_idx] = np.rot90(self.piece_current_orientations[face_idx], k=direction, axes=(0, 1))
-        
+        self.piece_current_orientations_for_visualizer[face_idx] = np.rot90(self.piece_current_orientations_for_visualizer[face_idx], k=direction, axes=(0, 1))
+
         self.piece_current_ids_at_positions = change_perspective(self.piece_current_ids_at_positions, perspective, 1)
         self.piece_current_orientations = change_perspective(self.piece_current_orientations, perspective, 1)
+        self.piece_current_orientations_for_visualizer = change_perspective(self.piece_current_orientations_for_visualizer, perspective, 1)
+
         
         self.cube_current_faces_with_ids = {
             'X': np.transpose(self.piece_current_ids_at_positions[:, :, 2]),
@@ -259,47 +288,46 @@ class CubeTracker(CubeBase):
                     if self.piece_current_ids_at_positions[i, j, k] == piece_id:
                         return self.piece_current_orientations[i, j, k]
     
-    def __update_edge_orientations(self, move):
+    def __update_orientations_for_solver(self, move):
         """Updates the orientations of edges based on the move made """
         if move in self.move_map.keys():
-            for edge in self.edge_positions:
-                if edge != self.movements[move][edge]:
-                    piece_id = self.piece_current_ids_at_positions[edge]
-                    piece_initial_position = tuple(np.argwhere(self.piece_initial_ids_at_positions == piece_id)[0])
-                    if self.edge_distances[(piece_initial_position, edge)] == self.edge_distances[(piece_initial_position, self.movements[move][edge])]:
-                        current_orientation = self.piece_current_orientations[edge]
-                        self.piece_current_orientations[edge] = 'g' if current_orientation=='b' else 'b'
+            for edge in [edge for edge in self.edge_positions if edge != self.movements[move][edge]]:
+                piece_id = self.piece_current_ids_at_positions[edge]
+                piece_initial_position = tuple(np.argwhere(self.piece_initial_ids_at_positions == piece_id)[0])
+                if self.edge_distances[(piece_initial_position, edge)] == self.edge_distances[(piece_initial_position, self.movements[move][edge])]:
+                    current_orientation = self.piece_current_orientations[edge]
+                    self.piece_current_orientations[edge] = 'g' if current_orientation=='b' else 'b'
     
-    def __update_corner_orientations(self, move):
-        """Updates the orientations of corners based on the move made """
-
-        corner_move_vs_facelet_swap_map = {
-            'L': ((1,2),'x'), 'l': ((1,2),'x'), 'R': ((1,2),'x'), 'r': ((1,2),'x'),
-            'F': ((0,2),'y'), 'f': ((0,2),'y'), 'B': ((0,2),'y'), 'b': ((0,2),'y'),
-            'U': ((0,1),'z'), 'u': ((0,1),'z'), 'D': ((0,1),'z'), 'd': ((0,1),'z'),
-            'N': ((0,0),'x')
-        }
-
+    def __update_orientations_for_visualizer(self, move):
+        """Updates the orientations of edges and corners for colors based on the move made """
         def remove(lst, item):
             return [x for x in lst if x != item]
-        
         if move in self.move_map.keys():
-            for corner in self.corner_positions:
-                if corner != self.movements[move][corner]:
-                    current_orientation = list(self.piece_current_orientations[corner])
-                    corner_initial_orientation_at_destination = list(self.piece_initial_orientations[self.movements[move][corner]])
-                    reference_constant_facelet_id = corner_move_vs_facelet_swap_map[move][1]
-                    corner_constant_facelet = ''.join(current_orientation).lower().index(reference_constant_facelet_id)
-                    corner_facelets_to_swap = remove(list(range(0, 3)), corner_constant_facelet)
-                    corner_facelet_ids_to_swap = [current_orientation[i] for i in corner_facelets_to_swap]
-                    corner_constant_facelet_id = current_orientation[corner_constant_facelet]
-                    corner_facelet_ids_to_swap_at_destination = remove(corner_initial_orientation_at_destination, corner_constant_facelet_id)
-                    zipped = list(zip(corner_facelets_to_swap, corner_facelet_ids_to_swap))
-                    for i in zipped:
-                        for j in corner_facelet_ids_to_swap_at_destination:
-                            if i[1].lower() != j.lower():
-                                current_orientation[i[0]] = j
-                    self.piece_current_orientations[corner] = ''.join(current_orientation)
+            for edge in [edge for edge in self.edge_positions if edge != self.movements[move][edge]]:
+                current_orientation = list(self.piece_current_orientations_for_visualizer[edge])
+                new_orientation = copy.deepcopy(current_orientation)
+                edge_initial_orientation_at_destination = list(self.piece_initial_orientations_for_visualizer[self.movements[move][edge]])
+                for facelet, facelet_id in enumerate(current_orientation):
+                    if facelet_id != self.move_vs_direction_map[move]:
+                        for destination_facelet_id in edge_initial_orientation_at_destination:
+                            if destination_facelet_id != self.move_vs_direction_map[move]:
+                                new_orientation[facelet] = destination_facelet_id
+                self.piece_current_orientations_for_visualizer[edge] = ''.join(new_orientation)
+            for corner in [corner for corner in self.corner_positions if corner != self.movements[move][corner]]:
+                current_orientation = list(self.piece_current_orientations_for_visualizer[corner])
+                corner_initial_orientation_at_destination = list(self.piece_initial_orientations_for_visualizer[self.movements[move][corner]])
+                reference_constant_facelet_id = self.corner_move_vs_facelet_swap_map[move][1]
+                corner_constant_facelet = ''.join(current_orientation).lower().index(reference_constant_facelet_id)
+                corner_facelets_to_swap = remove(list(range(0, 3)), corner_constant_facelet)
+                corner_facelet_ids_to_swap = [current_orientation[i] for i in corner_facelets_to_swap]
+                corner_constant_facelet_id = current_orientation[corner_constant_facelet]
+                corner_facelet_ids_to_swap_at_destination = remove(corner_initial_orientation_at_destination, corner_constant_facelet_id)
+                zipped = list(zip(corner_facelets_to_swap, corner_facelet_ids_to_swap))
+                for i in zipped:
+                    for j in corner_facelet_ids_to_swap_at_destination:
+                        if i[1].lower() != j.lower():
+                            current_orientation[i[0]] = j
+                self.piece_current_orientations_for_visualizer[corner] = ''.join(current_orientation)
 
     def apply_moves(self, move_sequence):
         """Applies the moves to the cube state (piece_current_positions and piece_current_orientations)
@@ -313,14 +341,11 @@ class CubeTracker(CubeBase):
         for index, move in enumerate(move_sequence):
             if move in self.move_map:
                 self.move_history.append(move)
-                affected_piece_positions_for_move = self.get_affected_positions(move)
-                self.affected_piece_positions_for_move_history.append(affected_piece_positions_for_move)
-                self.affected_piece_ids_for_move_history.append([int(id) for id in [self.piece_current_ids_at_positions[position] for position in affected_piece_positions_for_move]])
-                self.__update_corner_orientations(move)
-                self.__update_edge_orientations(move)
+                self.__update_orientations_for_solver(move)
+                self.__update_orientations_for_visualizer(move)
                 self.move_map[move]()
             else:
-                raise ValueError(f"Invalid move: '{move}' at index {index}") # More readable error message
+                raise ValueError(f"Invalid move: '{move}' at index {index}")
 
 class CubeColorizer:
     def __init__(self):
@@ -342,44 +367,38 @@ class CubeColorizer:
             2  : 'Y', 3  : 'y', 
             4  : 'Z', 5  : 'z',
         }
-        self.current_colors = {}
-        self.initial_colors = {}
-        self.null_color = ["Black" for _ in range(6)]
+        self.current_materials = {}
+        self.initial_materials = {}
+        self.null_material = ["Black" for _ in range(6)]
     
     def update_colors(self):
-        """Update the visualization based on current cube state"""
+        """Update the materials based on current cube state"""
         if self.total_move_count == 0:
             for piece_id in range(0, 27):
-                color = copy.deepcopy(self.null_color)
-                piece_initial_orientation = list(self.cube_tracker.piece_initial_orientations[tuple([int(x) for x in np.argwhere(self.cube_tracker.piece_initial_ids_at_positions==piece_id).flatten()])])
+                material = copy.deepcopy(self.null_material)
+                piece_initial_orientation = list(self.cube_tracker.piece_initial_orientations_for_visualizer[tuple([int(x) for x in np.argwhere(self.cube_tracker.piece_initial_ids_at_positions==piece_id).flatten()])])
                 for color_idx in range(6):
                     if self.direction__color_idx_map[color_idx] in piece_initial_orientation:
-                        color[color_idx] = self.direction__initial_color_map[self.direction__color_idx_map[color_idx]]
-                self.initial_colors[piece_id] = color
-            self.current_colors = copy.deepcopy(self.initial_colors)
-
-        for idx, move in enumerate(list(self.cube_tracker.move_history)[self.total_move_count:]):
-            if move != 'N':
-                affected_piece_positions = self.cube_tracker.affected_piece_positions_for_move_history[self.total_move_count+idx]
-                affected_piece_ids = self.cube_tracker.affected_piece_ids_for_move_history[self.total_move_count+idx]
-                for piece_id, position in list(zip(affected_piece_ids, affected_piece_positions)): 
-                    self.__update_piece_colors(piece_id, position, move)
+                        material[color_idx] = self.direction__initial_color_map[self.direction__color_idx_map[color_idx]]
+                self.initial_materials[piece_id] = material
+            self.current_materials = copy.deepcopy(self.initial_materials)
+        else:
+            for piece_id in range(0,27):
+                current_position = tuple([int(x) for x in np.argwhere(self.cube_tracker.piece_current_ids_at_positions == piece_id)[0]])
+                if piece_id in self.cube_tracker.corner_ids or piece_id in self.cube_tracker.edge_ids:
+                    current_orientation = list(self.cube_tracker.piece_current_orientations_for_visualizer[current_position])
+                    new_material = copy.deepcopy(self.null_material)
+                    idx = 0
+                    initial_material = self.initial_materials[piece_id]
+                    for target_color in initial_material:
+                        if target_color != "Black":
+                            new_material[self.direction__color_idx_map[current_orientation[idx]]] = target_color
+                            idx += 1
+                else:
+                    continue
+                self.current_materials[piece_id] = new_material
         self.total_move_count = len(self.cube_tracker.move_history)
-        return self.current_colors
-        
-    def __update_piece_colors(self, piece_id, position, move):
-        """Update the colors of a piece based on its orientation and position"""
-        corner_ids = [int(x) for x in self.cube_tracker.corner_ids]
-        if piece_id in corner_ids:
-            position_after_move = self.cube_tracker.movements[move][position]
-            corner_current_orientation = list(self.cube_tracker.piece_current_orientations[position_after_move])
-            corner_initial_orientation = list(self.cube_tracker.piece_initial_orientations[tuple([int(x) for x in np.argwhere(self.cube_tracker.piece_initial_ids_at_positions==piece_id).flatten()])])
-            final_color = copy.deepcopy(self.null_color)
-            for i in range(3):
-                initial_color = self.direction__initial_color_map[corner_initial_orientation[i]]
-                current_facelet_id = corner_current_orientation[i]
-                final_color[self.direction__color_idx_map[current_facelet_id]] = initial_color
-            self.current_colors[piece_id] = final_color
+        return self.current_materials
 
 class CubeVisualizer2D:
     def __init__(self):
