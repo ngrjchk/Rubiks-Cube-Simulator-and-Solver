@@ -351,7 +351,6 @@ class CubeTracker(CubeBase):
 class CubeColorizer:
     def __init__(self):
         self.cube_tracker = CubeTracker()
-        self.total_move_count = 0
         self.direction__initial_color_map = {
             'X'     : "Red"  , 'x'     : "Orange",
             'Y'     : "Blue" , 'y'     : "Green",
@@ -374,7 +373,7 @@ class CubeColorizer:
     
     def update_colors(self):
         """Update the materials based on current cube state"""
-        if self.total_move_count == 0:
+        if len(self.cube_tracker.move_history) == 0:
             for piece_id in range(0, 27):
                 material = copy.deepcopy(self.null_material)
                 piece_initial_orientation = list(self.cube_tracker.piece_initial_orientations_for_visualizer[tuple([int(x) for x in np.argwhere(self.cube_tracker.piece_initial_ids_at_positions==piece_id).flatten()])])
@@ -398,7 +397,6 @@ class CubeColorizer:
                 else:
                     continue
                 self.current_materials[piece_id] = new_material
-        self.total_move_count = len(self.cube_tracker.move_history)
         return self.current_materials
 
 class CubeVisualizer2D:
