@@ -370,32 +370,31 @@ class CubeColorizer:
         self.current_materials = {}
         self.initial_materials = {}
         self.null_material = ["Black" for _ in range(6)]
+        self._calculate_initial_materials()
+
+    def _calculate_initial_materials(self):
+        for piece_id in range(0, 27):
+            material = copy.deepcopy(self.null_material)
+            piece_initial_orientation = list(self.cube_tracker.piece_initial_orientations_for_visualizer[tuple([int(x) for x in np.argwhere(self.cube_tracker.piece_initial_ids_at_positions==piece_id).flatten()])])
+            for color_idx in range(6):
+                if self.direction__color_idx_map[color_idx] in piece_initial_orientation:
+                    material[color_idx] = self.direction__initial_color_map[self.direction__color_idx_map[color_idx]]
+            self.initial_materials[piece_id] = material
+        self.current_materials = copy.deepcopy(self.initial_materials)
     
     def update_colors(self):
         """Update the materials based on current cube state"""
-        if len(self.cube_tracker.move_history) == 0:
-            for piece_id in range(0, 27):
-                material = copy.deepcopy(self.null_material)
-                piece_initial_orientation = list(self.cube_tracker.piece_initial_orientations_for_visualizer[tuple([int(x) for x in np.argwhere(self.cube_tracker.piece_initial_ids_at_positions==piece_id).flatten()])])
-                for color_idx in range(6):
-                    if self.direction__color_idx_map[color_idx] in piece_initial_orientation:
-                        material[color_idx] = self.direction__initial_color_map[self.direction__color_idx_map[color_idx]]
-                self.initial_materials[piece_id] = material
-            self.current_materials = copy.deepcopy(self.initial_materials)
-        else:
-            for piece_id in range(0,27):
-                current_position = tuple([int(x) for x in np.argwhere(self.cube_tracker.piece_current_ids_at_positions == piece_id)[0]])
-                if piece_id in self.cube_tracker.corner_ids or piece_id in self.cube_tracker.edge_ids:
-                    current_orientation = list(self.cube_tracker.piece_current_orientations_for_visualizer[current_position])
-                    new_material = copy.deepcopy(self.null_material)
-                    idx = 0
-                    initial_material = self.initial_materials[piece_id]
-                    for target_color in initial_material:
-                        if target_color != "Black":
-                            new_material[self.direction__color_idx_map[current_orientation[idx]]] = target_color
-                            idx += 1
-                else:
-                    continue
+        for piece_id in range(0,27):
+            current_position = tuple([int(x) for x in np.argwhere(self.cube_tracker.piece_current_ids_at_positions == piece_id)[0]])
+            if piece_id in self.cube_tracker.corner_ids or piece_id in self.cube_tracker.edge_ids:
+                current_orientation = list(self.cube_tracker.piece_current_orientations_for_visualizer[current_position])
+                new_material = copy.deepcopy(self.null_material)
+                idx = 0
+                initial_material = self.initial_materials[piece_id]
+                for target_color in initial_material:
+                    if target_color != "Black":
+                        new_material[self.direction__color_idx_map[current_orientation[idx]]] = target_color
+                        idx += 1
                 self.current_materials[piece_id] = new_material
         return self.current_materials
 
