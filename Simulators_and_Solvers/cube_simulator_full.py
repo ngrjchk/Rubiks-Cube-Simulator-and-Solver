@@ -384,7 +384,7 @@ class CubeColorizer:
         self.current_materials = copy.deepcopy(self.initial_materials)
     
     def update_colors(self):
-        """Update the materials based on current cube state"""
+        """Update the materials based on current cube state. Call this after the required moves are made"""
         for piece_id in range(0,27):
             current_position = tuple([int(x) for x in np.argwhere(self.cube_tracker.piece_current_ids_at_positions == piece_id)[0]])
             if piece_id in self.cube_tracker.corner_ids or piece_id in self.cube_tracker.edge_ids:
