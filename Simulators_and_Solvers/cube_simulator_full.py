@@ -63,6 +63,7 @@ class CubeBase:
                  ['xYz', 'Yz', 'XYz']],
             ])
 
+            cls.CENTER_PIECE_IDS = {4, 10, 12, 13, 14, 16, 22}
             cls.corner_move_vs_facelet_swap_map = {
                 'L': ((1,2),'x'), 'l': ((1,2),'x'), 'R': ((1,2),'x'), 'r': ((1,2),'x'),
                 'F': ((0,2),'y'), 'f': ((0,2),'y'), 'B': ((0,2),'y'), 'b': ((0,2),'y'),
@@ -148,7 +149,7 @@ class CubeBase:
             for j in range(3):
                 for k in range(3):
                     piece_id = cls.piece_initial_ids_at_positions[i, j, k]
-                    if piece_id in [4, 10, 12, 13, 14, 16, 22]:
+                    if piece_id in cls.CENTER_PIECE_IDS:
                         continue
                     orientation = cls.piece_initial_orientations[i, j, k]
                     if orientation == 'g':
@@ -166,7 +167,7 @@ class CubeBase:
             for j in range(3):
                 for k in range(3):
                     piece_id = cls.piece_initial_ids_at_positions[i, j, k]
-                    if piece_id in [4, 10, 12, 13, 14, 16, 22]:
+                    if piece_id in cls.CENTER_PIECE_IDS:
                         continue
                     orientation = cls.piece_initial_orientations[i, j, k]
                     if orientation == 'g':
