@@ -209,7 +209,7 @@ class CubeTracker(CubeBase):
         # The uppercase letters are the clockwise moves, and the lowercase letters are the counter-clockwise moves
 
     def __rotate_face(self, perspective, face_idx, direction):
-        """ Rotate a face (0=front, 1=middle, 2=back) seen from the given perspective (0=front, 1=top, 2=left) in the given direction """
+        """ Rotate a face (0=front, 1=middle, 2=back) seen from the given perspective (0=front, 1=top, 2=left), in the given direction """
         
         def change_perspective(cube, perspective, direction):
             if perspective == 0:
