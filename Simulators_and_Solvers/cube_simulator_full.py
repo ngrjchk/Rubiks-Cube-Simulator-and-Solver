@@ -376,7 +376,7 @@ class CubeColorizer:
         """Calculate the initial materials based on the initial cube state"""
         for piece_id in range(0, 27):
             material = copy.deepcopy(self.null_material)
-            piece_initial_orientation = list(self.cube_tracker.piece_initial_orientations_for_visualizer[tuple([int(x) for x in np.argwhere(self.cube_tracker.piece_initial_ids_at_positions==piece_id).flatten()])])
+            piece_initial_orientation = list(self.cube_tracker.piece_initial_orientations_for_visualizer[tuple(np.argwhere(self.cube_tracker.piece_initial_ids_at_positions==piece_id)[0])])
             for color_idx in range(6):
                 if self.direction__color_idx_map[color_idx] in piece_initial_orientation:
                     material[color_idx] = self.direction__initial_color_map[self.direction__color_idx_map[color_idx]]
