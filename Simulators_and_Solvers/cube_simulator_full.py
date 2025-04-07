@@ -489,7 +489,7 @@ class CubeVisualizer2D:
 
 if __name__ == "__main__":
     visualizer = CubeVisualizer2D()
-    print("Enter a scrambling move sequence.\nValid moves: N, F, F2, F', B, B2, B', R, R2, R', L, L2, L', U, U2, U', D, D2, D', \n(or enter 'x' to quit)\n:", end='')
+    print("Enter a scrambling move sequence.\nValid moves: N, F, F2, F', B, B2, B', R, R2, R', L, L2, L', U, U2, U', D, D2, D'\n(or enter 'x' to quit)\n:", end='')
     moves = input()
     visualizer.apply_moves(moves)
     visualizer.update_display()
