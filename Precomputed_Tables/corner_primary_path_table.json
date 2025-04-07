@@ -27,112 +27,94 @@
   },
   "1": {
     "(0, 0, 0)": {
-      "(0, 0, 2)": "NF, Nu",
-      "(0, 2, 0)": "NL, Nf",
-      "(2, 0, 0)": "NU, Nl"
+      "(0, 0, 2)": "NF, NU'",
+      "(0, 2, 0)": "NL, NF'",
+      "(0, 2, 2)": "NF2",
+      "(2, 0, 0)": "NL', NU",
+      "(2, 0, 2)": "NU2",
+      "(2, 2, 0)": "NL2"
     },
     "(0, 0, 2)": {
-      "(0, 0, 0)": "NU, Nf",
-      "(0, 2, 2)": "NF, Nr",
-      "(2, 0, 2)": "NR, Nu"
+      "(0, 0, 0)": "NF', NU",
+      "(0, 2, 0)": "NF2",
+      "(0, 2, 2)": "NR', NF",
+      "(2, 0, 0)": "NU2",
+      "(2, 0, 2)": "NR, NU'",
+      "(2, 2, 2)": "NR2"
     },
     "(0, 2, 0)": {
-      "(0, 0, 0)": "NF, Nl",
-      "(0, 2, 2)": "ND, Nf",
-      "(2, 2, 0)": "NL, Nd"
+      "(0, 0, 0)": "NL', NF",
+      "(0, 0, 2)": "NF2",
+      "(0, 2, 2)": "NF', ND",
+      "(2, 0, 0)": "NL2",
+      "(2, 2, 0)": "NL, ND'",
+      "(2, 2, 2)": "ND2"
     },
     "(0, 2, 2)": {
-      "(0, 0, 2)": "NR, Nf",
-      "(0, 2, 0)": "NF, Nd",
-      "(2, 2, 2)": "ND, Nr"
+      "(0, 0, 0)": "NF2",
+      "(0, 0, 2)": "NR, NF'",
+      "(0, 2, 0)": "NF, ND'",
+      "(2, 0, 2)": "NR2",
+      "(2, 2, 0)": "ND2",
+      "(2, 2, 2)": "NR', ND"
     },
     "(2, 0, 0)": {
-      "(0, 0, 0)": "NL, Nu",
-      "(2, 0, 2)": "NU, Nb",
-      "(2, 2, 0)": "NB, Nl"
+      "(0, 0, 0)": "NL, NU'",
+      "(0, 0, 2)": "NU2",
+      "(0, 2, 0)": "NL2",
+      "(2, 0, 2)": "NB', NU",
+      "(2, 2, 0)": "NL', NB",
+      "(2, 2, 2)": "NB2"
     },
     "(2, 0, 2)": {
-      "(0, 0, 2)": "NU, Nr",
-      "(2, 0, 0)": "NB, Nu",
-      "(2, 2, 2)": "NR, Nb"
+      "(0, 0, 0)": "NU2",
+      "(0, 0, 2)": "NR', NU",
+      "(0, 2, 2)": "NR2",
+      "(2, 0, 0)": "NB, NU'",
+      "(2, 2, 0)": "NB2",
+      "(2, 2, 2)": "NR, NB'"
     },
     "(2, 2, 0)": {
-      "(0, 2, 0)": "ND, Nl",
-      "(2, 0, 0)": "NL, Nb",
-      "(2, 2, 2)": "NB, Nd"
+      "(0, 0, 0)": "NL2",
+      "(0, 2, 0)": "NL', ND",
+      "(0, 2, 2)": "ND2",
+      "(2, 0, 0)": "NL, NB'",
+      "(2, 0, 2)": "NB2",
+      "(2, 2, 2)": "NB, ND'"
     },
     "(2, 2, 2)": {
-      "(0, 2, 2)": "NR, Nd",
-      "(2, 0, 2)": "NB, Nr",
-      "(2, 2, 0)": "ND, Nb"
+      "(0, 0, 2)": "NR2",
+      "(0, 2, 0)": "ND2",
+      "(0, 2, 2)": "NR, ND'",
+      "(2, 0, 0)": "NB2",
+      "(2, 0, 2)": "NR', NB",
+      "(2, 2, 0)": "NB', ND"
     }
   },
   "2": {
     "(0, 0, 0)": {
-      "(0, 2, 2)": "NFF, NFr, NuF, Nur, NLD, NLf, NfD, Nff",
-      "(2, 0, 2)": "NFR, NFu, NuR, Nuu, NUU, NUb, NlU, Nlb",
-      "(2, 2, 0)": "NLL, NLd, NfL, Nfd, NUB, NUl, NlB, Nll"
+      "(2, 2, 2)": "NFR2, NU'R2, NLD2, NF'D2, NF2R', NF2D, NL'B2, NUB2, NU2R, NU2B', NL2B, NL2D'"
     },
     "(0, 0, 2)": {
-      "(0, 2, 0)": "NUL, NUf, NfL, Nff, NFF, NFd, NrF, Nrd",
-      "(2, 0, 0)": "NUU, NUl, NfU, Nfl, NRB, NRu, NuB, Nuu",
-      "(2, 2, 2)": "NFD, NFr, NrD, Nrr, NRR, NRb, NuR, Nub"
+      "(2, 2, 0)": "NF'L2, NUL2, NF2L, NF2D', NR'D2, NFD2, NU2L', NU2B, NRB2, NU'B2, NR2B', NR2D"
     },
     "(0, 2, 0)": {
-      "(0, 0, 2)": "NFF, NFu, NlF, Nlu, NDR, NDf, NfR, Nff",
-      "(2, 0, 0)": "NFU, NFl, NlU, Nll, NLL, NLb, NdL, Ndb",
-      "(2, 2, 2)": "NDD, NDr, NfD, Nfr, NLB, NLd, NdB, Ndd"
+      "(2, 0, 2)": "NL'U2, NFU2, NF2R, NF2U', NF'R2, NDR2, NL2B', NL2U, NLB2, ND'B2, ND2R', ND2B"
     },
     "(0, 2, 2)": {
-      "(0, 0, 0)": "NRU, NRf, NfU, Nff, NFF, NFl, NdF, Ndl",
-      "(2, 0, 2)": "NRR, NRu, NfR, Nfu, NDB, NDr, NrB, Nrr",
-      "(2, 2, 0)": "NFL, NFd, NdL, Ndd, NDD, NDb, NrD, Nrb"
+      "(2, 0, 0)": "NF2L', NF2U, NRU2, NF'U2, NFL2, ND'L2, NR2B, NR2U', ND2L, ND2B', NR'B2, NDB2"
     },
     "(2, 0, 0)": {
-      "(0, 0, 2)": "NLF, NLu, NuF, Nuu, NUU, NUr, NbU, Nbr",
-      "(0, 2, 0)": "NLL, NLf, NuL, Nuf, NBD, NBl, NlD, Nll",
-      "(2, 2, 2)": "NUR, NUb, NbR, Nbb, NBB, NBd, NlB, Nld"
+      "(0, 2, 2)": "NLF2, NU'F2, NU2R', NU2F, NL2F', NL2D, NB'R2, NUR2, NL'D2, NBD2, NB2R, NB2D'"
     },
     "(2, 0, 2)": {
-      "(0, 0, 0)": "NUU, NUf, NrU, Nrf, NBL, NBu, NuL, Nuu",
-      "(0, 2, 2)": "NUF, NUr, NrF, Nrr, NRR, NRd, NbR, Nbd",
-      "(2, 2, 0)": "NBB, NBl, NuB, Nul, NRD, NRb, NbD, Nbb"
+      "(0, 2, 0)": "NU2L, NU2F', NR'F2, NUF2, NR2F, NR2D', NBL2, NU'L2, NB2L', NB2D, NRD2, NB'D2"
     },
     "(2, 2, 0)": {
-      "(0, 0, 0)": "NDF, NDl, NlF, Nll, NLL, NLu, NbL, Nbu",
-      "(0, 2, 2)": "NDD, NDf, NlD, Nlf, NBR, NBd, NdR, Ndd",
-      "(2, 0, 2)": "NLU, NLb, NbU, Nbb, NBB, NBr, NdB, Ndr"
+      "(0, 0, 2)": "NL2F, NL2U', NL'F2, NDF2, ND2R, ND2F', NLU2, NB'U2, NB2R', NB2U, NBR2, ND'R2"
     },
     "(2, 2, 2)": {
-      "(0, 0, 2)": "NRR, NRf, NdR, Ndf, NBU, NBr, NrU, Nrr",
-      "(0, 2, 0)": "NRF, NRd, NdF, Ndd, NDD, NDl, NbD, Nbl",
-      "(2, 0, 0)": "NBB, NBu, NrB, Nru, NDL, NDb, NbL, Nbb"
-    }
-  },
-  "3": {
-    "(0, 0, 0)": {
-      "(2, 2, 2)": "NFFD, NFFr, NFrD, NFrr, NuFD, NuFr, NurD, Nurr, NLDD, NLDr, NLfD, NLfr, NfDD, NfDr, NffD, Nffr, NFRR, NFRb, NFuR, NFub, NuRR, NuRb, NuuR, Nuub, NUUR, NUUb, NUbR, NUbb, NlUR, NlUb, NlbR, Nlbb, NLLB, NLLd, NLdB, NLdd, NfLB, NfLd, NfdB, Nfdd, NUBB, NUBd, NUlB, NUld, NlBB, NlBd, NllB, Nlld"
-    },
-    "(0, 0, 2)": {
-      "(2, 2, 0)": "NULL, NULd, NUfL, NUfd, NfLL, NfLd, NffL, Nffd, NFFL, NFFd, NFdL, NFdd, NrFL, NrFd, NrdL, Nrdd, NUUB, NUUl, NUlB, NUll, NfUB, NfUl, NflB, Nfll, NRBB, NRBl, NRuB, NRul, NuBB, NuBl, NuuB, Nuul, NFDD, NFDb, NFrD, NFrb, NrDD, NrDb, NrrD, Nrrb, NRRD, NRRb, NRbD, NRbb, NuRD, NuRb, NubD, Nubb"
-    },
-    "(0, 2, 0)": {
-      "(2, 0, 2)": "NFFR, NFFu, NFuR, NFuu, NlFR, NlFu, NluR, Nluu, NDRR, NDRu, NDfR, NDfu, NfRR, NfRu, NffR, Nffu, NFUU, NFUb, NFlU, NFlb, NlUU, NlUb, NllU, Nllb, NLLU, NLLb, NLbU, NLbb, NdLU, NdLb, NdbU, Ndbb, NDDB, NDDr, NDrB, NDrr, NfDB, NfDr, NfrB, Nfrr, NLBB, NLBr, NLdB, NLdr, NdBB, NdBr, NddB, Nddr"
-    },
-    "(0, 2, 2)": {
-      "(2, 0, 0)": "NRUU, NRUl, NRfU, NRfl, NfUU, NfUl, NffU, Nffl, NFFU, NFFl, NFlU, NFll, NdFU, NdFl, NdlU, Ndll, NRRB, NRRu, NRuB, NRuu, NfRB, NfRu, NfuB, Nfuu, NDBB, NDBu, NDrB, NDru, NrBB, NrBu, NrrB, Nrru, NFLL, NFLb, NFdL, NFdb, NdLL, NdLb, NddL, Nddb, NDDL, NDDb, NDbL, NDbb, NrDL, NrDb, NrbL, Nrbb"
-    },
-    "(2, 0, 0)": {
-      "(0, 2, 2)": "NLFF, NLFr, NLuF, NLur, NuFF, NuFr, NuuF, Nuur, NUUF, NUUr, NUrF, NUrr, NbUF, NbUr, NbrF, Nbrr, NLLD, NLLf, NLfD, NLff, NuLD, NuLf, NufD, Nuff, NBDD, NBDf, NBlD, NBlf, NlDD, NlDf, NllD, Nllf, NURR, NURd, NUbR, NUbd, NbRR, NbRd, NbbR, Nbbd, NBBR, NBBd, NBdR, NBdd, NlBR, NlBd, NldR, Nldd"
-    },
-    "(2, 0, 2)": {
-      "(0, 2, 0)": "NUUL, NUUf, NUfL, NUff, NrUL, NrUf, NrfL, Nrff, NBLL, NBLf, NBuL, NBuf, NuLL, NuLf, NuuL, Nuuf, NUFF, NUFd, NUrF, NUrd, NrFF, NrFd, NrrF, Nrrd, NRRF, NRRd, NRdF, NRdd, NbRF, NbRd, NbdF, Nbdd, NBBD, NBBl, NBlD, NBll, NuBD, NuBl, NulD, Null, NRDD, NRDl, NRbD, NRbl, NbDD, NbDl, NbbD, Nbbl"
-    },
-    "(2, 2, 0)": {
-      "(0, 0, 2)": "NDFF, NDFu, NDlF, NDlu, NlFF, NlFu, NllF, Nllu, NLLF, NLLu, NLuF, NLuu, NbLF, NbLu, NbuF, Nbuu, NDDR, NDDf, NDfR, NDff, NlDR, NlDf, NlfR, Nlff, NBRR, NBRf, NBdR, NBdf, NdRR, NdRf, NddR, Nddf, NLUU, NLUr, NLbU, NLbr, NbUU, NbUr, NbbU, Nbbr, NBBU, NBBr, NBrU, NBrr, NdBU, NdBr, NdrU, Ndrr"
-    },
-    "(2, 2, 2)": {
-      "(0, 0, 0)": "NRRU, NRRf, NRfU, NRff, NdRU, NdRf, NdfU, Ndff, NBUU, NBUf, NBrU, NBrf, NrUU, NrUf, NrrU, Nrrf, NRFF, NRFl, NRdF, NRdl, NdFF, NdFl, NddF, Nddl, NDDF, NDDl, NDlF, NDll, NbDF, NbDl, NblF, Nbll, NBBL, NBBu, NBuL, NBuu, NrBL, NrBu, NruL, Nruu, NDLL, NDLu, NDbL, NDbu, NbLL, NbLu, NbbL, Nbbu"
+      "(0, 0, 0)": "NR2F', NR2U, ND2L', ND2F, NRF2, ND'F2, NB2L, NB2U', NR'U2, NBU2, NB'L2, NDL2"
     }
   }
 }

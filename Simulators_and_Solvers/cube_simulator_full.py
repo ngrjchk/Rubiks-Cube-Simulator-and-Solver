@@ -12,9 +12,9 @@ class CubeBase:
     def initialize(cls):
         if cls.tables is None:
             cls.move_vs_direction_map = {
-                'R': 'X', 'r': 'X', 'L': 'x', 'l': 'x',
-                'B': 'Y', 'b': 'Y', 'F': 'y', 'f': 'y', 
-                'U': 'Z', 'u': 'Z', 'D': 'z', 'd': 'z',
+                'R': 'X', 'R2': 'X', 'R\'': 'X', 'L': 'x', 'L2': 'x', 'L\'': 'x',
+                'B': 'Y', 'B2': 'Y', 'B\'': 'Y', 'F': 'y', 'F2': 'y', 'F\'': 'y', 
+                'U': 'Z', 'U2': 'Z', 'U\'': 'Z', 'D': 'z', 'D2': 'z', 'D\'': 'z',
             }
             cls.piece_initial_ids_at_positions = np.array([
                 [[0 , 1 , 2 ],
@@ -65,9 +65,9 @@ class CubeBase:
 
             cls.CENTER_PIECE_IDS = {4, 10, 12, 13, 14, 16, 22}
             cls.corner_move_vs_facelet_swap_map = {
-                'L': ((1,2),'x'), 'l': ((1,2),'x'), 'R': ((1,2),'x'), 'r': ((1,2),'x'),
-                'F': ((0,2),'y'), 'f': ((0,2),'y'), 'B': ((0,2),'y'), 'b': ((0,2),'y'),
-                'U': ((0,1),'z'), 'u': ((0,1),'z'), 'D': ((0,1),'z'), 'd': ((0,1),'z'),
+                'L': ((1,2),'x'), 'L2': ((1,2),'x'), 'L\'': ((1,2),'x'), 'R': ((1,2),'x'), 'R2': ((1,2),'x'), 'R\'': ((1,2),'x'),
+                'F': ((0,2),'y'), 'F2': ((0,2),'y'), 'F\'': ((0,2),'y'), 'B': ((0,2),'y'), 'B2': ((0,2),'y'), 'B\'': ((0,2),'y'),
+                'U': ((0,1),'z'), 'U2': ((0,1),'z'), 'U\'': ((0,1),'z'), 'D': ((0,1),'z'), 'D2': ((0,1),'z'), 'D\'': ((0,1),'z'),
                 'N': ((0,0),'x')
             }
     
@@ -199,11 +199,12 @@ class CubeTracker(CubeBase):
             'Z': np.flip(self.piece_initial_ids_at_positions[:, 0, :], axis=0),
             'z': self.piece_initial_ids_at_positions[:, 2, :]
         }
-    
+
+        # changed to HTM (added new moves L2, F2, ...)
         self.move_map = {
-                'L': self.__L, 'l': self.__l, 'R': self.__R, 'r': self.__r,
-                'F': self.__F, 'f': self.__f, 'B': self.__B, 'b': self.__b,
-                'U': self.__U, 'u': self.__u, 'D': self.__D, 'd': self.__d,
+                'L': self.__L, 'L2': self.__L2, 'L\'': self.__l, 'R': self.__R, 'R2': self.__R2, 'R\'': self.__r,
+                'F': self.__F, 'F2': self.__F2, 'F\'': self.__f, 'B': self.__B, 'B2': self.__B2, 'B\'': self.__b,
+                'U': self.__U, 'U2': self.__U2, 'U\'': self.__u, 'D': self.__D, 'D2': self.__D2, 'D\'': self.__d,
                 'N': self.__N
         }
         # The uppercase letters are the clockwise moves, and the lowercase letters are the counter-clockwise moves
@@ -249,19 +250,25 @@ class CubeTracker(CubeBase):
             'z': self.piece_current_orientations[:, 2, :]
         }
 
-    def __F(self): self.__rotate_face(0, 0, -1)
-    def __f(self): self.__rotate_face(0, 0,  1)
-    def __B(self): self.__rotate_face(0, 2,  1)
-    def __b(self): self.__rotate_face(0, 2, -1)
-    def __U(self): self.__rotate_face(1, 0, -1)
-    def __u(self): self.__rotate_face(1, 0,  1)
-    def __D(self): self.__rotate_face(1, 2,  1)
-    def __d(self): self.__rotate_face(1, 2, -1)
-    def __L(self): self.__rotate_face(2, 0, -1)
-    def __l(self): self.__rotate_face(2, 0,  1)
-    def __R(self): self.__rotate_face(2, 2,  1)
-    def __r(self): self.__rotate_face(2, 2, -1)
-    def __N(self): pass
+    def __F(self) : self.__rotate_face(0, 0, -1)
+    def __F2(self): self.__rotate_face(0, 0, -2)
+    def __f(self) : self.__rotate_face(0, 0,  1)
+    def __B(self) : self.__rotate_face(0, 2,  1)
+    def __B2(self): self.__rotate_face(0, 2,  2)
+    def __b(self) : self.__rotate_face(0, 2, -1)
+    def __U(self) : self.__rotate_face(1, 0, -1)
+    def __U2(self): self.__rotate_face(1, 0, -2)
+    def __u(self) : self.__rotate_face(1, 0,  1)
+    def __D(self) : self.__rotate_face(1, 2,  1)
+    def __D2(self): self.__rotate_face(1, 2,  2)
+    def __d(self) : self.__rotate_face(1, 2, -1)
+    def __L(self) : self.__rotate_face(2, 0, -1)
+    def __L2(self): self.__rotate_face(2, 0, -2)
+    def __l(self) : self.__rotate_face(2, 0,  1)
+    def __R(self) : self.__rotate_face(2, 2,  1)
+    def __R2(self): self.__rotate_face(2, 2,  2)
+    def __r(self) : self.__rotate_face(2, 2, -1)
+    def __N(self) : pass
 
     def get_affected_positions(self, move):
         """Determine which positions are affected by a given move"""
@@ -303,50 +310,72 @@ class CubeTracker(CubeBase):
         """Updates the orientations of edges and corners for colors based on the move made """
         def remove(lst, item):
             return [x for x in lst if x != item]
-        if move in self.move_map.keys():
-            for edge in [edge for edge in self.edge_positions if edge != self.movements[move][edge]]:
-                current_orientation = list(self.piece_current_orientations_for_visualizer[edge])
-                new_orientation = copy.deepcopy(current_orientation)
-                edge_initial_orientation_at_destination = list(self.piece_initial_orientations_for_visualizer[self.movements[move][edge]])
+    
+        for edge in [edge for edge in self.edge_positions if edge != self.movements[move][edge]]:
+            current_orientation = list(self.piece_current_orientations_for_visualizer[edge])
+            new_orientation = copy.deepcopy(current_orientation)
+            edge_initial_orientation_at_destination = list(self.piece_initial_orientations_for_visualizer[self.movements[move][edge]])
+            if len(move)==1 or move[1] == "'":
                 for facelet, facelet_id in enumerate(current_orientation):
                     if facelet_id != self.move_vs_direction_map[move]:
                         for destination_facelet_id in edge_initial_orientation_at_destination:
                             if destination_facelet_id != self.move_vs_direction_map[move]:
                                 new_orientation[facelet] = destination_facelet_id
-                self.piece_current_orientations_for_visualizer[edge] = ''.join(new_orientation)
-            for corner in [corner for corner in self.corner_positions if corner != self.movements[move][corner]]:
-                current_orientation = list(self.piece_current_orientations_for_visualizer[corner])
-                corner_initial_orientation_at_destination = list(self.piece_initial_orientations_for_visualizer[self.movements[move][corner]])
-                reference_constant_facelet_id = self.corner_move_vs_facelet_swap_map[move][1]
-                corner_constant_facelet = ''.join(current_orientation).lower().index(reference_constant_facelet_id)
-                corner_facelets_to_swap = remove(list(range(0, 3)), corner_constant_facelet)
-                corner_facelet_ids_to_swap = [current_orientation[i] for i in corner_facelets_to_swap]
-                corner_constant_facelet_id = current_orientation[corner_constant_facelet]
-                corner_facelet_ids_to_swap_at_destination = remove(corner_initial_orientation_at_destination, corner_constant_facelet_id)
-                zipped = list(zip(corner_facelets_to_swap, corner_facelet_ids_to_swap))
+            else:
+                for facelet, facelet_id in enumerate(current_orientation):
+                    if facelet_id != self.move_vs_direction_map[move]:
+                        new_orientation[facelet] = facelet_id.lower() if facelet_id.isupper() else facelet_id.upper()
+            self.piece_current_orientations_for_visualizer[edge] = ''.join(new_orientation)
+
+        for corner in [corner for corner in self.corner_positions if corner != self.movements[move][corner]]:
+            current_orientation = list(self.piece_current_orientations_for_visualizer[corner])
+            corner_initial_orientation_at_destination = list(self.piece_initial_orientations_for_visualizer[self.movements[move][corner]])
+            reference_constant_facelet_id = self.corner_move_vs_facelet_swap_map[move][1]
+            corner_constant_facelet = ''.join(current_orientation).lower().index(reference_constant_facelet_id)
+            corner_facelets_to_swap = remove(list(range(0, 3)), corner_constant_facelet)
+            corner_facelet_ids_to_swap = [current_orientation[i] for i in corner_facelets_to_swap]
+            corner_constant_facelet_id = current_orientation[corner_constant_facelet]
+            corner_facelet_ids_to_swap_at_destination = remove(corner_initial_orientation_at_destination, corner_constant_facelet_id)
+            zipped = list(zip(corner_facelets_to_swap, corner_facelet_ids_to_swap))
+            new_orientation = copy.deepcopy(current_orientation)
+            if len(move)==1 or move[1] == "'":
                 for i in zipped:
                     for j in corner_facelet_ids_to_swap_at_destination:
                         if i[1].lower() != j.lower():
-                            current_orientation[i[0]] = j
-                self.piece_current_orientations_for_visualizer[corner] = ''.join(current_orientation)
+                            new_orientation[i[0]] = j
+            else:
+                for i in zipped:
+                    new_orientation[i[0]] = i[1].lower() if i[1].isupper() else i[1].upper()
+            self.piece_current_orientations_for_visualizer[corner] = ''.join(new_orientation)
 
     def apply_moves(self, move_sequence):
         """Applies the moves to the cube state (piece_current_positions and piece_current_orientations)
         Args:
             move_sequence(list/str): ordered set of moves as a list or a string
         """
-        if not isinstance(move_sequence, (list, str)):
-            raise ValueError("argument to apply_moves must be a list or a string of valid moves")
-        if isinstance(move_sequence, str):
-            move_sequence = list(move_sequence)
-        for index, move in enumerate(move_sequence):
-            if move in self.move_map:
-                self.move_history.append(move)
-                self.__update_orientations_for_solver(move)
-                self.__update_orientations_for_visualizer(move)
-                self.move_map[move]()
+        if not isinstance(move_sequence, str):
+            raise ValueError("argument to apply_moves must be a continuous string of valid moves")
+        idx = 0
+        moves_split = []
+        while True:
+            if idx <= len(move_sequence)-2 and move_sequence[idx:idx+2] in self.move_map.keys():
+                moves_split.append(move_sequence[idx:idx+2])
+                idx += 2
+                if idx >= len(move_sequence):
+                    break
+            elif move_sequence[idx] in self.move_map.keys():
+                moves_split.append(move_sequence[idx])
+                idx += 1
+                if idx >= len(move_sequence):
+                    break
             else:
-                raise ValueError(f"Invalid move: '{move}' at index {index}")
+                raise ValueError(f"Invalid entry at index {idx}")
+        
+        for move in moves_split:
+            self.move_history.append(move)
+            self.__update_orientations_for_solver(move)
+            self.__update_orientations_for_visualizer(move)
+            self.move_map[move]()
 
 class CubeColorizer:
     def __init__(self):
@@ -460,31 +489,10 @@ class CubeVisualizer2D:
 
 if __name__ == "__main__":
     visualizer = CubeVisualizer2D()
-    print("Enter a scrambling move sequence.\nValid moves: N, F, f, B, b, R, r, U, u, D, d, L, l\n(Enter 'x' to quit)\n:", end='')
-    while True:
-        next_moves = input()
-        if not plt.isinteractive():
-            plt.ion()
-        plt.pause(0.1)
-        if next_moves.lower() != 'x':
-            valid_moves = True
-            for idx, move in enumerate(next_moves):
-                if move not in visualizer.colorizer.cube_tracker.move_map.keys():
-                    print(f"Error: Invalid move '{move}' at index {idx}. Try again:")
-                    valid_moves = False
-                    break
-            if not valid_moves:
-                continue
-            else:
-                visualizer.apply_moves(next_moves)
-                visualizer.update_display()
-                print("\nPlot window is active. Close the plot window to exit the script.")
-                plt.ioff()
-                plt.show()
-                print("Move history:",''.join(visualizer.colorizer.cube_tracker.move_history))
-                break
-        else:
-            plt.ioff()
-            plt.close(visualizer.fig)
-            print("Move history:",''.join(visualizer.colorizer.cube_tracker.move_history))
-            break
+    print("Enter a scrambling move sequence.\nValid moves: N, F, F2, F', B, B2, B', R, R2, R', L, L2, L', U, U2, U', D, D2, D', \n(or enter 'x' to quit)\n:", end='')
+    moves = input()
+    visualizer.apply_moves(moves)
+    visualizer.update_display()
+    print("\nPlot window is active. Close the plot window to exit the script.")
+    plt.show()
+    print("Move history:",''.join(visualizer.colorizer.cube_tracker.move_history))

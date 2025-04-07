@@ -46,10 +46,12 @@ class Cube:
         self.edge_ids.sort()
         self.corner_ids.sort()
 
+        # changed to HTM (added new moves L2, F2, ...)
         self.move_map = {
-            'U': self._U, 'F': self._F, 'B': self._B, 'D': self._D, 'L': self._L, 'R': self._R,
-            'u': self._u, 'f': self._f, 'b': self._b, 'd': self._d, 'l': self._l, 'r': self._r,
-            'N': self._N
+                'L': self.__L, 'L2': self.__L2, 'L\'': self.__l, 'R': self.__R, 'R2': self.__R2, 'R\'': self.__r,
+                'F': self.__F, 'F2': self.__F2, 'F\'': self.__f, 'B': self.__B, 'B2': self.__B2, 'B\'': self.__b,
+                'U': self.__U, 'U2': self.__U2, 'U\'': self.__u, 'D': self.__D, 'D2': self.__D2, 'D\'': self.__d,
+                'N': self.__N
         }
         # The uppercase letters are the clockwise moves, and the lowercase letters are the counter-clockwise moves
 
@@ -96,19 +98,25 @@ class Cube:
         self.piece_current_ids_at_positions[slice_idx] = np.rot90(self.piece_current_ids_at_positions[slice_idx], k=direction, axes=(0, 1))
         self.piece_current_ids_at_positions = change_perspective(self.piece_current_ids_at_positions, perspective, 1)
 
-    def _F(self): self.__rotate_face(perspective=0, slice_idx=0, direction=-1)
-    def _f(self): self.__rotate_face(perspective=0, slice_idx=0, direction=1)
-    def _B(self): self.__rotate_face(perspective=0, slice_idx=2, direction=1)
-    def _b(self): self.__rotate_face(perspective=0, slice_idx=2, direction=-1)
-    def _U(self): self.__rotate_face(perspective=1, slice_idx=0, direction=-1)
-    def _u(self): self.__rotate_face(perspective=1, slice_idx=0, direction=1)
-    def _D(self): self.__rotate_face(perspective=1, slice_idx=2, direction=1)
-    def _d(self): self.__rotate_face(perspective=1, slice_idx=2, direction=-1)
-    def _L(self): self.__rotate_face(perspective=2, slice_idx=0, direction=-1)
-    def _l(self): self.__rotate_face(perspective=2, slice_idx=0, direction=1)
-    def _R(self): self.__rotate_face(perspective=2, slice_idx=2, direction=1)
-    def _r(self): self.__rotate_face(perspective=2, slice_idx=2, direction=-1)
-    def _N(self): pass
+    def __F(self) : self.__rotate_face(0, 0, -1)
+    def __F2(self): self.__rotate_face(0, 0, -2)
+    def __f(self) : self.__rotate_face(0, 0,  1)
+    def __B(self) : self.__rotate_face(0, 2,  1)
+    def __B2(self): self.__rotate_face(0, 2,  2)
+    def __b(self) : self.__rotate_face(0, 2, -1)
+    def __U(self) : self.__rotate_face(1, 0, -1)
+    def __U2(self): self.__rotate_face(1, 0, -2)
+    def __u(self) : self.__rotate_face(1, 0,  1)
+    def __D(self) : self.__rotate_face(1, 2,  1)
+    def __D2(self): self.__rotate_face(1, 2,  2)
+    def __d(self) : self.__rotate_face(1, 2, -1)
+    def __L(self) : self.__rotate_face(2, 0, -1)
+    def __L2(self): self.__rotate_face(2, 0, -2)
+    def __l(self) : self.__rotate_face(2, 0,  1)
+    def __R(self) : self.__rotate_face(2, 2,  1)
+    def __R2(self): self.__rotate_face(2, 2,  2)
+    def __r(self) : self.__rotate_face(2, 2, -1)
+    def __N(self) : pass
 
     def get_position_of_piece(self, piece_id):
         for i in range(3):
@@ -124,14 +132,28 @@ class Cube:
         return self.piece_current_ids_at_positions[i, j, k]
 
     def apply_moves(self, move_sequence):
-        if not isinstance(move_sequence, (list, str)):
-            raise ValueError("argument to apply_moves must be a list or a string of valid moves")
-
-        if isinstance(move_sequence, str):
-            move_sequence = list(move_sequence) # Convert string to list for consistent iteration
-
-        for index, move in enumerate(move_sequence): # More idiomatic and readable way to get index in loop
-            if move in self.move_map:
-                self.move_map[move]()
+        """Applies the moves to the cube state (piece_current_positions and piece_current_orientations)
+        Args:
+            move_sequence(list/str): ordered set of moves as a list or a string
+        """
+        if not isinstance(move_sequence, str):
+            raise ValueError("argument to apply_moves must be a continuous string of valid moves")
+        
+        idx = 0
+        moves_split = []
+        while True:
+            if idx <= len(move_sequence)-2 and move_sequence[idx:idx+2] in self.move_map.keys():
+                moves_split.append(move_sequence[idx:idx+2])
+                idx += 2
+                if idx >= len(move_sequence):
+                    break
+            elif move_sequence[idx] in self.move_map.keys():
+                moves_split.append(move_sequence[idx])
+                idx += 1
+                if idx >= len(move_sequence):
+                    break
             else:
-                raise ValueError(f"Invalid move: '{move}' at index {index}") # More readable error message
+                raise ValueError(f"Invalid entry at index {idx}")
+            
+        for move in moves_split:
+            self.move_map[move]()
