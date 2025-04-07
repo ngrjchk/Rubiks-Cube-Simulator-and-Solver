@@ -2,4 +2,5 @@ jupyter
 numpy
 psutil
 matplotlib
+ipywidgets
 pythreejs
