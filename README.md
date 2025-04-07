@@ -1,7 +1,7 @@
 # Rubiks-Cube-Simulator-and-Solver
 ## Overview
 ![A screenshot of the simulator](https://github.com/ngrjchk/Rubiks-Cube-Simulator-and-Solver/blob/main/simulator_screenshot.png)
-The Rubik-s-Cube-Simulator-and-Solver project showcases a custom Rubik's cube simulation and a novel algorithm for solving the puzzle, developed entirely from scratch.
+The Rubiks-Cube-Simulator-and-Solver project showcases a custom Rubik's cube simulation and a novel algorithm for solving the puzzle, developed entirely from scratch.
 
 ## Features
 - Rubik's cube simulation model
