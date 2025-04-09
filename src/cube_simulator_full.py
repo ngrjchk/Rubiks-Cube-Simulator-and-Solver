@@ -74,9 +74,9 @@ class CubeBase:
             cls.edge_positions, cls.corner_positions = cls.categorize_positions_over_piece_types()
             cls.edge_ids, cls.corner_ids = cls.categorize_ids_over_piece_types()
             cls.tables = cls._load_tables_from_json([
-                    r'..\Precomputed_Tables\corner_position_distance_table.json',
-                    r'..\Precomputed_Tables\edge_position_distance_table.json',
-                    r'..\Precomputed_Tables\position_movement_table.json'
+                    r'..\Precomputed_Lookup_Tables\corner_primary_distance_table.json',
+                    r'..\Precomputed_Lookup_Tables\edge_primary_distance_table.json',
+                    r'..\Precomputed_Lookup_Tables\movement_table.json'
             ])
             cls.edge_distances = cls.tables["edge_distances"]
             cls.corner_distances = cls.tables["corner_distances"]
@@ -118,7 +118,7 @@ class CubeBase:
                             pos_tuple = tuple(ast.literal_eval(pair_str))  # Consistent parsing
                             tables["corner_distances"][pos_tuple] = distance
                             
-                    elif 'position' in filename.lower() and 'movement' in filename.lower():
+                    elif 'movement' in filename.lower():
                         tables["movements"] = {}
                         for move, position_movements in serializable_table.items():
                             movements = {}

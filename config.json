@@ -1,0 +1,7 @@
+{
+    "paths":{
+        "movements": "Precomputed_Lookup_Tables/movement_table.json",
+        "edge_distances": "Precomputed_Lookup_Tables/edge_primary_distance_table.json",
+        "corner_distances": "Precomputed_Lookup_Tables/corner_primary_distance_table.json"
+    }
+}
