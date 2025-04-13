@@ -1,0 +1,3998 @@
+{
+  "((0, 0, 1), (0, 0, 1))": {
+    "0": [
+      "N"
+    ],
+    "3": [
+      "N F R U",
+      "N F' L' U'",
+      "N U L F",
+      "N U' R' F'"
+    ],
+    "4": [
+      "N F R2 B U2",
+      "N F R' D' F2",
+      "N F2 D R F'",
+      "N F2 D R2 U",
+      "N F2 D2 B2 U2",
+      "N F2 D' L2 U'",
+      "N F2 D' L' F",
+      "N F' L D F2",
+      "N F' L2 B' U2",
+      "N U L2 D F2",
+      "N U L' B' U2",
+      "N U2 B L U'",
+      "N U2 B L2 F",
+      "N U2 B2 D2 F2",
+      "N U2 B' R2 F'",
+      "N U2 B' R' U",
+      "N U' R B U2",
+      "N U' R2 D' F2"
+    ]
+  },
+  "((0, 0, 1), (0, 1, 0))": {
+    "1": [
+      "N F'"
+    ],
+    "2": [
+      "N U L"
+    ],
+    "3": [
+      "N F2 D' L'",
+      "N U2 B L2",
+      "N U' R' F2"
+    ],
+    "4": [
+      "N F R U F'",
+      "N F R U2 L",
+      "N F R2 B2 L2",
+      "N F R' D2 L'",
+      "N F R' D' F",
+      "N F2 D R F2",
+      "N F2 D2 B' L2",
+      "N U L2 D F",
+      "N U2 B2 D L'",
+      "N U2 B2 D2 F",
+      "N U2 B' R2 F2",
+      "N U' R B2 L2",
+      "N U' R2 D2 L'",
+      "N U' R2 D' F"
+    ]
+  },
+  "((0, 0, 1), (0, 1, 2))": {
+    "1": [
+      "N F"
+    ],
+    "2": [
+      "N U' R'"
+    ],
+    "3": [
+      "N F2 D R",
+      "N U L F2",
+      "N U2 B' R2"
+    ],
+    "4": [
+      "N F2 D2 B R2",
+      "N F2 D' L' F2",
+      "N F' L D F'",
+      "N F' L D2 R",
+      "N F' L2 B2 R2",
+      "N F' L' U2 R'",
+      "N F' L' U' F",
+      "N U L2 D F'",
+      "N U L2 D2 R",
+      "N U L' B2 R2",
+      "N U2 B L2 F2",
+      "N U2 B2 D2 F'",
+      "N U2 B2 D' R",
+      "N U' R2 D' F'"
+    ]
+  },
+  "((0, 0, 1), (0, 2, 1))": {
+    "1": [
+      "N F2"
+    ],
+    "3": [
+      "N F R' D'",
+      "N F' L D",
+      "N U L F'",
+      "N U L2 D",
+      "N U2 B2 D2",
+      "N U' R2 D'",
+      "N U' R' F"
+    ],
+    "4": [
+      "N F R U F2",
+      "N F R2 B' D2",
+      "N F' L2 B D2",
+      "N F' L' U' F2",
+      "N U L' B D2",
+      "N U2 B L2 F'",
+      "N U2 B L' D",
+      "N U2 B' R D'",
+      "N U2 B' R2 F",
+      "N U' R B' D2"
+    ]
+  },
+  "((0, 0, 1), (1, 0, 0))": {
+    "1": [
+      "N U"
+    ],
+    "2": [
+      "N F' L'"
+    ],
+    "3": [
+      "N F R U2",
+      "N F2 D' L2",
+      "N U2 B L"
+    ],
+    "4": [
+      "N F R2 B U'",
+      "N F R2 B2 L",
+      "N F R' D2 L2",
+      "N F2 D R2 U2",
+      "N F2 D2 B2 U'",
+      "N F2 D2 B' L",
+      "N F' L2 B' U'",
+      "N U2 B2 D L2",
+      "N U2 B' R' U2",
+      "N U' R B U'",
+      "N U' R B2 L",
+      "N U' R2 D2 L2",
+      "N U' R' F2 L'",
+      "N U' R' F' U"
+    ]
+  },
+  "((0, 0, 1), (1, 0, 2))": {
+    "1": [
+      "N U'"
+    ],
+    "2": [
+      "N F R"
+    ],
+    "3": [
+      "N F2 D R2",
+      "N F' L' U2",
+      "N U2 B' R'"
+    ],
+    "4": [
+      "N F R2 B U",
+      "N F2 D2 B R'",
+      "N F2 D2 B2 U",
+      "N F2 D' L2 U2",
+      "N F' L D2 R2",
+      "N F' L2 B2 R'",
+      "N F' L2 B' U",
+      "N U L F U'",
+      "N U L F2 R",
+      "N U L2 D2 R2",
+      "N U L' B2 R'",
+      "N U L' B' U",
+      "N U2 B L U2",
+      "N U2 B2 D' R2"
+    ]
+  },
+  "((0, 0, 1), (1, 2, 0))": {
+    "2": [
+      "N F2 D'",
+      "N F' L",
+      "N U L2"
+    ],
+    "3": [
+      "N F R' D2",
+      "N U2 B L'",
+      "N U2 B2 D",
+      "N U' R2 D2"
+    ],
+    "4": [
+      "N F R U2 L2",
+      "N F R2 B2 L'",
+      "N F R2 B' D",
+      "N F2 D2 B' L'",
+      "N F' L2 B D",
+      "N U L F' D'",
+      "N U L' B D",
+      "N U2 B' R D2",
+      "N U' R B2 L'",
+      "N U' R B' D",
+      "N U' R' F D'",
+      "N U' R' F2 L"
+    ]
+  },
+  "((0, 0, 1), (1, 2, 2))": {
+    "2": [
+      "N F R'",
+      "N F2 D",
+      "N U' R2"
+    ],
+    "3": [
+      "N F' L D2",
+      "N U L2 D2",
+      "N U2 B2 D'",
+      "N U2 B' R"
+    ],
+    "4": [
+      "N F R2 B' D'",
+      "N F2 D2 B R",
+      "N F' L2 B D'",
+      "N F' L2 B2 R",
+      "N F' L' U2 R2",
+      "N U L F2 R'",
+      "N U L F' D",
+      "N U L' B D'",
+      "N U L' B2 R",
+      "N U2 B L' D2",
+      "N U' R B' D'",
+      "N U' R' F D"
+    ]
+  },
+  "((0, 0, 1), (2, 0, 1))": {
+    "1": [
+      "N U2"
+    ],
+    "3": [
+      "N F R U'",
+      "N F R2 B",
+      "N F2 D2 B2",
+      "N F' L2 B'",
+      "N F' L' U",
+      "N U L' B'",
+      "N U' R B"
+    ],
+    "4": [
+      "N F R' D B2",
+      "N F2 D R2 U'",
+      "N F2 D R' B",
+      "N F2 D' L B'",
+      "N F2 D' L2 U",
+      "N F' L D' B2",
+      "N U L F U2",
+      "N U L2 D' B2",
+      "N U' R2 D B2",
+      "N U' R' F' U2"
+    ]
+  },
+  "((0, 0, 1), (2, 1, 0))": {
+    "2": [
+      "N F' L2",
+      "N U L'",
+      "N U2 B"
+    ],
+    "3": [
+      "N F R2 B2",
+      "N F2 D2 B'",
+      "N F2 D' L",
+      "N U' R B2"
+    ],
+    "4": [
+      "N F R U2 L'",
+      "N F R U' B",
+      "N F R' D B'",
+      "N F R' D2 L",
+      "N F2 D R' B2",
+      "N F' L D' B'",
+      "N F' L' U B",
+      "N U L2 D' B'",
+      "N U2 B2 D L",
+      "N U' R2 D B'",
+      "N U' R2 D2 L",
+      "N U' R' F2 L2"
+    ]
+  },
+  "((0, 0, 1), (2, 1, 2))": {
+    "2": [
+      "N F R2",
+      "N U2 B'",
+      "N U' R"
+    ],
+    "3": [
+      "N F2 D R'",
+      "N F2 D2 B",
+      "N F' L2 B2",
+      "N U L' B2"
+    ],
+    "4": [
+      "N F R U' B'",
+      "N F R' D B",
+      "N F2 D' L B2",
+      "N F' L D2 R'",
+      "N F' L D' B",
+      "N F' L' U B'",
+      "N F' L' U2 R",
+      "N U L F2 R2",
+      "N U L2 D2 R'",
+      "N U L2 D' B",
+      "N U2 B2 D' R'",
+      "N U' R2 D B"
+    ]
+  },
+  "((0, 0, 1), (2, 2, 1))": {
+    "2": [
+      "N F2 D2",
+      "N U2 B2"
+    ],
+    "3": [
+      "N F R2 B'",
+      "N F R' D",
+      "N F' L D'",
+      "N F' L2 B",
+      "N U L2 D'",
+      "N U L' B",
+      "N U' R B'",
+      "N U' R2 D"
+    ],
+    "4": [
+      "N F R U' B2",
+      "N F2 D R' B'",
+      "N F2 D' L B",
+      "N F' L' U B2",
+      "N U L F' D2",
+      "N U2 B L' D'",
+      "N U2 B' R D",
+      "N U' R' F D2"
+    ]
+  },
+  "((0, 1, 0), (0, 0, 1))": {
+    "1": [
+      "N F"
+    ],
+    "2": [
+      "N L' U'"
+    ],
+    "3": [
+      "N L D F2",
+      "N L2 B' U2",
+      "N F2 R U"
+    ],
+    "4": [
+      "N L D2 R F'",
+      "N L D2 R2 U",
+      "N L D' B2 U2",
+      "N L2 B D2 F2",
+      "N L2 B2 R2 F'",
+      "N L2 B2 R' U",
+      "N L' U2 R' F'",
+      "N F2 R2 B U2",
+      "N F2 R' D' F2",
+      "N F' D R F'",
+      "N F' D R2 U",
+      "N F' D2 B2 U2",
+      "N F' D' L2 U'",
+      "N F' D' L' F"
+    ]
+  },
+  "((0, 1, 0), (0, 1, 0))": {
+    "0": [
+      "N"
+    ],
+    "3": [
+      "N L D F",
+      "N L' U' F'",
+      "N F U L",
+      "N F' D' L'"
+    ],
+    "4": [
+      "N L D2 R F2",
+      "N L D' B' L2",
+      "N L2 B D L'",
+      "N L2 B D2 F",
+      "N L2 B2 R2 F2",
+      "N L2 B' U2 F'",
+      "N L2 B' U' L",
+      "N L' U B L2",
+      "N L' U2 R' F2",
+      "N F U2 B L2",
+      "N F U' R' F2",
+      "N F2 R U F'",
+      "N F2 R U2 L",
+      "N F2 R2 B2 L2",
+      "N F2 R' D2 L'",
+      "N F2 R' D' F",
+      "N F' D R F2",
+      "N F' D2 B' L2"
+    ]
+  },
+  "((0, 1, 0), (0, 1, 2))": {
+    "1": [
+      "N F2"
+    ],
+    "3": [
+      "N L D F'",
+      "N L D2 R",
+      "N L2 B2 R2",
+      "N L' U2 R'",
+      "N L' U' F",
+      "N F U' R'",
+      "N F' D R"
+    ],
+    "4": [
+      "N L D' B R2",
+      "N L2 B D2 F'",
+      "N L2 B D' R",
+      "N L2 B' U R'",
+      "N L2 B' U2 F",
+      "N L' U B' R2",
+      "N F U L F2",
+      "N F U2 B' R2",
+      "N F' D2 B R2",
+      "N F' D' L' F2"
+    ]
+  },
+  "((0, 1, 0), (0, 2, 1))": {
+    "1": [
+      "N F'"
+    ],
+    "2": [
+      "N L D"
+    ],
+    "3": [
+      "N L2 B D2",
+      "N L' U' F2",
+      "N F2 R' D'"
+    ],
+    "4": [
+      "N L D2 R F",
+      "N L2 B2 R D'",
+      "N L2 B2 R2 F",
+      "N L2 B' U2 F2",
+      "N L' U B2 D2",
+      "N L' U2 R2 D'",
+      "N L' U2 R' F",
+      "N F U L F'",
+      "N F U L2 D",
+      "N F U2 B2 D2",
+      "N F U' R2 D'",
+      "N F U' R' F",
+      "N F2 R U F2",
+      "N F2 R2 B' D2"
+    ]
+  },
+  "((0, 1, 0), (1, 0, 0))": {
+    "1": [
+      "N L'"
+    ],
+    "2": [
+      "N F U"
+    ],
+    "3": [
+      "N L2 B' U'",
+      "N F2 R U2",
+      "N F' D' L2"
+    ],
+    "4": [
+      "N L D F L'",
+      "N L D F2 U",
+      "N L D2 R2 U2",
+      "N L D' B2 U'",
+      "N L D' B' L",
+      "N L2 B D L2",
+      "N L2 B2 R' U2",
+      "N F U2 B L",
+      "N F2 R2 B U'",
+      "N F2 R2 B2 L",
+      "N F2 R' D2 L2",
+      "N F' D R2 U2",
+      "N F' D2 B2 U'",
+      "N F' D2 B' L"
+    ]
+  },
+  "((0, 1, 0), (1, 0, 2))": {
+    "2": [
+      "N L' U2",
+      "N F U'",
+      "N F2 R"
+    ],
+    "3": [
+      "N L D2 R2",
+      "N L2 B2 R'",
+      "N L2 B' U",
+      "N F' D R2"
+    ],
+    "4": [
+      "N L D F2 U'",
+      "N L D F' R",
+      "N L D' B R'",
+      "N L D' B2 U",
+      "N L2 B D' R2",
+      "N L' U B' R'",
+      "N L' U' F R",
+      "N F U2 B' R'",
+      "N F2 R2 B U",
+      "N F' D2 B R'",
+      "N F' D2 B2 U",
+      "N F' D' L2 U2"
+    ]
+  },
+  "((0, 1, 0), (1, 2, 0))": {
+    "1": [
+      "N L"
+    ],
+    "2": [
+      "N F' D'"
+    ],
+    "3": [
+      "N L2 B D",
+      "N F U L2",
+      "N F2 R' D2"
+    ],
+    "4": [
+      "N L2 B2 R D2",
+      "N L2 B' U' L2",
+      "N L' U B L'",
+      "N L' U B2 D",
+      "N L' U2 R2 D2",
+      "N L' U' F2 D'",
+      "N L' U' F' L",
+      "N F U2 B L'",
+      "N F U2 B2 D",
+      "N F U' R2 D2",
+      "N F2 R U2 L2",
+      "N F2 R2 B2 L'",
+      "N F2 R2 B' D",
+      "N F' D2 B' L'"
+    ]
+  },
+  "((0, 1, 0), (1, 2, 2))": {
+    "2": [
+      "N L D2",
+      "N F2 R'",
+      "N F' D"
+    ],
+    "3": [
+      "N L2 B D'",
+      "N L2 B2 R",
+      "N L' U2 R2",
+      "N F U' R2"
+    ],
+    "4": [
+      "N L D F' R'",
+      "N L D' B R",
+      "N L2 B' U R2",
+      "N L' U B2 D'",
+      "N L' U B' R",
+      "N L' U' F R'",
+      "N L' U' F2 D",
+      "N F U L2 D2",
+      "N F U2 B2 D'",
+      "N F U2 B' R",
+      "N F2 R2 B' D'",
+      "N F' D2 B R"
+    ]
+  },
+  "((0, 1, 0), (2, 0, 1))": {
+    "2": [
+      "N L2 B'",
+      "N L' U",
+      "N F U2"
+    ],
+    "3": [
+      "N L D' B2",
+      "N F2 R U'",
+      "N F2 R2 B",
+      "N F' D2 B2"
+    ],
+    "4": [
+      "N L D F2 U2",
+      "N L D2 R2 U'",
+      "N L D2 R' B",
+      "N L2 B2 R' U'",
+      "N L' U2 R B",
+      "N F U L' B'",
+      "N F U' R B",
+      "N F2 R' D B2",
+      "N F' D R2 U'",
+      "N F' D R' B",
+      "N F' D' L B'",
+      "N F' D' L2 U"
+    ]
+  },
+  "((0, 1, 0), (2, 1, 0))": {
+    "1": [
+      "N L2"
+    ],
+    "3": [
+      "N L D' B'",
+      "N L' U B",
+      "N F U L'",
+      "N F U2 B",
+      "N F2 R2 B2",
+      "N F' D2 B'",
+      "N F' D' L"
+    ],
+    "4": [
+      "N L D F L2",
+      "N L D2 R' B2",
+      "N L' U2 R B2",
+      "N L' U' F' L2",
+      "N F U' R B2",
+      "N F2 R U2 L'",
+      "N F2 R U' B",
+      "N F2 R' D B'",
+      "N F2 R' D2 L",
+      "N F' D R' B2"
+    ]
+  },
+  "((0, 1, 0), (2, 1, 2))": {
+    "2": [
+      "N L2 B2",
+      "N F2 R2"
+    ],
+    "3": [
+      "N L D2 R'",
+      "N L D' B",
+      "N L' U B'",
+      "N L' U2 R",
+      "N F U2 B'",
+      "N F U' R",
+      "N F' D R'",
+      "N F' D2 B"
+    ],
+    "4": [
+      "N L D F' R2",
+      "N L2 B D' R'",
+      "N L2 B' U R",
+      "N L' U' F R2",
+      "N F U L' B2",
+      "N F2 R U' B'",
+      "N F2 R' D B",
+      "N F' D' L B2"
+    ]
+  },
+  "((0, 1, 0), (2, 2, 1))": {
+    "2": [
+      "N L D'",
+      "N L2 B",
+      "N F' D2"
+    ],
+    "3": [
+      "N L' U B2",
+      "N F U2 B2",
+      "N F2 R2 B'",
+      "N F2 R' D"
+    ],
+    "4": [
+      "N L D2 R' B'",
+      "N L2 B2 R D",
+      "N L' U2 R B'",
+      "N L' U2 R2 D",
+      "N L' U' F2 D2",
+      "N F U L2 D'",
+      "N F U L' B",
+      "N F U' R B'",
+      "N F U' R2 D",
+      "N F2 R U' B2",
+      "N F' D R' B'",
+      "N F' D' L B"
+    ]
+  },
+  "((0, 1, 2), (0, 0, 1))": {
+    "1": [
+      "N F'"
+    ],
+    "2": [
+      "N R U"
+    ],
+    "3": [
+      "N R2 B U2",
+      "N R' D' F2",
+      "N F2 L' U'"
+    ],
+    "4": [
+      "N R U2 L F",
+      "N R2 B2 L U'",
+      "N R2 B2 L2 F",
+      "N R2 B' D2 F2",
+      "N R' D B2 U2",
+      "N R' D2 L2 U'",
+      "N R' D2 L' F",
+      "N F D R F'",
+      "N F D R2 U",
+      "N F D2 B2 U2",
+      "N F D' L2 U'",
+      "N F D' L' F",
+      "N F2 L D F2",
+      "N F2 L2 B' U2"
+    ]
+  },
+  "((0, 1, 2), (0, 1, 0))": {
+    "1": [
+      "N F2"
+    ],
+    "3": [
+      "N R U F'",
+      "N R U2 L",
+      "N R2 B2 L2",
+      "N R' D2 L'",
+      "N R' D' F",
+      "N F D' L'",
+      "N F' U L"
+    ],
+    "4": [
+      "N R U' B L2",
+      "N R2 B U2 F'",
+      "N R2 B U' L",
+      "N R2 B' D L'",
+      "N R2 B' D2 F",
+      "N R' D B' L2",
+      "N F D R F2",
+      "N F D2 B' L2",
+      "N F' U2 B L2",
+      "N F' U' R' F2"
+    ]
+  },
+  "((0, 1, 2), (0, 1, 2))": {
+    "0": [
+      "N"
+    ],
+    "3": [
+      "N R U F",
+      "N R' D' F'",
+      "N F D R",
+      "N F' U' R'"
+    ],
+    "4": [
+      "N R U2 L F2",
+      "N R U' B' R2",
+      "N R2 B U R'",
+      "N R2 B U2 F",
+      "N R2 B2 L2 F2",
+      "N R2 B' D2 F'",
+      "N R2 B' D' R",
+      "N R' D B R2",
+      "N R' D2 L' F2",
+      "N F D2 B R2",
+      "N F D' L' F2",
+      "N F2 L D F'",
+      "N F2 L D2 R",
+      "N F2 L2 B2 R2",
+      "N F2 L' U2 R'",
+      "N F2 L' U' F",
+      "N F' U L F2",
+      "N F' U2 B' R2"
+    ]
+  },
+  "((0, 1, 2), (0, 2, 1))": {
+    "1": [
+      "N F"
+    ],
+    "2": [
+      "N R' D'"
+    ],
+    "3": [
+      "N R U F2",
+      "N R2 B' D2",
+      "N F2 L D"
+    ],
+    "4": [
+      "N R U2 L F'",
+      "N R U2 L2 D",
+      "N R U' B2 D2",
+      "N R2 B U2 F2",
+      "N R2 B2 L2 F'",
+      "N R2 B2 L' D",
+      "N R' D2 L' F'",
+      "N F2 L2 B D2",
+      "N F2 L' U' F2",
+      "N F' U L F'",
+      "N F' U L2 D",
+      "N F' U2 B2 D2",
+      "N F' U' R2 D'",
+      "N F' U' R' F"
+    ]
+  },
+  "((0, 1, 2), (1, 0, 0))": {
+    "2": [
+      "N R U2",
+      "N F2 L'",
+      "N F' U"
+    ],
+    "3": [
+      "N R2 B U'",
+      "N R2 B2 L",
+      "N R' D2 L2",
+      "N F D' L2"
+    ],
+    "4": [
+      "N R U F' L'",
+      "N R U' B L",
+      "N R2 B' D L2",
+      "N R' D B2 U'",
+      "N R' D B' L",
+      "N R' D' F L'",
+      "N R' D' F2 U",
+      "N F D R2 U2",
+      "N F D2 B2 U'",
+      "N F D2 B' L",
+      "N F2 L2 B' U'",
+      "N F' U2 B L"
+    ]
+  },
+  "((0, 1, 2), (1, 0, 2))": {
+    "1": [
+      "N R"
+    ],
+    "2": [
+      "N F' U'"
+    ],
+    "3": [
+      "N R2 B U",
+      "N F D R2",
+      "N F2 L' U2"
+    ],
+    "4": [
+      "N R2 B2 L U2",
+      "N R2 B' D' R2",
+      "N R' D B R'",
+      "N R' D B2 U",
+      "N R' D2 L2 U2",
+      "N R' D' F2 U'",
+      "N R' D' F' R",
+      "N F D2 B R'",
+      "N F D2 B2 U",
+      "N F D' L2 U2",
+      "N F2 L D2 R2",
+      "N F2 L2 B2 R'",
+      "N F2 L2 B' U",
+      "N F' U2 B' R'"
+    ]
+  },
+  "((0, 1, 2), (1, 2, 0))": {
+    "2": [
+      "N R' D2",
+      "N F D'",
+      "N F2 L"
+    ],
+    "3": [
+      "N R U2 L2",
+      "N R2 B2 L'",
+      "N R2 B' D",
+      "N F' U L2"
+    ],
+    "4": [
+      "N R U F2 D'",
+      "N R U F' L",
+      "N R U' B L'",
+      "N R U' B2 D",
+      "N R2 B U' L2",
+      "N R' D B' L'",
+      "N R' D' F L",
+      "N F D2 B' L'",
+      "N F2 L2 B D",
+      "N F' U2 B L'",
+      "N F' U2 B2 D",
+      "N F' U' R2 D2"
+    ]
+  },
+  "((0, 1, 2), (1, 2, 2))": {
+    "1": [
+      "N R'"
+    ],
+    "2": [
+      "N F D"
+    ],
+    "3": [
+      "N R2 B' D'",
+      "N F2 L D2",
+      "N F' U' R2"
+    ],
+    "4": [
+      "N R U F R'",
+      "N R U F2 D",
+      "N R U2 L2 D2",
+      "N R U' B2 D'",
+      "N R U' B' R",
+      "N R2 B U R2",
+      "N R2 B2 L' D2",
+      "N F D2 B R",
+      "N F2 L2 B D'",
+      "N F2 L2 B2 R",
+      "N F2 L' U2 R2",
+      "N F' U L2 D2",
+      "N F' U2 B2 D'",
+      "N F' U2 B' R"
+    ]
+  },
+  "((0, 1, 2), (2, 0, 1))": {
+    "2": [
+      "N R U'",
+      "N R2 B",
+      "N F' U2"
+    ],
+    "3": [
+      "N R' D B2",
+      "N F D2 B2",
+      "N F2 L2 B'",
+      "N F2 L' U"
+    ],
+    "4": [
+      "N R U2 L' B'",
+      "N R2 B2 L U",
+      "N R' D2 L B'",
+      "N R' D2 L2 U",
+      "N R' D' F2 U2",
+      "N F D R2 U'",
+      "N F D R' B",
+      "N F D' L B'",
+      "N F D' L2 U",
+      "N F2 L D' B2",
+      "N F' U L' B'",
+      "N F' U' R B"
+    ]
+  },
+  "((0, 1, 2), (2, 1, 0))": {
+    "2": [
+      "N R2 B2",
+      "N F2 L2"
+    ],
+    "3": [
+      "N R U2 L'",
+      "N R U' B",
+      "N R' D B'",
+      "N R' D2 L",
+      "N F D2 B'",
+      "N F D' L",
+      "N F' U L'",
+      "N F' U2 B"
+    ],
+    "4": [
+      "N R U F' L2",
+      "N R2 B U' L'",
+      "N R2 B' D L",
+      "N R' D' F L2",
+      "N F D R' B2",
+      "N F2 L D' B'",
+      "N F2 L' U B",
+      "N F' U' R B2"
+    ]
+  },
+  "((0, 1, 2), (2, 1, 2))": {
+    "1": [
+      "N R2"
+    ],
+    "3": [
+      "N R U' B'",
+      "N R' D B",
+      "N F D R'",
+      "N F D2 B",
+      "N F2 L2 B2",
+      "N F' U2 B'",
+      "N F' U' R"
+    ],
+    "4": [
+      "N R U F R2",
+      "N R U2 L' B2",
+      "N R' D2 L B2",
+      "N R' D' F' R2",
+      "N F D' L B2",
+      "N F2 L D2 R'",
+      "N F2 L D' B",
+      "N F2 L' U B'",
+      "N F2 L' U2 R",
+      "N F' U L' B2"
+    ]
+  },
+  "((0, 1, 2), (2, 2, 1))": {
+    "2": [
+      "N R2 B'",
+      "N R' D",
+      "N F D2"
+    ],
+    "3": [
+      "N R U' B2",
+      "N F2 L D'",
+      "N F2 L2 B",
+      "N F' U2 B2"
+    ],
+    "4": [
+      "N R U F2 D2",
+      "N R U2 L2 D'",
+      "N R U2 L' B",
+      "N R2 B2 L' D'",
+      "N R' D2 L B",
+      "N F D R' B'",
+      "N F D' L B",
+      "N F2 L' U B2",
+      "N F' U L2 D'",
+      "N F' U L' B",
+      "N F' U' R B'",
+      "N F' U' R2 D"
+    ]
+  },
+  "((0, 2, 1), (0, 0, 1))": {
+    "1": [
+      "N F2"
+    ],
+    "3": [
+      "N F L' U'",
+      "N F' R U",
+      "N D R F'",
+      "N D R2 U",
+      "N D2 B2 U2",
+      "N D' L2 U'",
+      "N D' L' F"
+    ],
+    "4": [
+      "N F L D F2",
+      "N F L2 B' U2",
+      "N F' R2 B U2",
+      "N F' R' D' F2",
+      "N D R' B U2",
+      "N D2 B R2 F'",
+      "N D2 B R' U",
+      "N D2 B' L U'",
+      "N D2 B' L2 F",
+      "N D' L B' U2"
+    ]
+  },
+  "((0, 2, 1), (0, 1, 0))": {
+    "1": [
+      "N F"
+    ],
+    "2": [
+      "N D' L'"
+    ],
+    "3": [
+      "N F2 U L",
+      "N D R F2",
+      "N D2 B' L2"
+    ],
+    "4": [
+      "N F2 U2 B L2",
+      "N F2 U' R' F2",
+      "N F' R U F'",
+      "N F' R U2 L",
+      "N F' R2 B2 L2",
+      "N F' R' D2 L'",
+      "N F' R' D' F",
+      "N D R2 U F'",
+      "N D R2 U2 L",
+      "N D R' B2 L2",
+      "N D2 B R2 F2",
+      "N D2 B2 U2 F'",
+      "N D2 B2 U' L",
+      "N D' L2 U' F'"
+    ]
+  },
+  "((0, 2, 1), (0, 1, 2))": {
+    "1": [
+      "N F'"
+    ],
+    "2": [
+      "N D R"
+    ],
+    "3": [
+      "N F2 U' R'",
+      "N D2 B R2",
+      "N D' L' F2"
+    ],
+    "4": [
+      "N F L D F'",
+      "N F L D2 R",
+      "N F L2 B2 R2",
+      "N F L' U2 R'",
+      "N F L' U' F",
+      "N F2 U L F2",
+      "N F2 U2 B' R2",
+      "N D R2 U F",
+      "N D2 B2 U R'",
+      "N D2 B2 U2 F",
+      "N D2 B' L2 F2",
+      "N D' L B2 R2",
+      "N D' L2 U2 R'",
+      "N D' L2 U' F"
+    ]
+  },
+  "((0, 2, 1), (0, 2, 1))": {
+    "0": [
+      "N"
+    ],
+    "3": [
+      "N F L D",
+      "N F' R' D'",
+      "N D R F",
+      "N D' L' F'"
+    ],
+    "4": [
+      "N F L2 B D2",
+      "N F L' U' F2",
+      "N F2 U L F'",
+      "N F2 U L2 D",
+      "N F2 U2 B2 D2",
+      "N F2 U' R2 D'",
+      "N F2 U' R' F",
+      "N F' R U F2",
+      "N F' R2 B' D2",
+      "N D R2 U F2",
+      "N D R' B' D2",
+      "N D2 B R D'",
+      "N D2 B R2 F",
+      "N D2 B2 U2 F2",
+      "N D2 B' L2 F'",
+      "N D2 B' L' D",
+      "N D' L B D2",
+      "N D' L2 U' F2"
+    ]
+  },
+  "((0, 2, 1), (1, 0, 0))": {
+    "2": [
+      "N F L'",
+      "N F2 U",
+      "N D' L2"
+    ],
+    "3": [
+      "N F' R U2",
+      "N D R2 U2",
+      "N D2 B2 U'",
+      "N D2 B' L"
+    ],
+    "4": [
+      "N F L2 B' U'",
+      "N F2 U2 B L",
+      "N F' R2 B U'",
+      "N F' R2 B2 L",
+      "N F' R' D2 L2",
+      "N D R F2 L'",
+      "N D R F' U",
+      "N D R' B U'",
+      "N D R' B2 L",
+      "N D2 B R' U2",
+      "N D' L B' U'",
+      "N D' L' F U"
+    ]
+  },
+  "((0, 2, 1), (1, 0, 2))": {
+    "2": [
+      "N F2 U'",
+      "N F' R",
+      "N D R2"
+    ],
+    "3": [
+      "N F L' U2",
+      "N D2 B R'",
+      "N D2 B2 U",
+      "N D' L2 U2"
+    ],
+    "4": [
+      "N F L D2 R2",
+      "N F L2 B2 R'",
+      "N F L2 B' U",
+      "N F2 U2 B' R'",
+      "N F' R2 B U",
+      "N D R F' U'",
+      "N D R' B U",
+      "N D2 B' L U2",
+      "N D' L B2 R'",
+      "N D' L B' U",
+      "N D' L' F U'",
+      "N D' L' F2 R"
+    ]
+  },
+  "((0, 2, 1), (1, 2, 0))": {
+    "1": [
+      "N D'"
+    ],
+    "2": [
+      "N F L"
+    ],
+    "3": [
+      "N F2 U L2",
+      "N F' R' D2",
+      "N D2 B' L'"
+    ],
+    "4": [
+      "N F L2 B D",
+      "N F2 U2 B L'",
+      "N F2 U2 B2 D",
+      "N F2 U' R2 D2",
+      "N F' R U2 L2",
+      "N F' R2 B2 L'",
+      "N F' R2 B' D",
+      "N D R F D'",
+      "N D R F2 L",
+      "N D R2 U2 L2",
+      "N D R' B2 L'",
+      "N D R' B' D",
+      "N D2 B R D2",
+      "N D2 B2 U' L2"
+    ]
+  },
+  "((0, 2, 1), (1, 2, 2))": {
+    "1": [
+      "N D"
+    ],
+    "2": [
+      "N F' R'"
+    ],
+    "3": [
+      "N F L D2",
+      "N F2 U' R2",
+      "N D2 B R"
+    ],
+    "4": [
+      "N F L2 B D'",
+      "N F L2 B2 R",
+      "N F L' U2 R2",
+      "N F2 U L2 D2",
+      "N F2 U2 B2 D'",
+      "N F2 U2 B' R",
+      "N F' R2 B' D'",
+      "N D2 B2 U R2",
+      "N D2 B' L' D2",
+      "N D' L B D'",
+      "N D' L B2 R",
+      "N D' L2 U2 R2",
+      "N D' L' F2 R'",
+      "N D' L' F' D"
+    ]
+  },
+  "((0, 2, 1), (2, 0, 1))": {
+    "2": [
+      "N F2 U2",
+      "N D2 B2"
+    ],
+    "3": [
+      "N F L2 B'",
+      "N F L' U",
+      "N F' R U'",
+      "N F' R2 B",
+      "N D R2 U'",
+      "N D R' B",
+      "N D' L B'",
+      "N D' L2 U"
+    ],
+    "4": [
+      "N F L D' B2",
+      "N F2 U L' B'",
+      "N F2 U' R B",
+      "N F' R' D B2",
+      "N D R F' U2",
+      "N D2 B R' U'",
+      "N D2 B' L U",
+      "N D' L' F U2"
+    ]
+  },
+  "((0, 2, 1), (2, 1, 0))": {
+    "2": [
+      "N F L2",
+      "N D2 B'",
+      "N D' L"
+    ],
+    "3": [
+      "N F2 U L'",
+      "N F2 U2 B",
+      "N F' R2 B2",
+      "N D R' B2"
+    ],
+    "4": [
+      "N F L D' B'",
+      "N F L' U B",
+      "N F2 U' R B2",
+      "N F' R U2 L'",
+      "N F' R U' B",
+      "N F' R' D B'",
+      "N F' R' D2 L",
+      "N D R F2 L2",
+      "N D R2 U2 L'",
+      "N D R2 U' B",
+      "N D2 B2 U' L'",
+      "N D' L2 U B"
+    ]
+  },
+  "((0, 2, 1), (2, 1, 2))": {
+    "2": [
+      "N F' R2",
+      "N D R'",
+      "N D2 B"
+    ],
+    "3": [
+      "N F L2 B2",
+      "N F2 U2 B'",
+      "N F2 U' R",
+      "N D' L B2"
+    ],
+    "4": [
+      "N F L D2 R'",
+      "N F L D' B",
+      "N F L' U B'",
+      "N F L' U2 R",
+      "N F2 U L' B2",
+      "N F' R U' B'",
+      "N F' R' D B",
+      "N D R2 U' B'",
+      "N D2 B2 U R",
+      "N D' L2 U B'",
+      "N D' L2 U2 R",
+      "N D' L' F2 R2"
+    ]
+  },
+  "((0, 2, 1), (2, 2, 1))": {
+    "1": [
+      "N D2"
+    ],
+    "3": [
+      "N F L D'",
+      "N F L2 B",
+      "N F2 U2 B2",
+      "N F' R2 B'",
+      "N F' R' D",
+      "N D R' B'",
+      "N D' L B"
+    ],
+    "4": [
+      "N F L' U B2",
+      "N F2 U L2 D'",
+      "N F2 U L' B",
+      "N F2 U' R B'",
+      "N F2 U' R2 D",
+      "N F' R U' B2",
+      "N D R F D2",
+      "N D R2 U' B2",
+      "N D' L2 U B2",
+      "N D' L' F' D2"
+    ]
+  },
+  "((1, 0, 0), (0, 0, 1))": {
+    "1": [
+      "N U'"
+    ],
+    "2": [
+      "N L F"
+    ],
+    "3": [
+      "N L2 D F2",
+      "N L' B' U2",
+      "N U2 R' F'"
+    ],
+    "4": [
+      "N L F2 R U",
+      "N L2 D2 R F'",
+      "N L2 D2 R2 U",
+      "N L2 D' B2 U2",
+      "N L' B D2 F2",
+      "N L' B2 R2 F'",
+      "N L' B2 R' U",
+      "N U B L U'",
+      "N U B L2 F",
+      "N U B2 D2 F2",
+      "N U B' R2 F'",
+      "N U B' R' U",
+      "N U2 R B U2",
+      "N U2 R2 D' F2"
+    ]
+  },
+  "((1, 0, 0), (0, 1, 0))": {
+    "1": [
+      "N L"
+    ],
+    "2": [
+      "N U' F'"
+    ],
+    "3": [
+      "N L2 D F",
+      "N U B L2",
+      "N U2 R' F2"
+    ],
+    "4": [
+      "N L2 D2 R F2",
+      "N L2 D' B' L2",
+      "N L' B D L'",
+      "N L' B D2 F",
+      "N L' B2 R2 F2",
+      "N L' B' U2 F'",
+      "N L' B' U' L",
+      "N U B2 D L'",
+      "N U B2 D2 F",
+      "N U B' R2 F2",
+      "N U2 R B2 L2",
+      "N U2 R2 D2 L'",
+      "N U2 R2 D' F",
+      "N U' F2 D' L'"
+    ]
+  },
+  "((1, 0, 0), (0, 1, 2))": {
+    "2": [
+      "N L F2",
+      "N U2 R'",
+      "N U' F"
+    ],
+    "3": [
+      "N L2 D F'",
+      "N L2 D2 R",
+      "N L' B2 R2",
+      "N U B' R2"
+    ],
+    "4": [
+      "N L F U' R'",
+      "N L F' D R",
+      "N L2 D' B R2",
+      "N L' B D2 F'",
+      "N L' B D' R",
+      "N L' B' U R'",
+      "N L' B' U2 F",
+      "N U B L2 F2",
+      "N U B2 D2 F'",
+      "N U B2 D' R",
+      "N U2 R2 D' F'",
+      "N U' F2 D R"
+    ]
+  },
+  "((1, 0, 0), (0, 2, 1))": {
+    "2": [
+      "N L F'",
+      "N L2 D",
+      "N U' F2"
+    ],
+    "3": [
+      "N L' B D2",
+      "N U B2 D2",
+      "N U2 R2 D'",
+      "N U2 R' F"
+    ],
+    "4": [
+      "N L F2 R' D'",
+      "N L2 D2 R F",
+      "N L' B2 R D'",
+      "N L' B2 R2 F",
+      "N L' B' U2 F2",
+      "N U B L2 F'",
+      "N U B L' D",
+      "N U B' R D'",
+      "N U B' R2 F",
+      "N U2 R B' D2",
+      "N U' F R' D'",
+      "N U' F' L D"
+    ]
+  },
+  "((1, 0, 0), (1, 0, 0))": {
+    "0": [
+      "N"
+    ],
+    "3": [
+      "N L F U",
+      "N L' B' U'",
+      "N U B L",
+      "N U' F' L'"
+    ],
+    "4": [
+      "N L F2 R U2",
+      "N L F' D' L2",
+      "N L2 D F L'",
+      "N L2 D F2 U",
+      "N L2 D2 R2 U2",
+      "N L2 D' B2 U'",
+      "N L2 D' B' L",
+      "N L' B D L2",
+      "N L' B2 R' U2",
+      "N U B2 D L2",
+      "N U B' R' U2",
+      "N U2 R B U'",
+      "N U2 R B2 L",
+      "N U2 R2 D2 L2",
+      "N U2 R' F2 L'",
+      "N U2 R' F' U",
+      "N U' F R U2",
+      "N U' F2 D' L2"
+    ]
+  },
+  "((1, 0, 0), (1, 0, 2))": {
+    "1": [
+      "N U2"
+    ],
+    "3": [
+      "N L F U'",
+      "N L F2 R",
+      "N L2 D2 R2",
+      "N L' B2 R'",
+      "N L' B' U",
+      "N U B' R'",
+      "N U' F R"
+    ],
+    "4": [
+      "N L F' D R2",
+      "N L2 D F2 U'",
+      "N L2 D F' R",
+      "N L2 D' B R'",
+      "N L2 D' B2 U",
+      "N L' B D' R2",
+      "N U B L U2",
+      "N U B2 D' R2",
+      "N U' F2 D R2",
+      "N U' F' L' U2"
+    ]
+  },
+  "((1, 0, 0), (1, 2, 0))": {
+    "1": [
+      "N L2"
+    ],
+    "3": [
+      "N L F' D'",
+      "N L' B D",
+      "N U B L'",
+      "N U B2 D",
+      "N U2 R2 D2",
+      "N U' F2 D'",
+      "N U' F' L"
+    ],
+    "4": [
+      "N L F U L2",
+      "N L F2 R' D2",
+      "N L' B2 R D2",
+      "N L' B' U' L2",
+      "N U B' R D2",
+      "N U2 R B2 L'",
+      "N U2 R B' D",
+      "N U2 R' F D'",
+      "N U2 R' F2 L",
+      "N U' F R' D2"
+    ]
+  },
+  "((1, 0, 0), (1, 2, 2))": {
+    "2": [
+      "N L2 D2",
+      "N U2 R2"
+    ],
+    "3": [
+      "N L F2 R'",
+      "N L F' D",
+      "N L' B D'",
+      "N L' B2 R",
+      "N U B2 D'",
+      "N U B' R",
+      "N U' F R'",
+      "N U' F2 D"
+    ],
+    "4": [
+      "N L F U' R2",
+      "N L2 D F' R'",
+      "N L2 D' B R",
+      "N L' B' U R2",
+      "N U B L' D2",
+      "N U2 R B' D'",
+      "N U2 R' F D",
+      "N U' F' L D2"
+    ]
+  },
+  "((1, 0, 0), (2, 0, 1))": {
+    "1": [
+      "N U"
+    ],
+    "2": [
+      "N L' B'"
+    ],
+    "3": [
+      "N L F U2",
+      "N L2 D' B2",
+      "N U2 R B"
+    ],
+    "4": [
+      "N L F2 R U'",
+      "N L F2 R2 B",
+      "N L F' D2 B2",
+      "N L2 D F2 U2",
+      "N L2 D2 R2 U'",
+      "N L2 D2 R' B",
+      "N L' B2 R' U'",
+      "N U2 R2 D B2",
+      "N U2 R' F' U2",
+      "N U' F R U'",
+      "N U' F R2 B",
+      "N U' F2 D2 B2",
+      "N U' F' L2 B'",
+      "N U' F' L' U"
+    ]
+  },
+  "((1, 0, 0), (2, 1, 0))": {
+    "1": [
+      "N L'"
+    ],
+    "2": [
+      "N U B"
+    ],
+    "3": [
+      "N L2 D' B'",
+      "N U2 R B2",
+      "N U' F' L2"
+    ],
+    "4": [
+      "N L F U L'",
+      "N L F U2 B",
+      "N L F2 R2 B2",
+      "N L F' D2 B'",
+      "N L F' D' L",
+      "N L2 D F L2",
+      "N L2 D2 R' B2",
+      "N U B2 D L",
+      "N U2 R2 D B'",
+      "N U2 R2 D2 L",
+      "N U2 R' F2 L2",
+      "N U' F R2 B2",
+      "N U' F2 D2 B'",
+      "N U' F2 D' L"
+    ]
+  },
+  "((1, 0, 0), (2, 1, 2))": {
+    "2": [
+      "N L' B2",
+      "N U B'",
+      "N U2 R"
+    ],
+    "3": [
+      "N L F2 R2",
+      "N L2 D2 R'",
+      "N L2 D' B",
+      "N U' F R2"
+    ],
+    "4": [
+      "N L F U2 B'",
+      "N L F U' R",
+      "N L F' D R'",
+      "N L F' D2 B",
+      "N L2 D F' R2",
+      "N L' B D' R'",
+      "N L' B' U R",
+      "N U B2 D' R'",
+      "N U2 R2 D B",
+      "N U' F2 D R'",
+      "N U' F2 D2 B",
+      "N U' F' L2 B2"
+    ]
+  },
+  "((1, 0, 0), (2, 2, 1))": {
+    "2": [
+      "N L2 D'",
+      "N L' B",
+      "N U B2"
+    ],
+    "3": [
+      "N L F' D2",
+      "N U2 R B'",
+      "N U2 R2 D",
+      "N U' F2 D2"
+    ],
+    "4": [
+      "N L F U2 B2",
+      "N L F2 R2 B'",
+      "N L F2 R' D",
+      "N L2 D2 R' B'",
+      "N L' B2 R D",
+      "N U B L' D'",
+      "N U B' R D",
+      "N U2 R' F D2",
+      "N U' F R2 B'",
+      "N U' F R' D",
+      "N U' F' L D'",
+      "N U' F' L2 B"
+    ]
+  },
+  "((1, 0, 2), (0, 0, 1))": {
+    "1": [
+      "N U"
+    ],
+    "2": [
+      "N R' F'"
+    ],
+    "3": [
+      "N R B U2",
+      "N R2 D' F2",
+      "N U2 L F"
+    ],
+    "4": [
+      "N R B2 L U'",
+      "N R B2 L2 F",
+      "N R B' D2 F2",
+      "N R2 D B2 U2",
+      "N R2 D2 L2 U'",
+      "N R2 D2 L' F",
+      "N R' F2 L' U'",
+      "N U2 L2 D F2",
+      "N U2 L' B' U2",
+      "N U' B L U'",
+      "N U' B L2 F",
+      "N U' B2 D2 F2",
+      "N U' B' R2 F'",
+      "N U' B' R' U"
+    ]
+  },
+  "((1, 0, 2), (0, 1, 0))": {
+    "2": [
+      "N R' F2",
+      "N U F'",
+      "N U2 L"
+    ],
+    "3": [
+      "N R B2 L2",
+      "N R2 D2 L'",
+      "N R2 D' F",
+      "N U' B L2"
+    ],
+    "4": [
+      "N R B U2 F'",
+      "N R B U' L",
+      "N R B' D L'",
+      "N R B' D2 F",
+      "N R2 D B' L2",
+      "N R' F D' L'",
+      "N R' F' U L",
+      "N U F2 D' L'",
+      "N U2 L2 D F",
+      "N U' B2 D L'",
+      "N U' B2 D2 F",
+      "N U' B' R2 F2"
+    ]
+  },
+  "((1, 0, 2), (0, 1, 2))": {
+    "1": [
+      "N R'"
+    ],
+    "2": [
+      "N U F"
+    ],
+    "3": [
+      "N R2 D' F'",
+      "N U2 L F2",
+      "N U' B' R2"
+    ],
+    "4": [
+      "N R B U R'",
+      "N R B U2 F",
+      "N R B2 L2 F2",
+      "N R B' D2 F'",
+      "N R B' D' R",
+      "N R2 D B R2",
+      "N R2 D2 L' F2",
+      "N U F2 D R",
+      "N U2 L2 D F'",
+      "N U2 L2 D2 R",
+      "N U2 L' B2 R2",
+      "N U' B L2 F2",
+      "N U' B2 D2 F'",
+      "N U' B2 D' R"
+    ]
+  },
+  "((1, 0, 2), (0, 2, 1))": {
+    "2": [
+      "N R2 D'",
+      "N R' F",
+      "N U F2"
+    ],
+    "3": [
+      "N R B' D2",
+      "N U2 L F'",
+      "N U2 L2 D",
+      "N U' B2 D2"
+    ],
+    "4": [
+      "N R B U2 F2",
+      "N R B2 L2 F'",
+      "N R B2 L' D",
+      "N R2 D2 L' F'",
+      "N R' F2 L D",
+      "N U F R' D'",
+      "N U F' L D",
+      "N U2 L' B D2",
+      "N U' B L2 F'",
+      "N U' B L' D",
+      "N U' B' R D'",
+      "N U' B' R2 F"
+    ]
+  },
+  "((1, 0, 2), (1, 0, 0))": {
+    "1": [
+      "N U2"
+    ],
+    "3": [
+      "N R B U'",
+      "N R B2 L",
+      "N R2 D2 L2",
+      "N R' F2 L'",
+      "N R' F' U",
+      "N U F' L'",
+      "N U' B L"
+    ],
+    "4": [
+      "N R B' D L2",
+      "N R2 D B2 U'",
+      "N R2 D B' L",
+      "N R2 D' F L'",
+      "N R2 D' F2 U",
+      "N R' F D' L2",
+      "N U F R U2",
+      "N U F2 D' L2",
+      "N U' B2 D L2",
+      "N U' B' R' U2"
+    ]
+  },
+  "((1, 0, 2), (1, 0, 2))": {
+    "0": [
+      "N"
+    ],
+    "3": [
+      "N R B U",
+      "N R' F' U'",
+      "N U F R",
+      "N U' B' R'"
+    ],
+    "4": [
+      "N R B2 L U2",
+      "N R B' D' R2",
+      "N R2 D B R'",
+      "N R2 D B2 U",
+      "N R2 D2 L2 U2",
+      "N R2 D' F2 U'",
+      "N R2 D' F' R",
+      "N R' F D R2",
+      "N R' F2 L' U2",
+      "N U F2 D R2",
+      "N U F' L' U2",
+      "N U2 L F U'",
+      "N U2 L F2 R",
+      "N U2 L2 D2 R2",
+      "N U2 L' B2 R'",
+      "N U2 L' B' U",
+      "N U' B L U2",
+      "N U' B2 D' R2"
+    ]
+  },
+  "((1, 0, 2), (1, 2, 0))": {
+    "2": [
+      "N R2 D2",
+      "N U2 L2"
+    ],
+    "3": [
+      "N R B2 L'",
+      "N R B' D",
+      "N R' F D'",
+      "N R' F2 L",
+      "N U F2 D'",
+      "N U F' L",
+      "N U' B L'",
+      "N U' B2 D"
+    ],
+    "4": [
+      "N R B U' L2",
+      "N R2 D B' L'",
+      "N R2 D' F L",
+      "N R' F' U L2",
+      "N U F R' D2",
+      "N U2 L F' D'",
+      "N U2 L' B D",
+      "N U' B' R D2"
+    ]
+  },
+  "((1, 0, 2), (1, 2, 2))": {
+    "1": [
+      "N R2"
+    ],
+    "3": [
+      "N R B' D'",
+      "N R' F D",
+      "N U F R'",
+      "N U F2 D",
+      "N U2 L2 D2",
+      "N U' B2 D'",
+      "N U' B' R"
+    ],
+    "4": [
+      "N R B U R2",
+      "N R B2 L' D2",
+      "N R' F2 L D2",
+      "N R' F' U' R2",
+      "N U F' L D2",
+      "N U2 L F2 R'",
+      "N U2 L F' D",
+      "N U2 L' B D'",
+      "N U2 L' B2 R",
+      "N U' B L' D2"
+    ]
+  },
+  "((1, 0, 2), (2, 0, 1))": {
+    "1": [
+      "N U'"
+    ],
+    "2": [
+      "N R B"
+    ],
+    "3": [
+      "N R2 D B2",
+      "N R' F' U2",
+      "N U2 L' B'"
+    ],
+    "4": [
+      "N R B2 L U",
+      "N R2 D2 L B'",
+      "N R2 D2 L2 U",
+      "N R2 D' F2 U2",
+      "N R' F D2 B2",
+      "N R' F2 L2 B'",
+      "N R' F2 L' U",
+      "N U F R U'",
+      "N U F R2 B",
+      "N U F2 D2 B2",
+      "N U F' L2 B'",
+      "N U F' L' U",
+      "N U2 L F U2",
+      "N U2 L2 D' B2"
+    ]
+  },
+  "((1, 0, 2), (2, 1, 0))": {
+    "2": [
+      "N R B2",
+      "N U2 L'",
+      "N U' B"
+    ],
+    "3": [
+      "N R2 D B'",
+      "N R2 D2 L",
+      "N R' F2 L2",
+      "N U F' L2"
+    ],
+    "4": [
+      "N R B U' L'",
+      "N R B' D L",
+      "N R2 D' F L2",
+      "N R' F D2 B'",
+      "N R' F D' L",
+      "N R' F' U L'",
+      "N R' F' U2 B",
+      "N U F R2 B2",
+      "N U F2 D2 B'",
+      "N U F2 D' L",
+      "N U2 L2 D' B'",
+      "N U' B2 D L"
+    ]
+  },
+  "((1, 0, 2), (2, 1, 2))": {
+    "1": [
+      "N R"
+    ],
+    "2": [
+      "N U' B'"
+    ],
+    "3": [
+      "N R2 D B",
+      "N U F R2",
+      "N U2 L' B2"
+    ],
+    "4": [
+      "N R2 D2 L B2",
+      "N R2 D' F' R2",
+      "N R' F D R'",
+      "N R' F D2 B",
+      "N R' F2 L2 B2",
+      "N R' F' U2 B'",
+      "N R' F' U' R",
+      "N U F2 D R'",
+      "N U F2 D2 B",
+      "N U F' L2 B2",
+      "N U2 L F2 R2",
+      "N U2 L2 D2 R'",
+      "N U2 L2 D' B",
+      "N U' B2 D' R'"
+    ]
+  },
+  "((1, 0, 2), (2, 2, 1))": {
+    "2": [
+      "N R B'",
+      "N R2 D",
+      "N U' B2"
+    ],
+    "3": [
+      "N R' F D2",
+      "N U F2 D2",
+      "N U2 L2 D'",
+      "N U2 L' B"
+    ],
+    "4": [
+      "N R B2 L' D'",
+      "N R2 D2 L B",
+      "N R' F2 L D'",
+      "N R' F2 L2 B",
+      "N R' F' U2 B2",
+      "N U F R2 B'",
+      "N U F R' D",
+      "N U F' L D'",
+      "N U F' L2 B",
+      "N U2 L F' D2",
+      "N U' B L' D'",
+      "N U' B' R D"
+    ]
+  },
+  "((1, 2, 0), (0, 0, 1))": {
+    "2": [
+      "N L2 U'",
+      "N L' F",
+      "N D F2"
+    ],
+    "3": [
+      "N L B' U2",
+      "N D2 R F'",
+      "N D2 R2 U",
+      "N D' B2 U2"
+    ],
+    "4": [
+      "N L B D2 F2",
+      "N L B2 R2 F'",
+      "N L B2 R' U",
+      "N L2 U2 R' F'",
+      "N L' F2 R U",
+      "N D F L' U'",
+      "N D F' R U",
+      "N D2 R' B U2",
+      "N D' B R2 F'",
+      "N D' B R' U",
+      "N D' B' L U'",
+      "N D' B' L2 F"
+    ]
+  },
+  "((1, 2, 0), (0, 1, 0))": {
+    "1": [
+      "N L'"
+    ],
+    "2": [
+      "N D F"
+    ],
+    "3": [
+      "N L2 U' F'",
+      "N D2 R F2",
+      "N D' B' L2"
+    ],
+    "4": [
+      "N L B D L'",
+      "N L B D2 F",
+      "N L B2 R2 F2",
+      "N L B' U2 F'",
+      "N L B' U' L",
+      "N L2 U B L2",
+      "N L2 U2 R' F2",
+      "N D F2 U L",
+      "N D2 R2 U F'",
+      "N D2 R2 U2 L",
+      "N D2 R' B2 L2",
+      "N D' B R2 F2",
+      "N D' B2 U2 F'",
+      "N D' B2 U' L"
+    ]
+  },
+  "((1, 2, 0), (0, 1, 2))": {
+    "2": [
+      "N L' F2",
+      "N D F'",
+      "N D2 R"
+    ],
+    "3": [
+      "N L B2 R2",
+      "N L2 U2 R'",
+      "N L2 U' F",
+      "N D' B R2"
+    ],
+    "4": [
+      "N L B D2 F'",
+      "N L B D' R",
+      "N L B' U R'",
+      "N L B' U2 F",
+      "N L2 U B' R2",
+      "N L' F U' R'",
+      "N L' F' D R",
+      "N D F2 U' R'",
+      "N D2 R2 U F",
+      "N D' B2 U R'",
+      "N D' B2 U2 F",
+      "N D' B' L2 F2"
+    ]
+  },
+  "((1, 2, 0), (0, 2, 1))": {
+    "1": [
+      "N D"
+    ],
+    "2": [
+      "N L' F'"
+    ],
+    "3": [
+      "N L B D2",
+      "N L2 U' F2",
+      "N D2 R F"
+    ],
+    "4": [
+      "N L B2 R D'",
+      "N L B2 R2 F",
+      "N L B' U2 F2",
+      "N L2 U B2 D2",
+      "N L2 U2 R2 D'",
+      "N L2 U2 R' F",
+      "N L' F2 R' D'",
+      "N D2 R2 U F2",
+      "N D2 R' B' D2",
+      "N D' B R D'",
+      "N D' B R2 F",
+      "N D' B2 U2 F2",
+      "N D' B' L2 F'",
+      "N D' B' L' D"
+    ]
+  },
+  "((1, 2, 0), (1, 0, 0))": {
+    "1": [
+      "N L2"
+    ],
+    "3": [
+      "N L B' U'",
+      "N L' F U",
+      "N D F L'",
+      "N D F2 U",
+      "N D2 R2 U2",
+      "N D' B2 U'",
+      "N D' B' L"
+    ],
+    "4": [
+      "N L B D L2",
+      "N L B2 R' U2",
+      "N L' F2 R U2",
+      "N L' F' D' L2",
+      "N D F' R U2",
+      "N D2 R F2 L'",
+      "N D2 R F' U",
+      "N D2 R' B U'",
+      "N D2 R' B2 L",
+      "N D' B R' U2"
+    ]
+  },
+  "((1, 2, 0), (1, 0, 2))": {
+    "2": [
+      "N L2 U2",
+      "N D2 R2"
+    ],
+    "3": [
+      "N L B2 R'",
+      "N L B' U",
+      "N L' F U'",
+      "N L' F2 R",
+      "N D F2 U'",
+      "N D F' R",
+      "N D' B R'",
+      "N D' B2 U"
+    ],
+    "4": [
+      "N L B D' R2",
+      "N L2 U B' R'",
+      "N L2 U' F R",
+      "N L' F' D R2",
+      "N D F L' U2",
+      "N D2 R F' U'",
+      "N D2 R' B U",
+      "N D' B' L U2"
+    ]
+  },
+  "((1, 2, 0), (1, 2, 0))": {
+    "0": [
+      "N"
+    ],
+    "3": [
+      "N L B D",
+      "N L' F' D'",
+      "N D F L",
+      "N D' B' L'"
+    ],
+    "4": [
+      "N L B2 R D2",
+      "N L B' U' L2",
+      "N L2 U B L'",
+      "N L2 U B2 D",
+      "N L2 U2 R2 D2",
+      "N L2 U' F2 D'",
+      "N L2 U' F' L",
+      "N L' F U L2",
+      "N L' F2 R' D2",
+      "N D F2 U L2",
+      "N D F' R' D2",
+      "N D2 R F D'",
+      "N D2 R F2 L",
+      "N D2 R2 U2 L2",
+      "N D2 R' B2 L'",
+      "N D2 R' B' D",
+      "N D' B R D2",
+      "N D' B2 U' L2"
+    ]
+  },
+  "((1, 2, 0), (1, 2, 2))": {
+    "1": [
+      "N D2"
+    ],
+    "3": [
+      "N L B D'",
+      "N L B2 R",
+      "N L2 U2 R2",
+      "N L' F2 R'",
+      "N L' F' D",
+      "N D F' R'",
+      "N D' B R"
+    ],
+    "4": [
+      "N L B' U R2",
+      "N L2 U B2 D'",
+      "N L2 U B' R",
+      "N L2 U' F R'",
+      "N L2 U' F2 D",
+      "N L' F U' R2",
+      "N D F L D2",
+      "N D F2 U' R2",
+      "N D' B2 U R2",
+      "N D' B' L' D2"
+    ]
+  },
+  "((1, 2, 0), (2, 0, 1))": {
+    "2": [
+      "N L B'",
+      "N L2 U",
+      "N D' B2"
+    ],
+    "3": [
+      "N L' F U2",
+      "N D F2 U2",
+      "N D2 R2 U'",
+      "N D2 R' B"
+    ],
+    "4": [
+      "N L B2 R' U'",
+      "N L2 U2 R B",
+      "N L' F2 R U'",
+      "N L' F2 R2 B",
+      "N L' F' D2 B2",
+      "N D F L2 B'",
+      "N D F L' U",
+      "N D F' R U'",
+      "N D F' R2 B",
+      "N D2 R F' U2",
+      "N D' B R' U'",
+      "N D' B' L U"
+    ]
+  },
+  "((1, 2, 0), (2, 1, 0))": {
+    "1": [
+      "N L"
+    ],
+    "2": [
+      "N D' B'"
+    ],
+    "3": [
+      "N L2 U B",
+      "N D F L2",
+      "N D2 R' B2"
+    ],
+    "4": [
+      "N L2 U2 R B2",
+      "N L2 U' F' L2",
+      "N L' F U L'",
+      "N L' F U2 B",
+      "N L' F2 R2 B2",
+      "N L' F' D2 B'",
+      "N L' F' D' L",
+      "N D F2 U L'",
+      "N D F2 U2 B",
+      "N D F' R2 B2",
+      "N D2 R F2 L2",
+      "N D2 R2 U2 L'",
+      "N D2 R2 U' B",
+      "N D' B2 U' L'"
+    ]
+  },
+  "((1, 2, 0), (2, 1, 2))": {
+    "2": [
+      "N L B2",
+      "N D2 R'",
+      "N D' B"
+    ],
+    "3": [
+      "N L2 U B'",
+      "N L2 U2 R",
+      "N L' F2 R2",
+      "N D F' R2"
+    ],
+    "4": [
+      "N L B D' R'",
+      "N L B' U R",
+      "N L2 U' F R2",
+      "N L' F U2 B'",
+      "N L' F U' R",
+      "N L' F' D R'",
+      "N L' F' D2 B",
+      "N D F L2 B2",
+      "N D F2 U2 B'",
+      "N D F2 U' R",
+      "N D2 R2 U' B'",
+      "N D' B2 U R"
+    ]
+  },
+  "((1, 2, 0), (2, 2, 1))": {
+    "1": [
+      "N D'"
+    ],
+    "2": [
+      "N L B"
+    ],
+    "3": [
+      "N L2 U B2",
+      "N L' F' D2",
+      "N D2 R' B'"
+    ],
+    "4": [
+      "N L B2 R D",
+      "N L2 U2 R B'",
+      "N L2 U2 R2 D",
+      "N L2 U' F2 D2",
+      "N L' F U2 B2",
+      "N L' F2 R2 B'",
+      "N L' F2 R' D",
+      "N D F L D'",
+      "N D F L2 B",
+      "N D F2 U2 B2",
+      "N D F' R2 B'",
+      "N D F' R' D",
+      "N D2 R F D2",
+      "N D2 R2 U' B2"
+    ]
+  },
+  "((1, 2, 2), (0, 0, 1))": {
+    "2": [
+      "N R F'",
+      "N R2 U",
+      "N D' F2"
+    ],
+    "3": [
+      "N R' B U2",
+      "N D B2 U2",
+      "N D2 L2 U'",
+      "N D2 L' F"
+    ],
+    "4": [
+      "N R F2 L' U'",
+      "N R2 U2 L F",
+      "N R' B2 L U'",
+      "N R' B2 L2 F",
+      "N R' B' D2 F2",
+      "N D B R2 F'",
+      "N D B R' U",
+      "N D B' L U'",
+      "N D B' L2 F",
+      "N D2 L B' U2",
+      "N D' F L' U'",
+      "N D' F' R U"
+    ]
+  },
+  "((1, 2, 2), (0, 1, 0))": {
+    "2": [
+      "N R F2",
+      "N D2 L'",
+      "N D' F"
+    ],
+    "3": [
+      "N R2 U F'",
+      "N R2 U2 L",
+      "N R' B2 L2",
+      "N D B' L2"
+    ],
+    "4": [
+      "N R F D' L'",
+      "N R F' U L",
+      "N R2 U' B L2",
+      "N R' B U2 F'",
+      "N R' B U' L",
+      "N R' B' D L'",
+      "N R' B' D2 F",
+      "N D B R2 F2",
+      "N D B2 U2 F'",
+      "N D B2 U' L",
+      "N D2 L2 U' F'",
+      "N D' F2 U L"
+    ]
+  },
+  "((1, 2, 2), (0, 1, 2))": {
+    "1": [
+      "N R"
+    ],
+    "2": [
+      "N D' F'"
+    ],
+    "3": [
+      "N R2 U F",
+      "N D B R2",
+      "N D2 L' F2"
+    ],
+    "4": [
+      "N R2 U2 L F2",
+      "N R2 U' B' R2",
+      "N R' B U R'",
+      "N R' B U2 F",
+      "N R' B2 L2 F2",
+      "N R' B' D2 F'",
+      "N R' B' D' R",
+      "N D B2 U R'",
+      "N D B2 U2 F",
+      "N D B' L2 F2",
+      "N D2 L B2 R2",
+      "N D2 L2 U2 R'",
+      "N D2 L2 U' F",
+      "N D' F2 U' R'"
+    ]
+  },
+  "((1, 2, 2), (0, 2, 1))": {
+    "1": [
+      "N D'"
+    ],
+    "2": [
+      "N R F"
+    ],
+    "3": [
+      "N R2 U F2",
+      "N R' B' D2",
+      "N D2 L' F'"
+    ],
+    "4": [
+      "N R F2 L D",
+      "N R2 U2 L F'",
+      "N R2 U2 L2 D",
+      "N R2 U' B2 D2",
+      "N R' B U2 F2",
+      "N R' B2 L2 F'",
+      "N R' B2 L' D",
+      "N D B R D'",
+      "N D B R2 F",
+      "N D B2 U2 F2",
+      "N D B' L2 F'",
+      "N D B' L' D",
+      "N D2 L B D2",
+      "N D2 L2 U' F2"
+    ]
+  },
+  "((1, 2, 2), (1, 0, 0))": {
+    "2": [
+      "N R2 U2",
+      "N D2 L2"
+    ],
+    "3": [
+      "N R F2 L'",
+      "N R F' U",
+      "N R' B U'",
+      "N R' B2 L",
+      "N D B2 U'",
+      "N D B' L",
+      "N D' F L'",
+      "N D' F2 U"
+    ],
+    "4": [
+      "N R F D' L2",
+      "N R2 U F' L'",
+      "N R2 U' B L",
+      "N R' B' D L2",
+      "N D B R' U2",
+      "N D2 L B' U'",
+      "N D2 L' F U",
+      "N D' F' R U2"
+    ]
+  },
+  "((1, 2, 2), (1, 0, 2))": {
+    "1": [
+      "N R2"
+    ],
+    "3": [
+      "N R F' U'",
+      "N R' B U",
+      "N D B R'",
+      "N D B2 U",
+      "N D2 L2 U2",
+      "N D' F2 U'",
+      "N D' F' R"
+    ],
+    "4": [
+      "N R F D R2",
+      "N R F2 L' U2",
+      "N R' B2 L U2",
+      "N R' B' D' R2",
+      "N D B' L U2",
+      "N D2 L B2 R'",
+      "N D2 L B' U",
+      "N D2 L' F U'",
+      "N D2 L' F2 R",
+      "N D' F L' U2"
+    ]
+  },
+  "((1, 2, 2), (1, 2, 0))": {
+    "1": [
+      "N D2"
+    ],
+    "3": [
+      "N R F D'",
+      "N R F2 L",
+      "N R2 U2 L2",
+      "N R' B2 L'",
+      "N R' B' D",
+      "N D B' L'",
+      "N D' F L"
+    ],
+    "4": [
+      "N R F' U L2",
+      "N R2 U F2 D'",
+      "N R2 U F' L",
+      "N R2 U' B L'",
+      "N R2 U' B2 D",
+      "N R' B U' L2",
+      "N D B R D2",
+      "N D B2 U' L2",
+      "N D' F2 U L2",
+      "N D' F' R' D2"
+    ]
+  },
+  "((1, 2, 2), (1, 2, 2))": {
+    "0": [
+      "N"
+    ],
+    "3": [
+      "N R F D",
+      "N R' B' D'",
+      "N D B R",
+      "N D' F' R'"
+    ],
+    "4": [
+      "N R F2 L D2",
+      "N R F' U' R2",
+      "N R2 U F R'",
+      "N R2 U F2 D",
+      "N R2 U2 L2 D2",
+      "N R2 U' B2 D'",
+      "N R2 U' B' R",
+      "N R' B U R2",
+      "N R' B2 L' D2",
+      "N D B2 U R2",
+      "N D B' L' D2",
+      "N D2 L B D'",
+      "N D2 L B2 R",
+      "N D2 L2 U2 R2",
+      "N D2 L' F2 R'",
+      "N D2 L' F' D",
+      "N D' F L D2",
+      "N D' F2 U' R2"
+    ]
+  },
+  "((1, 2, 2), (2, 0, 1))": {
+    "2": [
+      "N R2 U'",
+      "N R' B",
+      "N D B2"
+    ],
+    "3": [
+      "N R F' U2",
+      "N D2 L B'",
+      "N D2 L2 U",
+      "N D' F2 U2"
+    ],
+    "4": [
+      "N R F D2 B2",
+      "N R F2 L2 B'",
+      "N R F2 L' U",
+      "N R2 U2 L' B'",
+      "N R' B2 L U",
+      "N D B R' U'",
+      "N D B' L U",
+      "N D2 L' F U2",
+      "N D' F L2 B'",
+      "N D' F L' U",
+      "N D' F' R U'",
+      "N D' F' R2 B"
+    ]
+  },
+  "((1, 2, 2), (2, 1, 0))": {
+    "2": [
+      "N R' B2",
+      "N D B'",
+      "N D2 L"
+    ],
+    "3": [
+      "N R F2 L2",
+      "N R2 U2 L'",
+      "N R2 U' B",
+      "N D' F L2"
+    ],
+    "4": [
+      "N R F D2 B'",
+      "N R F D' L",
+      "N R F' U L'",
+      "N R F' U2 B",
+      "N R2 U F' L2",
+      "N R' B U' L'",
+      "N R' B' D L",
+      "N D B2 U' L'",
+      "N D2 L2 U B",
+      "N D' F2 U L'",
+      "N D' F2 U2 B",
+      "N D' F' R2 B2"
+    ]
+  },
+  "((1, 2, 2), (2, 1, 2))": {
+    "1": [
+      "N R'"
+    ],
+    "2": [
+      "N D B"
+    ],
+    "3": [
+      "N R2 U' B'",
+      "N D2 L B2",
+      "N D' F' R2"
+    ],
+    "4": [
+      "N R F D R'",
+      "N R F D2 B",
+      "N R F2 L2 B2",
+      "N R F' U2 B'",
+      "N R F' U' R",
+      "N R2 U F R2",
+      "N R2 U2 L' B2",
+      "N D B2 U R",
+      "N D2 L2 U B'",
+      "N D2 L2 U2 R",
+      "N D2 L' F2 R2",
+      "N D' F L2 B2",
+      "N D' F2 U2 B'",
+      "N D' F2 U' R"
+    ]
+  },
+  "((1, 2, 2), (2, 2, 1))": {
+    "1": [
+      "N D"
+    ],
+    "2": [
+      "N R' B'"
+    ],
+    "3": [
+      "N R F D2",
+      "N R2 U' B2",
+      "N D2 L B"
+    ],
+    "4": [
+      "N R F2 L D'",
+      "N R F2 L2 B",
+      "N R F' U2 B2",
+      "N R2 U F2 D2",
+      "N R2 U2 L2 D'",
+      "N R2 U2 L' B",
+      "N R' B2 L' D'",
+      "N D2 L2 U B2",
+      "N D2 L' F' D2",
+      "N D' F L D'",
+      "N D' F L2 B",
+      "N D' F2 U2 B2",
+      "N D' F' R2 B'",
+      "N D' F' R' D"
+    ]
+  },
+  "((2, 0, 1), (0, 0, 1))": {
+    "1": [
+      "N U2"
+    ],
+    "3": [
+      "N B L U'",
+      "N B L2 F",
+      "N B2 D2 F2",
+      "N B' R2 F'",
+      "N B' R' U",
+      "N U R' F'",
+      "N U' L F"
+    ],
+    "4": [
+      "N B L' D F2",
+      "N B2 D L2 U'",
+      "N B2 D L' F",
+      "N B2 D' R F'",
+      "N B2 D' R2 U",
+      "N B' R D' F2",
+      "N U R B U2",
+      "N U R2 D' F2",
+      "N U' L2 D F2",
+      "N U' L' B' U2"
+    ]
+  },
+  "((2, 0, 1), (0, 1, 0))": {
+    "2": [
+      "N B L2",
+      "N U2 F'",
+      "N U' L"
+    ],
+    "3": [
+      "N B2 D L'",
+      "N B2 D2 F",
+      "N B' R2 F2",
+      "N U R' F2"
+    ],
+    "4": [
+      "N B L U' F'",
+      "N B L' D F",
+      "N B2 D' R F2",
+      "N B' R D2 L'",
+      "N B' R D' F",
+      "N B' R' U F'",
+      "N B' R' U2 L",
+      "N U R B2 L2",
+      "N U R2 D2 L'",
+      "N U R2 D' F",
+      "N U2 F2 D' L'",
+      "N U' L2 D F"
+    ]
+  },
+  "((2, 0, 1), (0, 1, 2))": {
+    "2": [
+      "N B' R2",
+      "N U R'",
+      "N U2 F"
+    ],
+    "3": [
+      "N B L2 F2",
+      "N B2 D2 F'",
+      "N B2 D' R",
+      "N U' L F2"
+    ],
+    "4": [
+      "N B L U2 R'",
+      "N B L U' F",
+      "N B L' D F'",
+      "N B L' D2 R",
+      "N B2 D L' F2",
+      "N B' R D' F'",
+      "N B' R' U F",
+      "N U R2 D' F'",
+      "N U2 F2 D R",
+      "N U' L2 D F'",
+      "N U' L2 D2 R",
+      "N U' L' B2 R2"
+    ]
+  },
+  "((2, 0, 1), (0, 2, 1))": {
+    "2": [
+      "N B2 D2",
+      "N U2 F2"
+    ],
+    "3": [
+      "N B L2 F'",
+      "N B L' D",
+      "N B' R D'",
+      "N B' R2 F",
+      "N U R2 D'",
+      "N U R' F",
+      "N U' L F'",
+      "N U' L2 D"
+    ],
+    "4": [
+      "N B L U' F2",
+      "N B2 D L' F'",
+      "N B2 D' R F",
+      "N B' R' U F2",
+      "N U R B' D2",
+      "N U2 F R' D'",
+      "N U2 F' L D",
+      "N U' L' B D2"
+    ]
+  },
+  "((2, 0, 1), (1, 0, 0))": {
+    "1": [
+      "N U'"
+    ],
+    "2": [
+      "N B L"
+    ],
+    "3": [
+      "N B2 D L2",
+      "N B' R' U2",
+      "N U2 F' L'"
+    ],
+    "4": [
+      "N B L2 F U",
+      "N B2 D2 F L'",
+      "N B2 D2 F2 U",
+      "N B2 D' R2 U2",
+      "N B' R D2 L2",
+      "N B' R2 F2 L'",
+      "N B' R2 F' U",
+      "N U R B U'",
+      "N U R B2 L",
+      "N U R2 D2 L2",
+      "N U R' F2 L'",
+      "N U R' F' U",
+      "N U2 F R U2",
+      "N U2 F2 D' L2"
+    ]
+  },
+  "((2, 0, 1), (1, 0, 2))": {
+    "1": [
+      "N U"
+    ],
+    "2": [
+      "N B' R'"
+    ],
+    "3": [
+      "N B L U2",
+      "N B2 D' R2",
+      "N U2 F R"
+    ],
+    "4": [
+      "N B L2 F U'",
+      "N B L2 F2 R",
+      "N B L' D2 R2",
+      "N B2 D L2 U2",
+      "N B2 D2 F2 U'",
+      "N B2 D2 F' R",
+      "N B' R2 F' U'",
+      "N U2 F2 D R2",
+      "N U2 F' L' U2",
+      "N U' L F U'",
+      "N U' L F2 R",
+      "N U' L2 D2 R2",
+      "N U' L' B2 R'",
+      "N U' L' B' U"
+    ]
+  },
+  "((2, 0, 1), (1, 2, 0))": {
+    "2": [
+      "N B L'",
+      "N B2 D",
+      "N U' L2"
+    ],
+    "3": [
+      "N B' R D2",
+      "N U R2 D2",
+      "N U2 F2 D'",
+      "N U2 F' L"
+    ],
+    "4": [
+      "N B L2 F' D'",
+      "N B2 D2 F L",
+      "N B' R2 F D'",
+      "N B' R2 F2 L",
+      "N B' R' U2 L2",
+      "N U R B2 L'",
+      "N U R B' D",
+      "N U R' F D'",
+      "N U R' F2 L",
+      "N U2 F R' D2",
+      "N U' L F' D'",
+      "N U' L' B D"
+    ]
+  },
+  "((2, 0, 1), (1, 2, 2))": {
+    "2": [
+      "N B2 D'",
+      "N B' R",
+      "N U R2"
+    ],
+    "3": [
+      "N B L' D2",
+      "N U2 F R'",
+      "N U2 F2 D",
+      "N U' L2 D2"
+    ],
+    "4": [
+      "N B L U2 R2",
+      "N B L2 F2 R'",
+      "N B L2 F' D",
+      "N B2 D2 F' R'",
+      "N B' R2 F D",
+      "N U R B' D'",
+      "N U R' F D",
+      "N U2 F' L D2",
+      "N U' L F2 R'",
+      "N U' L F' D",
+      "N U' L' B D'",
+      "N U' L' B2 R"
+    ]
+  },
+  "((2, 0, 1), (2, 0, 1))": {
+    "0": [
+      "N"
+    ],
+    "3": [
+      "N B L U",
+      "N B' R' U'",
+      "N U R B",
+      "N U' L' B'"
+    ],
+    "4": [
+      "N B L2 F U2",
+      "N B L' D' B2",
+      "N B2 D L B'",
+      "N B2 D L2 U",
+      "N B2 D2 F2 U2",
+      "N B2 D' R2 U'",
+      "N B2 D' R' B",
+      "N B' R D B2",
+      "N B' R2 F' U2",
+      "N U R2 D B2",
+      "N U R' F' U2",
+      "N U2 F R U'",
+      "N U2 F R2 B",
+      "N U2 F2 D2 B2",
+      "N U2 F' L2 B'",
+      "N U2 F' L' U",
+      "N U' L F U2",
+      "N U' L2 D' B2"
+    ]
+  },
+  "((2, 0, 1), (2, 1, 0))": {
+    "1": [
+      "N B"
+    ],
+    "2": [
+      "N U' L'"
+    ],
+    "3": [
+      "N B2 D L",
+      "N U R B2",
+      "N U2 F' L2"
+    ],
+    "4": [
+      "N B2 D2 F L2",
+      "N B2 D' R' B2",
+      "N B' R D B'",
+      "N B' R D2 L",
+      "N B' R2 F2 L2",
+      "N B' R' U2 L'",
+      "N B' R' U' B",
+      "N U R2 D B'",
+      "N U R2 D2 L",
+      "N U R' F2 L2",
+      "N U2 F R2 B2",
+      "N U2 F2 D2 B'",
+      "N U2 F2 D' L",
+      "N U' L2 D' B'"
+    ]
+  },
+  "((2, 0, 1), (2, 1, 2))": {
+    "1": [
+      "N B'"
+    ],
+    "2": [
+      "N U R"
+    ],
+    "3": [
+      "N B2 D' R'",
+      "N U2 F R2",
+      "N U' L' B2"
+    ],
+    "4": [
+      "N B L U B'",
+      "N B L U2 R",
+      "N B L2 F2 R2",
+      "N B L' D2 R'",
+      "N B L' D' B",
+      "N B2 D L B2",
+      "N B2 D2 F' R2",
+      "N U R2 D B",
+      "N U2 F2 D R'",
+      "N U2 F2 D2 B",
+      "N U2 F' L2 B2",
+      "N U' L F2 R2",
+      "N U' L2 D2 R'",
+      "N U' L2 D' B"
+    ]
+  },
+  "((2, 0, 1), (2, 2, 1))": {
+    "1": [
+      "N B2"
+    ],
+    "3": [
+      "N B L' D'",
+      "N B' R D",
+      "N U R B'",
+      "N U R2 D",
+      "N U2 F2 D2",
+      "N U' L2 D'",
+      "N U' L' B"
+    ],
+    "4": [
+      "N B L U B2",
+      "N B L2 F' D2",
+      "N B' R2 F D2",
+      "N B' R' U' B2",
+      "N U R' F D2",
+      "N U2 F R2 B'",
+      "N U2 F R' D",
+      "N U2 F' L D'",
+      "N U2 F' L2 B",
+      "N U' L F' D2"
+    ]
+  },
+  "((2, 1, 0), (0, 0, 1))": {
+    "2": [
+      "N L U'",
+      "N L2 F",
+      "N B' U2"
+    ],
+    "3": [
+      "N L' D F2",
+      "N B D2 F2",
+      "N B2 R2 F'",
+      "N B2 R' U"
+    ],
+    "4": [
+      "N L U2 R' F'",
+      "N L2 F2 R U",
+      "N L' D2 R F'",
+      "N L' D2 R2 U",
+      "N L' D' B2 U2",
+      "N B D L2 U'",
+      "N B D L' F",
+      "N B D' R F'",
+      "N B D' R2 U",
+      "N B2 R D' F2",
+      "N B' U R' F'",
+      "N B' U' L F"
+    ]
+  },
+  "((2, 1, 0), (0, 1, 0))": {
+    "1": [
+      "N L2"
+    ],
+    "3": [
+      "N L U' F'",
+      "N L' D F",
+      "N B D L'",
+      "N B D2 F",
+      "N B2 R2 F2",
+      "N B' U2 F'",
+      "N B' U' L"
+    ],
+    "4": [
+      "N L U B L2",
+      "N L U2 R' F2",
+      "N L' D2 R F2",
+      "N L' D' B' L2",
+      "N B D' R F2",
+      "N B2 R D2 L'",
+      "N B2 R D' F",
+      "N B2 R' U F'",
+      "N B2 R' U2 L",
+      "N B' U R' F2"
+    ]
+  },
+  "((2, 1, 0), (0, 1, 2))": {
+    "2": [
+      "N L2 F2",
+      "N B2 R2"
+    ],
+    "3": [
+      "N L U2 R'",
+      "N L U' F",
+      "N L' D F'",
+      "N L' D2 R",
+      "N B D2 F'",
+      "N B D' R",
+      "N B' U R'",
+      "N B' U2 F"
+    ],
+    "4": [
+      "N L U B' R2",
+      "N L2 F U' R'",
+      "N L2 F' D R",
+      "N L' D' B R2",
+      "N B D L' F2",
+      "N B2 R D' F'",
+      "N B2 R' U F",
+      "N B' U' L F2"
+    ]
+  },
+  "((2, 1, 0), (0, 2, 1))": {
+    "2": [
+      "N L2 F'",
+      "N L' D",
+      "N B D2"
+    ],
+    "3": [
+      "N L U' F2",
+      "N B2 R D'",
+      "N B2 R2 F",
+      "N B' U2 F2"
+    ],
+    "4": [
+      "N L U B2 D2",
+      "N L U2 R2 D'",
+      "N L U2 R' F",
+      "N L2 F2 R' D'",
+      "N L' D2 R F",
+      "N B D L' F'",
+      "N B D' R F",
+      "N B2 R' U F2",
+      "N B' U R2 D'",
+      "N B' U R' F",
+      "N B' U' L F'",
+      "N B' U' L2 D"
+    ]
+  },
+  "((2, 1, 0), (1, 0, 0))": {
+    "1": [
+      "N L"
+    ],
+    "2": [
+      "N B' U'"
+    ],
+    "3": [
+      "N L2 F U",
+      "N B D L2",
+      "N B2 R' U2"
+    ],
+    "4": [
+      "N L2 F2 R U2",
+      "N L2 F' D' L2",
+      "N L' D F L'",
+      "N L' D F2 U",
+      "N L' D2 R2 U2",
+      "N L' D' B2 U'",
+      "N L' D' B' L",
+      "N B D2 F L'",
+      "N B D2 F2 U",
+      "N B D' R2 U2",
+      "N B2 R D2 L2",
+      "N B2 R2 F2 L'",
+      "N B2 R2 F' U",
+      "N B' U2 F' L'"
+    ]
+  },
+  "((2, 1, 0), (1, 0, 2))": {
+    "2": [
+      "N L U2",
+      "N B2 R'",
+      "N B' U"
+    ],
+    "3": [
+      "N L2 F U'",
+      "N L2 F2 R",
+      "N L' D2 R2",
+      "N B D' R2"
+    ],
+    "4": [
+      "N L U B' R'",
+      "N L U' F R",
+      "N L2 F' D R2",
+      "N L' D F2 U'",
+      "N L' D F' R",
+      "N L' D' B R'",
+      "N L' D' B2 U",
+      "N B D L2 U2",
+      "N B D2 F2 U'",
+      "N B D2 F' R",
+      "N B2 R2 F' U'",
+      "N B' U2 F R"
+    ]
+  },
+  "((2, 1, 0), (1, 2, 0))": {
+    "1": [
+      "N L'"
+    ],
+    "2": [
+      "N B D"
+    ],
+    "3": [
+      "N L2 F' D'",
+      "N B2 R D2",
+      "N B' U' L2"
+    ],
+    "4": [
+      "N L U B L'",
+      "N L U B2 D",
+      "N L U2 R2 D2",
+      "N L U' F2 D'",
+      "N L U' F' L",
+      "N L2 F U L2",
+      "N L2 F2 R' D2",
+      "N B D2 F L",
+      "N B2 R2 F D'",
+      "N B2 R2 F2 L",
+      "N B2 R' U2 L2",
+      "N B' U R2 D2",
+      "N B' U2 F2 D'",
+      "N B' U2 F' L"
+    ]
+  },
+  "((2, 1, 0), (1, 2, 2))": {
+    "2": [
+      "N L' D2",
+      "N B D'",
+      "N B2 R"
+    ],
+    "3": [
+      "N L U2 R2",
+      "N L2 F2 R'",
+      "N L2 F' D",
+      "N B' U R2"
+    ],
+    "4": [
+      "N L U B2 D'",
+      "N L U B' R",
+      "N L U' F R'",
+      "N L U' F2 D",
+      "N L2 F U' R2",
+      "N L' D F' R'",
+      "N L' D' B R",
+      "N B D2 F' R'",
+      "N B2 R2 F D",
+      "N B' U2 F R'",
+      "N B' U2 F2 D",
+      "N B' U' L2 D2"
+    ]
+  },
+  "((2, 1, 0), (2, 0, 1))": {
+    "1": [
+      "N B'"
+    ],
+    "2": [
+      "N L U"
+    ],
+    "3": [
+      "N L2 F U2",
+      "N L' D' B2",
+      "N B2 R' U'"
+    ],
+    "4": [
+      "N L U2 R B",
+      "N L2 F2 R U'",
+      "N L2 F2 R2 B",
+      "N L2 F' D2 B2",
+      "N L' D F2 U2",
+      "N L' D2 R2 U'",
+      "N L' D2 R' B",
+      "N B D L B'",
+      "N B D L2 U",
+      "N B D2 F2 U2",
+      "N B D' R2 U'",
+      "N B D' R' B",
+      "N B2 R D B2",
+      "N B2 R2 F' U2"
+    ]
+  },
+  "((2, 1, 0), (2, 1, 0))": {
+    "0": [
+      "N"
+    ],
+    "3": [
+      "N L U B",
+      "N L' D' B'",
+      "N B D L",
+      "N B' U' L'"
+    ],
+    "4": [
+      "N L U2 R B2",
+      "N L U' F' L2",
+      "N L2 F U L'",
+      "N L2 F U2 B",
+      "N L2 F2 R2 B2",
+      "N L2 F' D2 B'",
+      "N L2 F' D' L",
+      "N L' D F L2",
+      "N L' D2 R' B2",
+      "N B D2 F L2",
+      "N B D' R' B2",
+      "N B2 R D B'",
+      "N B2 R D2 L",
+      "N B2 R2 F2 L2",
+      "N B2 R' U2 L'",
+      "N B2 R' U' B",
+      "N B' U R B2",
+      "N B' U2 F' L2"
+    ]
+  },
+  "((2, 1, 0), (2, 1, 2))": {
+    "1": [
+      "N B2"
+    ],
+    "3": [
+      "N L U B'",
+      "N L U2 R",
+      "N L2 F2 R2",
+      "N L' D2 R'",
+      "N L' D' B",
+      "N B D' R'",
+      "N B' U R"
+    ],
+    "4": [
+      "N L U' F R2",
+      "N L2 F U2 B'",
+      "N L2 F U' R",
+      "N L2 F' D R'",
+      "N L2 F' D2 B",
+      "N L' D F' R2",
+      "N B D L B2",
+      "N B D2 F' R2",
+      "N B' U2 F R2",
+      "N B' U' L' B2"
+    ]
+  },
+  "((2, 1, 0), (2, 2, 1))": {
+    "1": [
+      "N B"
+    ],
+    "2": [
+      "N L' D'"
+    ],
+    "3": [
+      "N L U B2",
+      "N L2 F' D2",
+      "N B2 R D"
+    ],
+    "4": [
+      "N L U2 R B'",
+      "N L U2 R2 D",
+      "N L U' F2 D2",
+      "N L2 F U2 B2",
+      "N L2 F2 R2 B'",
+      "N L2 F2 R' D",
+      "N L' D2 R' B'",
+      "N B2 R2 F D2",
+      "N B2 R' U' B2",
+      "N B' U R B'",
+      "N B' U R2 D",
+      "N B' U2 F2 D2",
+      "N B' U' L2 D'",
+      "N B' U' L' B"
+    ]
+  },
+  "((2, 1, 2), (0, 0, 1))": {
+    "2": [
+      "N R2 F'",
+      "N R' U",
+      "N B U2"
+    ],
+    "3": [
+      "N R D' F2",
+      "N B2 L U'",
+      "N B2 L2 F",
+      "N B' D2 F2"
+    ],
+    "4": [
+      "N R D B2 U2",
+      "N R D2 L2 U'",
+      "N R D2 L' F",
+      "N R2 F2 L' U'",
+      "N R' U2 L F",
+      "N B U R' F'",
+      "N B U' L F",
+      "N B2 L' D F2",
+      "N B' D L2 U'",
+      "N B' D L' F",
+      "N B' D' R F'",
+      "N B' D' R2 U"
+    ]
+  },
+  "((2, 1, 2), (0, 1, 0))": {
+    "2": [
+      "N R2 F2",
+      "N B2 L2"
+    ],
+    "3": [
+      "N R D2 L'",
+      "N R D' F",
+      "N R' U F'",
+      "N R' U2 L",
+      "N B U2 F'",
+      "N B U' L",
+      "N B' D L'",
+      "N B' D2 F"
+    ],
+    "4": [
+      "N R D B' L2",
+      "N R2 F D' L'",
+      "N R2 F' U L",
+      "N R' U' B L2",
+      "N B U R' F2",
+      "N B2 L U' F'",
+      "N B2 L' D F",
+      "N B' D' R F2"
+    ]
+  },
+  "((2, 1, 2), (0, 1, 2))": {
+    "1": [
+      "N R2"
+    ],
+    "3": [
+      "N R D' F'",
+      "N R' U F",
+      "N B U R'",
+      "N B U2 F",
+      "N B2 L2 F2",
+      "N B' D2 F'",
+      "N B' D' R"
+    ],
+    "4": [
+      "N R D B R2",
+      "N R D2 L' F2",
+      "N R' U2 L F2",
+      "N R' U' B' R2",
+      "N B U' L F2",
+      "N B2 L U2 R'",
+      "N B2 L U' F",
+      "N B2 L' D F'",
+      "N B2 L' D2 R",
+      "N B' D L' F2"
+    ]
+  },
+  "((2, 1, 2), (0, 2, 1))": {
+    "2": [
+      "N R D'",
+      "N R2 F",
+      "N B' D2"
+    ],
+    "3": [
+      "N R' U F2",
+      "N B U2 F2",
+      "N B2 L2 F'",
+      "N B2 L' D"
+    ],
+    "4": [
+      "N R D2 L' F'",
+      "N R2 F2 L D",
+      "N R' U2 L F'",
+      "N R' U2 L2 D",
+      "N R' U' B2 D2",
+      "N B U R2 D'",
+      "N B U R' F",
+      "N B U' L F'",
+      "N B U' L2 D",
+      "N B2 L U' F2",
+      "N B' D L' F'",
+      "N B' D' R F"
+    ]
+  },
+  "((2, 1, 2), (1, 0, 0))": {
+    "2": [
+      "N R' U2",
+      "N B U'",
+      "N B2 L"
+    ],
+    "3": [
+      "N R D2 L2",
+      "N R2 F2 L'",
+      "N R2 F' U",
+      "N B' D L2"
+    ],
+    "4": [
+      "N R D B2 U'",
+      "N R D B' L",
+      "N R D' F L'",
+      "N R D' F2 U",
+      "N R2 F D' L2",
+      "N R' U F' L'",
+      "N R' U' B L",
+      "N B U2 F' L'",
+      "N B2 L2 F U",
+      "N B' D2 F L'",
+      "N B' D2 F2 U",
+      "N B' D' R2 U2"
+    ]
+  },
+  "((2, 1, 2), (1, 0, 2))": {
+    "1": [
+      "N R'"
+    ],
+    "2": [
+      "N B U"
+    ],
+    "3": [
+      "N R2 F' U'",
+      "N B2 L U2",
+      "N B' D' R2"
+    ],
+    "4": [
+      "N R D B R'",
+      "N R D B2 U",
+      "N R D2 L2 U2",
+      "N R D' F2 U'",
+      "N R D' F' R",
+      "N R2 F D R2",
+      "N R2 F2 L' U2",
+      "N B U2 F R",
+      "N B2 L2 F U'",
+      "N B2 L2 F2 R",
+      "N B2 L' D2 R2",
+      "N B' D L2 U2",
+      "N B' D2 F2 U'",
+      "N B' D2 F' R"
+    ]
+  },
+  "((2, 1, 2), (1, 2, 0))": {
+    "2": [
+      "N R D2",
+      "N B2 L'",
+      "N B' D"
+    ],
+    "3": [
+      "N R2 F D'",
+      "N R2 F2 L",
+      "N R' U2 L2",
+      "N B U' L2"
+    ],
+    "4": [
+      "N R D B' L'",
+      "N R D' F L",
+      "N R2 F' U L2",
+      "N R' U F2 D'",
+      "N R' U F' L",
+      "N R' U' B L'",
+      "N R' U' B2 D",
+      "N B U R2 D2",
+      "N B U2 F2 D'",
+      "N B U2 F' L",
+      "N B2 L2 F' D'",
+      "N B' D2 F L"
+    ]
+  },
+  "((2, 1, 2), (1, 2, 2))": {
+    "1": [
+      "N R"
+    ],
+    "2": [
+      "N B' D'"
+    ],
+    "3": [
+      "N R2 F D",
+      "N B U R2",
+      "N B2 L' D2"
+    ],
+    "4": [
+      "N R2 F2 L D2",
+      "N R2 F' U' R2",
+      "N R' U F R'",
+      "N R' U F2 D",
+      "N R' U2 L2 D2",
+      "N R' U' B2 D'",
+      "N R' U' B' R",
+      "N B U2 F R'",
+      "N B U2 F2 D",
+      "N B U' L2 D2",
+      "N B2 L U2 R2",
+      "N B2 L2 F2 R'",
+      "N B2 L2 F' D",
+      "N B' D2 F' R'"
+    ]
+  },
+  "((2, 1, 2), (2, 0, 1))": {
+    "1": [
+      "N B"
+    ],
+    "2": [
+      "N R' U'"
+    ],
+    "3": [
+      "N R D B2",
+      "N R2 F' U2",
+      "N B2 L U"
+    ],
+    "4": [
+      "N R D2 L B'",
+      "N R D2 L2 U",
+      "N R D' F2 U2",
+      "N R2 F D2 B2",
+      "N R2 F2 L2 B'",
+      "N R2 F2 L' U",
+      "N R' U2 L' B'",
+      "N B2 L2 F U2",
+      "N B2 L' D' B2",
+      "N B' D L B'",
+      "N B' D L2 U",
+      "N B' D2 F2 U2",
+      "N B' D' R2 U'",
+      "N B' D' R' B"
+    ]
+  },
+  "((2, 1, 2), (2, 1, 0))": {
+    "1": [
+      "N B2"
+    ],
+    "3": [
+      "N R D B'",
+      "N R D2 L",
+      "N R2 F2 L2",
+      "N R' U2 L'",
+      "N R' U' B",
+      "N B U' L'",
+      "N B' D L"
+    ],
+    "4": [
+      "N R D' F L2",
+      "N R2 F D2 B'",
+      "N R2 F D' L",
+      "N R2 F' U L'",
+      "N R2 F' U2 B",
+      "N R' U F' L2",
+      "N B U R B2",
+      "N B U2 F' L2",
+      "N B' D2 F L2",
+      "N B' D' R' B2"
+    ]
+  },
+  "((2, 1, 2), (2, 1, 2))": {
+    "0": [
+      "N"
+    ],
+    "3": [
+      "N R D B",
+      "N R' U' B'",
+      "N B U R",
+      "N B' D' R'"
+    ],
+    "4": [
+      "N R D2 L B2",
+      "N R D' F' R2",
+      "N R2 F D R'",
+      "N R2 F D2 B",
+      "N R2 F2 L2 B2",
+      "N R2 F' U2 B'",
+      "N R2 F' U' R",
+      "N R' U F R2",
+      "N R' U2 L' B2",
+      "N B U2 F R2",
+      "N B U' L' B2",
+      "N B2 L U B'",
+      "N B2 L U2 R",
+      "N B2 L2 F2 R2",
+      "N B2 L' D2 R'",
+      "N B2 L' D' B",
+      "N B' D L B2",
+      "N B' D2 F' R2"
+    ]
+  },
+  "((2, 1, 2), (2, 2, 1))": {
+    "1": [
+      "N B'"
+    ],
+    "2": [
+      "N R D"
+    ],
+    "3": [
+      "N R2 F D2",
+      "N R' U' B2",
+      "N B2 L' D'"
+    ],
+    "4": [
+      "N R D2 L B",
+      "N R2 F2 L D'",
+      "N R2 F2 L2 B",
+      "N R2 F' U2 B2",
+      "N R' U F2 D2",
+      "N R' U2 L2 D'",
+      "N R' U2 L' B",
+      "N B U R B'",
+      "N B U R2 D",
+      "N B U2 F2 D2",
+      "N B U' L2 D'",
+      "N B U' L' B",
+      "N B2 L U B2",
+      "N B2 L2 F' D2"
+    ]
+  },
+  "((2, 2, 1), (0, 0, 1))": {
+    "2": [
+      "N B2 U2",
+      "N D2 F2"
+    ],
+    "3": [
+      "N B R2 F'",
+      "N B R' U",
+      "N B' L U'",
+      "N B' L2 F",
+      "N D L2 U'",
+      "N D L' F",
+      "N D' R F'",
+      "N D' R2 U"
+    ],
+    "4": [
+      "N B R D' F2",
+      "N B2 U R' F'",
+      "N B2 U' L F",
+      "N B' L' D F2",
+      "N D L B' U2",
+      "N D2 F L' U'",
+      "N D2 F' R U",
+      "N D' R' B U2"
+    ]
+  },
+  "((2, 2, 1), (0, 1, 0))": {
+    "2": [
+      "N B' L2",
+      "N D L'",
+      "N D2 F"
+    ],
+    "3": [
+      "N B R2 F2",
+      "N B2 U2 F'",
+      "N B2 U' L",
+      "N D' R F2"
+    ],
+    "4": [
+      "N B R D2 L'",
+      "N B R D' F",
+      "N B R' U F'",
+      "N B R' U2 L",
+      "N B2 U R' F2",
+      "N B' L U' F'",
+      "N B' L' D F",
+      "N D L2 U' F'",
+      "N D2 F2 U L",
+      "N D' R2 U F'",
+      "N D' R2 U2 L",
+      "N D' R' B2 L2"
+    ]
+  },
+  "((2, 2, 1), (0, 1, 2))": {
+    "2": [
+      "N B R2",
+      "N D2 F'",
+      "N D' R"
+    ],
+    "3": [
+      "N B2 U R'",
+      "N B2 U2 F",
+      "N B' L2 F2",
+      "N D L' F2"
+    ],
+    "4": [
+      "N B R D' F'",
+      "N B R' U F",
+      "N B2 U' L F2",
+      "N B' L U2 R'",
+      "N B' L U' F",
+      "N B' L' D F'",
+      "N B' L' D2 R",
+      "N D L B2 R2",
+      "N D L2 U2 R'",
+      "N D L2 U' F",
+      "N D2 F2 U' R'",
+      "N D' R2 U F"
+    ]
+  },
+  "((2, 2, 1), (0, 2, 1))": {
+    "1": [
+      "N D2"
+    ],
+    "3": [
+      "N B R D'",
+      "N B R2 F",
+      "N B2 U2 F2",
+      "N B' L2 F'",
+      "N B' L' D",
+      "N D L' F'",
+      "N D' R F"
+    ],
+    "4": [
+      "N B R' U F2",
+      "N B2 U R2 D'",
+      "N B2 U R' F",
+      "N B2 U' L F'",
+      "N B2 U' L2 D",
+      "N B' L U' F2",
+      "N D L B D2",
+      "N D L2 U' F2",
+      "N D' R2 U F2",
+      "N D' R' B' D2"
+    ]
+  },
+  "((2, 2, 1), (1, 0, 0))": {
+    "2": [
+      "N B2 U'",
+      "N B' L",
+      "N D L2"
+    ],
+    "3": [
+      "N B R' U2",
+      "N D2 F L'",
+      "N D2 F2 U",
+      "N D' R2 U2"
+    ],
+    "4": [
+      "N B R D2 L2",
+      "N B R2 F2 L'",
+      "N B R2 F' U",
+      "N B2 U2 F' L'",
+      "N B' L2 F U",
+      "N D L B' U'",
+      "N D L' F U",
+      "N D2 F' R U2",
+      "N D' R F2 L'",
+      "N D' R F' U",
+      "N D' R' B U'",
+      "N D' R' B2 L"
+    ]
+  },
+  "((2, 2, 1), (1, 0, 2))": {
+    "2": [
+      "N B R'",
+      "N B2 U",
+      "N D' R2"
+    ],
+    "3": [
+      "N B' L U2",
+      "N D L2 U2",
+      "N D2 F2 U'",
+      "N D2 F' R"
+    ],
+    "4": [
+      "N B R2 F' U'",
+      "N B2 U2 F R",
+      "N B' L2 F U'",
+      "N B' L2 F2 R",
+      "N B' L' D2 R2",
+      "N D L B2 R'",
+      "N D L B' U",
+      "N D L' F U'",
+      "N D L' F2 R",
+      "N D2 F L' U2",
+      "N D' R F' U'",
+      "N D' R' B U"
+    ]
+  },
+  "((2, 2, 1), (1, 2, 0))": {
+    "1": [
+      "N D"
+    ],
+    "2": [
+      "N B' L'"
+    ],
+    "3": [
+      "N B R D2",
+      "N B2 U' L2",
+      "N D2 F L"
+    ],
+    "4": [
+      "N B R2 F D'",
+      "N B R2 F2 L",
+      "N B R' U2 L2",
+      "N B2 U R2 D2",
+      "N B2 U2 F2 D'",
+      "N B2 U2 F' L",
+      "N B' L2 F' D'",
+      "N D2 F2 U L2",
+      "N D2 F' R' D2",
+      "N D' R F D'",
+      "N D' R F2 L",
+      "N D' R2 U2 L2",
+      "N D' R' B2 L'",
+      "N D' R' B' D"
+    ]
+  },
+  "((2, 2, 1), (1, 2, 2))": {
+    "1": [
+      "N D'"
+    ],
+    "2": [
+      "N B R"
+    ],
+    "3": [
+      "N B2 U R2",
+      "N B' L' D2",
+      "N D2 F' R'"
+    ],
+    "4": [
+      "N B R2 F D",
+      "N B2 U2 F R'",
+      "N B2 U2 F2 D",
+      "N B2 U' L2 D2",
+      "N B' L U2 R2",
+      "N B' L2 F2 R'",
+      "N B' L2 F' D",
+      "N D L B D'",
+      "N D L B2 R",
+      "N D L2 U2 R2",
+      "N D L' F2 R'",
+      "N D L' F' D",
+      "N D2 F L D2",
+      "N D2 F2 U' R2"
+    ]
+  },
+  "((2, 2, 1), (2, 0, 1))": {
+    "1": [
+      "N B2"
+    ],
+    "3": [
+      "N B R' U'",
+      "N B' L U",
+      "N D L B'",
+      "N D L2 U",
+      "N D2 F2 U2",
+      "N D' R2 U'",
+      "N D' R' B"
+    ],
+    "4": [
+      "N B R D B2",
+      "N B R2 F' U2",
+      "N B' L2 F U2",
+      "N B' L' D' B2",
+      "N D L' F U2",
+      "N D2 F L2 B'",
+      "N D2 F L' U",
+      "N D2 F' R U'",
+      "N D2 F' R2 B",
+      "N D' R F' U2"
+    ]
+  },
+  "((2, 2, 1), (2, 1, 0))": {
+    "1": [
+      "N B'"
+    ],
+    "2": [
+      "N D L"
+    ],
+    "3": [
+      "N B2 U' L'",
+      "N D2 F L2",
+      "N D' R' B2"
+    ],
+    "4": [
+      "N B R D B'",
+      "N B R D2 L",
+      "N B R2 F2 L2",
+      "N B R' U2 L'",
+      "N B R' U' B",
+      "N B2 U R B2",
+      "N B2 U2 F' L2",
+      "N D L2 U B",
+      "N D2 F2 U L'",
+      "N D2 F2 U2 B",
+      "N D2 F' R2 B2",
+      "N D' R F2 L2",
+      "N D' R2 U2 L'",
+      "N D' R2 U' B"
+    ]
+  },
+  "((2, 2, 1), (2, 1, 2))": {
+    "1": [
+      "N B"
+    ],
+    "2": [
+      "N D' R'"
+    ],
+    "3": [
+      "N B2 U R",
+      "N D L B2",
+      "N D2 F' R2"
+    ],
+    "4": [
+      "N B2 U2 F R2",
+      "N B2 U' L' B2",
+      "N B' L U B'",
+      "N B' L U2 R",
+      "N B' L2 F2 R2",
+      "N B' L' D2 R'",
+      "N B' L' D' B",
+      "N D L2 U B'",
+      "N D L2 U2 R",
+      "N D L' F2 R2",
+      "N D2 F L2 B2",
+      "N D2 F2 U2 B'",
+      "N D2 F2 U' R",
+      "N D' R2 U' B'"
+    ]
+  },
+  "((2, 2, 1), (2, 2, 1))": {
+    "0": [
+      "N"
+    ],
+    "3": [
+      "N B R D",
+      "N B' L' D'",
+      "N D L B",
+      "N D' R' B'"
+    ],
+    "4": [
+      "N B R2 F D2",
+      "N B R' U' B2",
+      "N B2 U R B'",
+      "N B2 U R2 D",
+      "N B2 U2 F2 D2",
+      "N B2 U' L2 D'",
+      "N B2 U' L' B",
+      "N B' L U B2",
+      "N B' L2 F' D2",
+      "N D L2 U B2",
+      "N D L' F' D2",
+      "N D2 F L D'",
+      "N D2 F L2 B",
+      "N D2 F2 U2 B2",
+      "N D2 F' R2 B'",
+      "N D2 F' R' D",
+      "N D' R F D2",
+      "N D' R2 U' B2"
+    ]
+  }
+}
