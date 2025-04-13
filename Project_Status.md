@@ -1,3 +1,3 @@
---The simulator is complete.
---The solver is yet to be completed.
----j
+* The simulator is complete.
+* The solver is yet to be completed.
+* * j
