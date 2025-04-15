@@ -11,7 +11,7 @@ class CubeBase:
     @classmethod
     def initialize(cls):
         if cls.tables is None:
-            cls.move_vs_direction_map = {
+            cls.move_to_direction_map = {
                 'R': 'X', 'R2': 'X', 'R\'': 'X', 'L': 'x', 'L2': 'x', 'L\'': 'x',
                 'B': 'Y', 'B2': 'Y', 'B\'': 'Y', 'F': 'y', 'F2': 'y', 'F\'': 'y', 
                 'U': 'Z', 'U2': 'Z', 'U\'': 'Z', 'D': 'z', 'D2': 'z', 'D\'': 'z',
@@ -265,13 +265,13 @@ class CubeTracker(CubeBase):
             edge_initial_orientation_at_destination = list(self.piece_initial_orientations[self.movements[move][edge]])
             if len(move)==1 or move[1] == "'":
                 for facelet, facelet_id in enumerate(current_orientation):
-                    if facelet_id != self.move_vs_direction_map[move]:
+                    if facelet_id != self.move_to_direction_map[move]:
                         for destination_facelet_id in edge_initial_orientation_at_destination:
-                            if destination_facelet_id != self.move_vs_direction_map[move]:
+                            if destination_facelet_id != self.move_to_direction_map[move]:
                                 new_orientation[facelet] = destination_facelet_id
             else:
                 for facelet, facelet_id in enumerate(current_orientation):
-                    if facelet_id != self.move_vs_direction_map[move]:
+                    if facelet_id != self.move_to_direction_map[move]:
                         new_orientation[facelet] = facelet_id.lower() if facelet_id.isupper() else facelet_id.upper()
             self.piece_current_orientations[edge] = ''.join(new_orientation)
 
