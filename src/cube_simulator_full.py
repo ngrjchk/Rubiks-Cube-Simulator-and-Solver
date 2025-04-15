@@ -53,71 +53,34 @@ class CubeBase:
     
             cls.edge_positions, cls.corner_positions, _ = cls.categorize_positions_over_piece_types()
             cls.edge_ids, cls.corner_ids, _ = cls.categorize_ids_over_piece_types()
-            cls.tables = cls._load_tables_from_json([
-                    r'..\Precomputed_Lookup_Tables\corner_primary_distance_table.json',
-                    r'..\Precomputed_Lookup_Tables\edge_primary_distance_table.json',
-                    r'..\Precomputed_Lookup_Tables\movement_table.json'
-            ])
-            cls.edge_distances = cls.tables["edge_distances"]
-            cls.corner_distances = cls.tables["corner_distances"]
+            cls.tables = cls._load_table_from_json(r'..\Precomputed_Lookup_Tables\movement_table.json')
             cls.movements = cls.tables["movements"]
 
     @staticmethod
-    def _load_tables_from_json(filenames: list):
-        """
-        Loads precomputed tables from JSON files and returns them in a dictionary.
-
-        Args:
-            filenames: List of JSON filenames containing the precomputed tables
-
-        Returns:
-            dict: A dictionary containing loaded tables, with keys: "edge_distances", "corner_distances", "movements".
-            Values are the loaded tables, or None if loading failed for a table type.
-        """
+    def _load_table_from_json(filename):
         tables = {
-            "edge_distances": None,
-            "corner_distances": None,
             "movements": None
         }
-        for filename in filenames:
-            file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), filename))
-            try:
-                with open(file_path, 'r') as f:
-                    serializable_table = json.load(f)
-                    
-                    # Determine which table type this file contains
-                    if 'edge' in filename.lower() and 'distance' in filename.lower():
-                        tables["edge_distances"] = {}
-                        for pair_str, distance in serializable_table.items():
-                            pos_tuple = tuple(ast.literal_eval(pair_str))  # Safely parse using ast.literal_eval
-                            tables["edge_distances"][pos_tuple] = distance
-                            
-                    elif 'corner' in filename.lower() and 'distance' in filename.lower():
-                        tables["corner_distances"] = {}
-                        for pair_str, distance in serializable_table.items():
-                            pos_tuple = tuple(ast.literal_eval(pair_str))  # Consistent parsing
-                            tables["corner_distances"][pos_tuple] = distance
-                            
-                    elif 'movement' in filename.lower():
-                        tables["movements"] = {}
-                        for move, position_movements in serializable_table.items():
-                            movements = {}
-                            for from_pos_str, to_pos_str in position_movements.items():
-                                from_pos = tuple(ast.literal_eval(from_pos_str))
-                                to_pos = tuple(ast.literal_eval(to_pos_str))
-                                movements[from_pos] = to_pos
-                            tables["movements"][move] = movements
-                            
-            except Exception as e:
-                print(f"Error loading '{filename}': {e}")
-        
-        # Log which tables were successfully loaded
-        loaded_tables = [key for key, value in tables.items() if value is not None]
-        if loaded_tables:
-            print(f"Successfully loaded tables: {', '.join(loaded_tables)}")
+        file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), filename))
+        try:
+            with open(file_path, 'r') as f:
+                serialized_table = json.load(f)
+                tables["movements"] = {}
+                for move, position_movements in serialized_table.items():
+                    movements = {}
+                    for from_pos_str, to_pos_str in position_movements.items():
+                        from_pos = ast.literal_eval(from_pos_str)
+                        to_pos = ast.literal_eval(to_pos_str)
+                        movements[from_pos] = to_pos
+                    tables["movements"][move] = movements         
+        except Exception as e:
+            print(f"Error loading '{filename}': {e}")
+        #log
+        loaded_table = [key for key, value in tables.items() if value is not None]
+        if loaded_table:
+            print(f"Successfully loaded {', '.join(loaded_table)} table")
         else:
-            print("Warning: No tables were successfully loaded")
-            
+            print("Warning: Table was not successfully loaded")
         return tables
 
     @classmethod
