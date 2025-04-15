@@ -29,18 +29,18 @@ class CubeBase:
                  [21, 22, 23],
                  [24, 25, 26],], # Back face
             ])
-            cls.piece_initial_orientations = np.array([
-                [['xyZ', 'g', 'XyZ'],
-                 ['g'  , 'y', 'g'  ],
-                 ['xyz', 'g', 'Xyz']],
+            cls.piece_initial_orientations_for_solver = np.array([
+                [['0', 'g', '0'],
+                 ['g', 'y', 'g'],
+                 ['0', 'g', '0']],
 
-                [['g'  , 'Z', 'g'  ],
-                 ['x'  , 'C', 'X'  ],
-                 ['g'  , 'z', 'g'  ]],
+                [['g', 'Z', 'g'],
+                 ['x', 'C', 'X'],
+                 ['g', 'z', 'g']],
 
-                [['xYZ', 'g', 'XYZ'],
-                 ['g'  , 'Y', 'g'  ],
-                 ['xYz', 'g', 'XYz']],
+                [['0', 'g', '0'],
+                 ['g', 'Y', 'g'],
+                 ['0', 'g', '0']],
             ]) 
             # for corners, capital letters refer to positive axes and lower letters refer to negative axes.
             # so, for the first corner piece (0,0,0), whose orientation is xyZ, the piece's local coordiantes' x-axis's facelet is aligned with the cube's negative x-axis (given by x at the start), y-axis's facelet with the cube's negative y-axis (y), and z-axis's facelet with the cube's positive z-axis (Z).
@@ -151,7 +151,7 @@ class CubeBase:
                     piece_id = cls.piece_initial_ids_at_positions[i, j, k]
                     if piece_id in cls.CENTER_PIECE_IDS:
                         continue
-                    orientation = cls.piece_initial_orientations[i, j, k]
+                    orientation = cls.piece_initial_orientations_for_solver[i, j, k]
                     if orientation == 'g':
                         edge_ids.append(piece_id)
                     else:
@@ -169,7 +169,7 @@ class CubeBase:
                     piece_id = cls.piece_initial_ids_at_positions[i, j, k]
                     if piece_id in cls.CENTER_PIECE_IDS:
                         continue
-                    orientation = cls.piece_initial_orientations[i, j, k]
+                    orientation = cls.piece_initial_orientations_for_solver[i, j, k]
                     if orientation == 'g':
                         edge_positions.append((i, j, k))
                     else:
@@ -180,17 +180,9 @@ class CubeTracker(CubeBase):
     def __init__(self):
         CubeBase.initialize()
         self.piece_current_ids_at_positions = copy.deepcopy(self.piece_initial_ids_at_positions)
-        self.piece_current_orientations = copy.deepcopy(self.piece_initial_orientations)
+        self.piece_current_orientations_for_solver = copy.deepcopy(self.piece_initial_orientations_for_solver)
         self.piece_current_orientations_for_visualizer = copy.deepcopy(self.piece_initial_orientations_for_visualizer)
         self.move_history = []
-        self.cube_current_faces_with_orientations = {
-            'X': np.transpose(self.piece_initial_orientations[:, :, 2]),
-            'x': np.flip(np.transpose(self.piece_initial_orientations[:, :, 0]), axis=1),
-            'y': self.piece_initial_orientations[0, :, :],
-            'Y': np.flip(self.piece_initial_orientations[2, :, :], axis=1),
-            'Z': np.flip(self.piece_initial_orientations[:, 0, :], axis=0),
-            'z': self.piece_initial_orientations[:, 2, :]
-        }
         self.cube_current_faces_with_ids = {
             'X': np.transpose(self.piece_initial_ids_at_positions[:, :, 2]),
             'x': np.flip(np.transpose(self.piece_initial_ids_at_positions[:, :, 0]), axis=1),
@@ -199,8 +191,7 @@ class CubeTracker(CubeBase):
             'Z': np.flip(self.piece_initial_ids_at_positions[:, 0, :], axis=0),
             'z': self.piece_initial_ids_at_positions[:, 2, :]
         }
-
-        # changed to HTM (added new moves L2, F2, ...)
+        # changed to HTM (added new moves L2, F2, etc.)
         self.move_map = {
                 'L': self.__L, 'L2': self.__L2, 'L\'': self.__l, 'R': self.__R, 'R2': self.__R2, 'R\'': self.__r,
                 'F': self.__F, 'F2': self.__F2, 'F\'': self.__f, 'B': self.__B, 'B2': self.__B2, 'B\'': self.__b,
@@ -220,15 +211,15 @@ class CubeTracker(CubeBase):
             
         # Convert to the desired perspective, rotate the face, then convert back
         self.piece_current_ids_at_positions = change_perspective(self.piece_current_ids_at_positions, perspective, -1)
-        self.piece_current_orientations = change_perspective(self.piece_current_orientations, perspective, -1)
+        self.piece_current_orientations_for_solver = change_perspective(self.piece_current_orientations_for_solver, perspective, -1)
         self.piece_current_orientations_for_visualizer = change_perspective(self.piece_current_orientations_for_visualizer, perspective, -1)
 
         self.piece_current_ids_at_positions[face_idx] = np.rot90(self.piece_current_ids_at_positions[face_idx], k=direction, axes=(0, 1))
-        self.piece_current_orientations[face_idx] = np.rot90(self.piece_current_orientations[face_idx], k=direction, axes=(0, 1))
+        self.piece_current_orientations_for_solver[face_idx] = np.rot90(self.piece_current_orientations_for_solver[face_idx], k=direction, axes=(0, 1))
         self.piece_current_orientations_for_visualizer[face_idx] = np.rot90(self.piece_current_orientations_for_visualizer[face_idx], k=direction, axes=(0, 1))
 
         self.piece_current_ids_at_positions = change_perspective(self.piece_current_ids_at_positions, perspective, 1)
-        self.piece_current_orientations = change_perspective(self.piece_current_orientations, perspective, 1)
+        self.piece_current_orientations_for_solver = change_perspective(self.piece_current_orientations_for_solver, perspective, 1)
         self.piece_current_orientations_for_visualizer = change_perspective(self.piece_current_orientations_for_visualizer, perspective, 1)
 
         
@@ -239,15 +230,6 @@ class CubeTracker(CubeBase):
             'Y': np.flip(self.piece_current_ids_at_positions[2, :, :], axis=1),
             'Z': np.flip(self.piece_current_ids_at_positions[:, 0, :], axis=0),
             'z': self.piece_current_ids_at_positions[:, 2, :]
-        }
-
-        self.cube_current_faces_with_orientations = {
-            'X': np.transpose(self.piece_current_orientations[:, :, 2]),
-            'x': np.flip(np.transpose(self.piece_current_orientations[:, :, 0]), axis=1),
-            'y': self.piece_current_orientations[0, :, :],
-            'Y': np.flip(self.piece_current_orientations[2, :, :], axis=1),
-            'Z': np.flip(self.piece_current_orientations[:, 0, :], axis=0),
-            'z': self.piece_current_orientations[:, 2, :]
         }
 
     def __F(self) : self.__rotate_face(0, 0, -1)
@@ -294,7 +276,7 @@ class CubeTracker(CubeBase):
             for j in range(3):
                 for k in range(3):
                     if self.piece_current_ids_at_positions[i, j, k] == piece_id:
-                        return self.piece_current_orientations[i, j, k]
+                        return self.piece_current_orientations_for_solver[i, j, k]
     
     def __update_orientations_for_solver(self, move):
         """Updates the orientations of edges based on the move made """
@@ -303,8 +285,8 @@ class CubeTracker(CubeBase):
                 piece_id = self.piece_current_ids_at_positions[edge]
                 piece_initial_position = tuple(np.argwhere(self.piece_initial_ids_at_positions == piece_id)[0])
                 if self.edge_distances[(piece_initial_position, edge)] == self.edge_distances[(piece_initial_position, self.movements[move][edge])]:
-                    current_orientation = self.piece_current_orientations[edge]
-                    self.piece_current_orientations[edge] = 'g' if current_orientation=='b' else 'b'
+                    current_orientation = self.piece_current_orientations_for_solver[edge]
+                    self.piece_current_orientations_for_solver[edge] = 'g' if current_orientation=='b' else 'b'
     
     def __update_orientations_for_visualizer(self, move):
         """Updates the orientations of edges and corners for colors based on the move made """
