@@ -18,9 +18,9 @@ The Rubiks-Cube-Simulator-and-Solver project showcases a custom Rubik's cube sim
 1. Open the provided notebooks to explore simulation and solving techniques.
 
 ## Usage
-- Use `./Simulators/cube_simulator_full.py` to test the simulator.
-- Use `./Notebooks/solver.ipynb` to test the solver (currently in progress)
-- Use `./Notebooks/table_generators.ipynb` for generating and exploring useful pre-computed tables.
+- Use `./src/cube_simulator_full.py` to test the simulator.
+- Use `./src/solver.py` to test the solver (currently in progress)
+- Use `./src/table_generators.ipynb` for generating and exploring useful pre-computed tables.
 
 ## License
 This project is licensed under the Apache License, Version 2.0. See the LICENSE file for details.
